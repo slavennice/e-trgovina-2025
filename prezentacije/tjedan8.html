@@ -1,0 +1,980 @@
+<artifact
+  identifier="tjedan8-prezentacija"
+  type="text/html"
+  title="Tjedan 8: Internet infrastruktura"
+>
+  <!DOCTYPE html>
+  <html lang="hr">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Tjedan 8: Internet infrastruktura</title>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body {
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          overflow: hidden;
+          height: 100vh;
+        }
+
+        .presentation {
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .slide {
+          background: white;
+          width: 90%;
+          max-width: 1200px;
+          height: 85vh;
+          border-radius: 20px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          padding: 60px;
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          animation: slideIn 0.5s ease;
+          overflow-y: auto;
+        }
+
+        .slide.active {
+          display: flex;
+        }
+
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .slide h1 {
+          font-size: 3.5em;
+          color: #667eea;
+          margin-bottom: 20px;
+          font-weight: 700;
+        }
+
+        .slide h2 {
+          font-size: 2.5em;
+          color: #333;
+          margin-bottom: 30px;
+          font-weight: 600;
+        }
+
+        .slide h3 {
+          font-size: 1.8em;
+          color: #667eea;
+          margin: 30px 0 20px 0;
+        }
+
+        .slide p {
+          font-size: 1.4em;
+          color: #555;
+          line-height: 1.8;
+          margin-bottom: 20px;
+        }
+
+        .slide ul {
+          font-size: 1.3em;
+          color: #555;
+          line-height: 2;
+          margin-left: 40px;
+        }
+
+        .slide li {
+          margin-bottom: 15px;
+        }
+
+        .subtitle {
+          font-size: 1.8em;
+          color: #764ba2;
+          margin-top: 20px;
+        }
+
+        .highlight {
+          background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+          padding: 30px;
+          border-radius: 15px;
+          margin: 20px 0;
+        }
+
+        .highlight h3 {
+          color: #2c3e50;
+          margin: 0 0 15px 0;
+        }
+
+        .highlight p {
+          color: #2c3e50;
+          font-size: 1.2em;
+        }
+
+        .case-study {
+          background: #f8f9fa;
+          border-left: 5px solid #667eea;
+          padding: 30px;
+          border-radius: 10px;
+          margin: 20px 0;
+        }
+
+        .network-diagram {
+          background: white;
+          border: 3px solid #667eea;
+          border-radius: 15px;
+          padding: 30px;
+          margin: 20px 0;
+        }
+
+        .layer-stack {
+          display: grid;
+          gap: 15px;
+          margin-top: 20px;
+        }
+
+        .layer {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 20px;
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .layer-number {
+          font-size: 2em;
+          font-weight: 700;
+          opacity: 0.7;
+        }
+
+        .layer-content {
+          flex: 1;
+          margin-left: 20px;
+        }
+
+        .layer h4 {
+          font-size: 1.4em;
+          margin-bottom: 8px;
+        }
+
+        .layer p {
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 1em;
+        }
+
+        .tech-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+          margin-top: 30px;
+        }
+
+        .tech-card {
+          background: #f8f9fa;
+          border: 3px solid #667eea;
+          padding: 25px;
+          border-radius: 15px;
+          transition: all 0.3s;
+        }
+
+        .tech-card:hover {
+          background: #667eea;
+          color: white;
+          transform: translateY(-5px);
+        }
+
+        .tech-card:hover h4,
+        .tech-card:hover p {
+          color: white;
+        }
+
+        .tech-card h4 {
+          color: #667eea;
+          font-size: 1.5em;
+          margin-bottom: 15px;
+        }
+
+        .tech-card p {
+          color: #555;
+          font-size: 1.1em;
+        }
+
+        .code-block {
+          background: #2c3e50;
+          color: #2ecc71;
+          padding: 20px;
+          border-radius: 10px;
+          font-family: "Courier New", monospace;
+          font-size: 1.1em;
+          margin: 20px 0;
+          overflow-x: auto;
+        }
+
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+          margin-top: 30px;
+        }
+
+        .stat-box {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 30px;
+          border-radius: 15px;
+          text-align: center;
+        }
+
+        .stat-number {
+          font-size: 3em;
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+
+        .stat-label {
+          font-size: 1.1em;
+          opacity: 0.9;
+        }
+
+        .navigation {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          display: flex;
+          gap: 15px;
+        }
+
+        .nav-btn {
+          background: white;
+          color: #667eea;
+          border: none;
+          padding: 15px 30px;
+          font-size: 1.2em;
+          border-radius: 50px;
+          cursor: pointer;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s;
+          font-weight: 600;
+        }
+
+        .nav-btn:hover {
+          background: #667eea;
+          color: white;
+          transform: translateY(-2px);
+        }
+
+        .slide-counter {
+          position: fixed;
+          bottom: 30px;
+          left: 30px;
+          background: white;
+          color: #667eea;
+          padding: 10px 20px;
+          border-radius: 50px;
+          font-size: 1.2em;
+          font-weight: 600;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+          .slide {
+            padding: 30px;
+          }
+          .slide h1 {
+            font-size: 2em;
+          }
+          .slide h2 {
+            font-size: 1.8em;
+          }
+          .tech-grid {
+            grid-template-columns: 1fr;
+          }
+          .stats-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="presentation">
+        <!-- Slide 1: Naslovnica -->
+        <div class="slide active">
+          <h1>🌐 INTERNET INFRASTRUKTURA</h1>
+          <p class="subtitle">Tjedan 8: Kako zapravo funkcionira internet?</p>
+          <div class="stats-grid" style="margin-top: 80px">
+            <div class="stat-box">
+              <div class="stat-number">5.3B</div>
+              <div class="stat-label">Internet korisnika</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">1.9B</div>
+              <div class="stat-label">Web stranica</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">306B</div>
+              <div class="stat-label">Emailova dnevno</div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2: Pregled modula -->
+        <div class="slide">
+          <h2>📚 MODUL 2: Što nas čeka?</h2>
+
+          <div class="case-study">
+            <h3>Dobrodošli nazad! 🎉</h3>
+            <p>
+              Nakon prvog modula (osnove e-trgovine), sada ulazimo u
+              <strong>tehnološku pozadinu</strong> - kako sve to ZAPRAVO
+              funkcionira.
+            </p>
+          </div>
+
+          <h3>Pet tjedana tehničkog znanja:</h3>
+          <div class="tech-grid">
+            <div class="tech-card">
+              <h4>📅 Tjedan 8 (DANAS)</h4>
+              <p>Internet infrastruktura - kako podaci putuju svijetom</p>
+            </div>
+            <div class="tech-card">
+              <h4>📅 Tjedan 9</h4>
+              <p>Cloud computing i mobilne platforme</p>
+            </div>
+            <div class="tech-card">
+              <h4>📅 Tjedan 10</h4>
+              <p>Web tehnologije i tražilice</p>
+            </div>
+            <div class="tech-card">
+              <h4>📅 Tjedan 11</h4>
+              <p>Mobilne aplikacije - iOS vs Android</p>
+            </div>
+            <div class="tech-card">
+              <h4>📅 Tjedan 12</h4>
+              <p>E-commerce platforme PRAKTIČNO! 🛒</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Case Study - COVID-19 -->
+        <div class="slide">
+          <h2>🦠 Case Study: Internet preživljava COVID-19</h2>
+
+          <div class="case-study">
+            <h3>Ožujak 2020. - Svijet ide u lockdown</h3>
+            <p>Odjednom, milijarde ljudi:</p>
+            <ul style="margin-left: 20px">
+              <li>🏠 Rade od kuće (Zoom, Microsoft Teams)</li>
+              <li>🎓 Uče online (Google Classroom)</li>
+              <li>🎬 Gledaju Netflix cijeli dan</li>
+              <li>🎮 Igraju online igre</li>
+              <li>📱 Video pozivi s obitelji</li>
+            </ul>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-box">
+              <div class="stat-number">+300%</div>
+              <div class="stat-label">Zoom promet</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">+50%</div>
+              <div class="stat-label">Netflix streaming</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">+75%</div>
+              <div class="stat-label">Gaming promet</div>
+            </div>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>❓ Pitanje: Zašto internet NIJE pukao?</h3>
+            <p>
+              Masivan rast prometa, ali sve je funkcioniralo.<br />
+              Kako je to moguće? 🤔
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 4: Arhitektura interneta -->
+        <div class="slide">
+          <h2>🏗️ Arhitektura interneta</h2>
+
+          <p>
+            <strong>Internet je decentraliziran</strong> - nema "glavnog
+            servera" koji sve kontrolira.
+          </p>
+
+          <h3>Tri ključna nivoa:</h3>
+          <div class="layer-stack">
+            <div class="layer">
+              <div class="layer-number">1</div>
+              <div class="layer-content">
+                <h4>Backbone (kičma)</h4>
+                <p>
+                  Veliki optički kabeli koji povezuju kontinente - brzina: 100+
+                  Gbps
+                </p>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div class="layer-number">2</div>
+              <div class="layer-content">
+                <h4>ISP (Internet Service Provider)</h4>
+                <p>
+                  Tvrtke koje vam prodaju internet (A1, Telemach, HT) - povezuju
+                  se na backbone
+                </p>
+              </div>
+            </div>
+
+            <div class="layer">
+              <div class="layer-number">3</div>
+              <div class="layer-content">
+                <h4>Vaš uređaj (Last mile)</h4>
+                <p>Vaše računalo, mobitel - povezano na ISP preko WiFi/4G/5G</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>🔑 Ključ preživljavanja COVID-a:</h3>
+            <p>
+              Redundancija - postoje TISUĆE alternativnih putova za svaki
+              podatak!<br />
+              Ako jedan kabel pregoruje, podaci idu drugim putem.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 5: TCP/IP protokol -->
+        <div class="slide">
+          <h2>📦 TCP/IP - Jezik interneta</h2>
+
+          <p>
+            <strong>TCP/IP</strong> = "pravila" kako računala komuniciraju na
+            internetu.
+          </p>
+
+          <h3>Sastoji se od dva dijela:</h3>
+          <div class="tech-grid">
+            <div class="tech-card">
+              <h4>📮 IP (Internet Protocol)</h4>
+              <p>
+                <strong>Što radi:</strong> Adresiranje - svaki uređaj ima IP
+                adresu<br />
+                <strong>Primjer:</strong> 192.168.1.1 (vaš router)<br />
+                <strong>Analogija:</strong> Poštanska adresa na omotnici
+              </p>
+            </div>
+
+            <div class="tech-card">
+              <h4>🚚 TCP (Transmission Control Protocol)</h4>
+              <p>
+                <strong>Što radi:</strong> Osigurava da svi podaci stignu<br />
+                <strong>Kako:</strong> Dijeli podatke na pakete, provjerava jesu
+                li stigli<br />
+                <strong>Analogija:</strong> Poštar koji potvrđuje dostavu
+              </p>
+            </div>
+          </div>
+
+          <div class="case-study" style="margin-top: 30px">
+            <h3>🎬 Primjer: Gledanje Netflix filma</h3>
+            <ol style="margin-left: 20px; line-height: 1.8">
+              <li>Film se dijeli na tisuće malih paketa</li>
+              <li>Svaki paket ima IP adresu odredišta (vaše računalo)</li>
+              <li>Paketi putuju različitim rutama do vas</li>
+              <li>TCP na vašem uređaju ih poslaže u ispravnom redoslijedu</li>
+              <li>Vi gledate film bez da znate sve ovo! 🎥</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Slide 6: IP adrese -->
+        <div class="slide">
+          <h2>🔢 IP adrese - Identifikacija na internetu</h2>
+
+          <p>
+            Svaki uređaj na internetu ima
+            <strong>jedinstvenu IP adresu</strong>.
+          </p>
+
+          <h3>Dvije verzije:</h3>
+          <div class="tech-grid">
+            <div class="tech-card">
+              <h4>IPv4 (stara verzija)</h4>
+              <div class="code-block" style="margin-top: 15px">
+                2001:0db8:85a3:0000:0000: 8a2e:0370:7334
+              </div>
+              <p>
+                <strong>Format:</strong> Heksadecimalni<br />
+                <strong>Ukupno:</strong> 340 undeciliona adresa<br />
+                <strong>Dovoljno za:</strong> Svaki atom na Zemlji! 🌍
+              </p>
+            </div>
+          </div>
+          <div class="highlight" style="margin-top: 30px">
+            <h3>💡 Zanimljivost:</h3>
+            <p>
+              Vaša javna IP adresa: Otvara vas ISP.<br />
+              Privatna IP u kući: Dodjeljuje router (192.168.x.x)<br />
+              <strong>Provjerite svoju:</strong> https://whatismyipaddress.com
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 7: DNS - Telefonski imenik interneta -->
+        <div class="slide">
+          <h2>📞 DNS - Domain Name System</h2>
+
+          <p>
+            <strong>Problem:</strong> Ljudi ne pamte brojeve (IP adrese)<br />
+            <strong>Rješenje:</strong> DNS pretvara imena u IP adrese!
+          </p>
+
+          <div class="case-study">
+            <h3>🔍 Kako DNS radi - Primjer:</h3>
+            <p>Vi utipkate: <strong>www.google.com</strong></p>
+
+            <div class="layer-stack" style="margin-top: 20px">
+              <div class="layer">
+                <div class="layer-number">1</div>
+                <div class="layer-content">
+                  <h4>Preglednik pita DNS server</h4>
+                  <p>"Koja je IP adresa za google.com?"</p>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div class="layer-number">2</div>
+                <div class="layer-content">
+                  <h4>DNS server odgovara</h4>
+                  <p>"google.com = 142.250.185.46"</p>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div class="layer-number">3</div>
+                <div class="layer-content">
+                  <h4>Preglednik se povezuje</h4>
+                  <p>Šalje zahtjev na 142.250.185.46</p>
+                </div>
+              </div>
+
+              <div class="layer">
+                <div class="layer-number">4</div>
+                <div class="layer-content">
+                  <h4>Google server odgovara</h4>
+                  <p>Šalje vam web stranicu</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p style="margin-top: 30px; font-size: 1.3em">
+            ⏱️ Sve ovo se događa za manje od 100 milisekundi!
+          </p>
+        </div>
+
+        <!-- Slide 8: Routing -->
+        <div class="slide">
+          <h2>🗺️ Routing - Kako podaci nalaze put?</h2>
+
+          <p>
+            Podaci ne putuju DIREKTNO od vas do odredišta - skaču s routera na
+            router!
+          </p>
+
+          <div class="highlight">
+            <h3>🎯 Analogija: GPS navigacija</h3>
+            <p>
+              Baš kao što GPS traži najbrži put do odredišta (izbjegavajući
+              gužve),<br />
+              routeri traže najbrži put za vaše podatke kroz internet.
+            </p>
+          </div>
+
+          <h3>Ključni pojmovi:</h3>
+          <ul>
+            <li>
+              <strong>Router:</strong> Uređaj koji usmjerava pakete prema
+              odredištu
+            </li>
+            <li><strong>Hop:</strong> Jedan skok s routera na router</li>
+            <li><strong>Latency:</strong> Kašnjenje - koliko dugo traje put</li>
+            <li>
+              <strong>Bandwidth:</strong> Kapacitet - koliko podataka može proći
+              odjednom
+            </li>
+          </ul>
+
+          <div class="case-study" style="margin-top: 30px">
+            <h3>🔍 Praktična vježba: Traceroute</h3>
+            <p>Možete vidjeti cijeli put vaših podataka!</p>
+            <div class="code-block">
+              Windows Command Prompt: tracert google.com Vidjet ćete sve routere
+              kroz koje prolaze vaši podaci: 192.168.1.1 (vaš router) 10.0.0.1
+              (ISP router) 89.164.139.1 (ISP backbone) ... 142.250.185.46
+              (Google server)
+            </div>
+          </div>
+        </div>
+        <!-- Slide 9: Bandwidth vs Latency -->
+        <div class="slide">
+          <h2>⚡ Bandwidth vs Latency</h2>
+
+          <p>Dva najvažnija pojma za brzinu interneta:</p>
+
+          <div class="tech-grid">
+            <div class="tech-card">
+              <h4>🚰 BANDWIDTH (propusnost)</h4>
+              <p>
+                <strong>Što je:</strong> Koliko podataka može proći u sekundi<br />
+                <strong>Mjeri se u:</strong> Mbps (megabiti po sekundi)<br />
+                <strong>Analogija:</strong> Širina cijevi za vodu<br />
+                <strong>Primjer:</strong> 100 Mbps konekcija = 12.5 MB/s
+                download
+              </p>
+            </div>
+
+            <div class="tech-card">
+              <h4>⏱️ LATENCY (kašnjenje)</h4>
+              <p>
+                <strong>Što je:</strong> Koliko dugo traje da podatak stigne<br />
+                <strong>Mjeri se u:</strong> ms (milisekunde)<br />
+                <strong>Analogija:</strong> Udaljenost do odredišta<br />
+                <strong>Primjer:</strong> 20ms = odličan ping za gaming
+              </p>
+            </div>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>💡 Koja je važnija?</h3>
+            <p>
+              <strong>Za streaming (Netflix):</strong> Bandwidth važniji<br />
+              <strong>Za gaming:</strong> Latency važniji<br />
+              <strong>Za videocall (Zoom):</strong> Oba podjednako važna!
+            </p>
+          </div>
+
+          <div class="stats-grid" style="margin-top: 30px">
+            <div class="stat-box">
+              <div class="stat-number">&lt;20ms</div>
+              <div class="stat-label">Odličan ping</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">20-50ms</div>
+              <div class="stat-label">Dobar ping</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">&gt;100ms</div>
+              <div class="stat-label">Problematičan ping</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 10: Submarine cables -->
+        <div class="slide">
+          <h2>🌊 Podmorski kabeli - Kičma interneta</h2>
+
+          <p>
+            Kako podaci putuju između kontinenata?
+            <strong>Optički kabeli na dnu oceana!</strong>
+          </p>
+
+          <div class="stats-grid">
+            <div class="stat-box">
+              <div class="stat-number">450+</div>
+              <div class="stat-label">Podmorskih kabela</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">1.3M km</div>
+              <div class="stat-label">Ukupne duljine</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">99%</div>
+              <div class="stat-label">Međunarodnog prometa</div>
+            </div>
+          </div>
+
+          <div class="case-study" style="margin-top: 30px">
+            <h3>🔍 Zanimljivi facts:</h3>
+            <ul style="margin-left: 20px; line-height: 1.8">
+              <li>
+                📡 <strong>Sateliti?</strong> Samo 1% prometa - prevelika
+                latency (500+ ms!)
+              </li>
+              <li>
+                🦈 <strong>Napadi morskih pasa?</strong> Da, grizu kabele! Sada
+                ih štite pancirnom zaštitom.
+              </li>
+              <li>
+                💰 <strong>Cijena:</strong> $300 milijuna za postavljanje jednog
+                kabela
+              </li>
+              <li>
+                ⚡ <strong>Brzina:</strong> Svjetlost putuje kroz optičko vlakno
+                brzinom 200,000 km/s
+              </li>
+              <li>
+                🌍 <strong>Google i Facebook:</strong> Sami postavljaju svoje
+                kabele!
+              </li>
+            </ul>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>🗺️ Interaktivna mapa:</h3>
+            <p>
+              Pogledajte sve podmorske kabele na svijetu:<br />
+              <strong>https://www.submarinecablemap.com</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 11: Kako internet skalira? -->
+        <div class="slide">
+          <h2>📈 Kako internet skalira s milijardama korisnika?</h2>
+
+          <h3>Tri ključne tehnologije:</h3>
+
+          <div class="tech-grid">
+            <div class="tech-card">
+              <h4>1️⃣ CDN (Content Delivery Network)</h4>
+              <p>
+                Serveri blizu vas koji "kesiraju" popularan sadržaj<br />
+                <strong>Primjer:</strong> Netflix ima servere u Hrvatskoj - film
+                se ne skida iz USA!<br />
+                <strong>Rezultat:</strong> Brža dostava, manje opterećenje
+              </p>
+            </div>
+
+            <div class="tech-card">
+              <h4>2️⃣ Load Balancing</h4>
+              <p>
+                Raspodjela prometa na više servera<br />
+                <strong>Primjer:</strong> Google ima tisuće servera - svaki
+                zahtjev ide na najmanje opterećen<br />
+                <strong>Rezultat:</strong> Nijedan server ne pregoruje
+              </p>
+            </div>
+
+            <div class="tech-card">
+              <h4>3️⃣ Edge Computing</h4>
+              <p>
+                Računanje bliže korisniku, ne u centralnom data centru<br />
+                <strong>Primjer:</strong> IoT uređaji procesiraju lokalno<br />
+                <strong>Rezultat:</strong> Manja latency, manje prometa
+              </p>
+            </div>
+          </div>
+
+          <div class="case-study" style="margin-top: 30px">
+            <h3>🎬 Case Study: Akamai</h3>
+            <p>
+              <strong>Što rade:</strong> Najveći CDN na svijetu<br />
+              <strong>Serveri:</strong> 365,000+ u 135 zemalja<br />
+              <strong>Promet:</strong> 15-30% CIJELOG internet prometa prolazi
+              kroz njih!<br />
+              <strong>Klijenti:</strong> Netflix, Apple, Microsoft, Facebook
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 12: Praktična vježba -->
+        <div class="slide">
+          <h2>🔧 Praktična vježba</h2>
+
+          <div class="highlight">
+            <h3>💻 Zadatak 1: Pronađite svoju IP adresu</h3>
+            <ol style="margin-left: 20px; color: #2c3e50; line-height: 1.8">
+              <li>Idite na: https://whatismyipaddress.com</li>
+              <li>Zapišite svoju javnu IPv4 adresu</li>
+              <li>Provjerite lokaciju koju pokazuje - je li točna?</li>
+              <li>Pokušajte preko mobilnih podataka - je li IP različita?</li>
+            </ol>
+          </div>
+          <div class="highlight" style="margin-top: 20px">
+            <h3>💻 Zadatak 2: Testirajte brzinu interneta</h3>
+            <ol style="margin-left: 20px; color: #2c3e50; line-height: 1.8">
+              <li>Idite na: https://www.speedtest.net</li>
+              <li>Kliknite "GO" i pričekajte test</li>
+              <li>Zapišite: Download speed, Upload speed, Ping</li>
+              <li>Usporedite s kolegama - tko ima najbržu konekciju?</li>
+            </ol>
+          </div>
+
+          <div class="highlight" style="margin-top: 20px">
+            <h3>💻 Zadatak 3: Traceroute do Google-a</h3>
+            <div class="code-block">
+              Windows Command Prompt: tracert google.com Mac/Linux Terminal:
+              traceroute google.com
+            </div>
+            <p style="margin-top: 15px; color: #2c3e50">
+              Koliko "hopova" (skokova) treba da dođete do Google-a?<br />
+              Koja je prosječna latency po hopu?
+            </p>
+          </div>
+        </div>
+        <!-- Slide 13: Domaća zadaća -->
+        <div class="slide">
+          <h2>📚 Domaća zadaća za Tjedan 9</h2>
+
+          <div class="highlight">
+            <h3>📝 Zadatak: Istraži jednu internet tehnologiju</h3>
+            <p>Odaberite JEDNU od sljedećih tema i napišite izvještaj:</p>
+          </div>
+
+          <div class="tech-grid" style="margin-top: 30px">
+            <div class="tech-card">
+              <h4>Tema 1: CDN mreže</h4>
+              <p>
+                Istražite kako Akamai ili Cloudflare ubrzavaju web.<br />
+                <strong>Pitanja:</strong> Kako radi? Gdje su serveri? Koji su
+                klijenti?
+              </p>
+            </div>
+            <div class="tech-card">
+              <h4>Tema 2: 5G mreže</h4>
+              <p>
+                Kako 5G mijenja mobilni internet?<br />
+                <strong>Pitanja:</strong> Brzina? Latency? Gdje je već dostupan?
+              </p>
+            </div>
+            <div class="tech-card">
+              <h4>Tema 3: Starlink</h4>
+              <p>
+                Elon Musk i satelitski internet.<br />
+                <strong>Pitanja:</strong> Kako radi? Koliko satelita? Cijene?
+              </p>
+            </div>
+            <div class="tech-card">
+              <h4>Tema 4: IPv6 adoption</h4>
+              <p>
+                Zašto je spora tranzicija na IPv6?<br />
+                <strong>Pitanja:</strong> Koliko % svijeta koristi? Prepreke?
+              </p>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 40px">Format zadaće:</h3>
+          <ul>
+            <li>📄 <strong>Duljina:</strong> 2-3 stranice + slike/dijagrami</li>
+            <li>
+              📊 <strong>Sadržaj:</strong> Objašnjenje tehnologije, primjeri,
+              prednosti/nedostaci
+            </li>
+            <li>🔗 <strong>Izvori:</strong> Minimum 3 pouzdana izvora</li>
+            <li>📅 <strong>Rok:</strong> Do sljedećeg tjedna</li>
+            <li>💯 <strong>Bodovi:</strong> Max 15 bodova</li>
+          </ul>
+        </div>
+
+        <!-- Slide 14: Što slijedi? -->
+        <div class="slide">
+          <h2>🎯 Što nas čeka sljedeći tjedan?</h2>
+
+          <h3>📅 Tjedan 9: Cloud computing i mobilne platforme</h3>
+          <ul style="font-size: 1.3em; line-height: 2">
+            <li>
+              ☁️ <strong>Što je cloud computing?</strong> - IaaS, PaaS, SaaS
+            </li>
+            <li>🏢 <strong>Veliki igrači:</strong> AWS, Azure, Google Cloud</li>
+            <li>
+              📱 <strong>Mobilne platforme:</strong> iOS vs Android ekosustav
+            </li>
+            <li>📡 <strong>4G vs 5G:</strong> Što donosi nova generacija?</li>
+            <li>🎮 <strong>Edge computing:</strong> Budućnost cloud-a?</li>
+          </ul>
+
+          <div class="case-study" style="margin-top: 40px">
+            <h3>📖 Za čitanje kroz tjedan:</h3>
+            <p>
+              <strong>Think with Google:</strong> "How 5G will transform
+              e-commerce"<br />
+              <strong>YouTube:</strong> "How does cloud computing work?"
+              (Simplilearn)<br />
+              <strong>Article:</strong> "The rise of edge computing"
+              (TechCrunch)
+            </p>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>💡 Bonus za zainteresirane:</h3>
+            <p>
+              Napravite besplatni AWS račun (Free Tier) i isprobajte cloud!<br />
+              <strong>https://aws.amazon.com/free/</strong><br />
+              (Pokazat ćemo kako u Tjednu 9)
+            </p>
+          </div>
+
+          <p style="margin-top: 50px; font-size: 1.5em; text-align: center">
+            Vidimo se sljedeći tjedan! 👋
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">14</span>
+      </div>
+
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevSlide()">← Prethodni</button>
+        <button class="nav-btn" onclick="nextSlide()">Sljedeći →</button>
+      </div>
+
+      <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+        const total = slides.length;
+
+        document.getElementById("total").textContent = total;
+
+        function showSlide(n) {
+          slides[currentSlide].classList.remove("active");
+          currentSlide = (n + total) % total;
+          slides[currentSlide].classList.add("active");
+          document.getElementById("current").textContent = currentSlide + 1;
+        }
+
+        function nextSlide() {
+          showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+          showSlide(currentSlide - 1);
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight") nextSlide();
+          if (e.key === "ArrowLeft") prevSlide();
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener("touchend", (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 50) nextSlide();
+          if (touchEndX - touchStartX > 50) prevSlide();
+        });
+      </script>
+    </body>
+  </html>
+</artifact>

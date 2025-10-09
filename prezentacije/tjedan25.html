@@ -1,0 +1,1669 @@
+<artifact
+  identifier="tjedan15-prezentacija"
+  type="text/html"
+  title="Tjedan 15: Pravna regulativa i etika"
+>
+  <!DOCTYPE html>
+  <html lang="hr">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Tjedan 25: Zaštita potrošača, pravna regulativa i etika</title>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body {
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          overflow: hidden;
+          height: 100vh;
+        }
+
+        .presentation {
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .slide {
+          background: white;
+          width: 90%;
+          max-width: 1200px;
+          height: 85vh;
+          border-radius: 20px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          padding: 60px;
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          animation: slideIn 0.5s ease;
+          overflow-y: auto;
+        }
+
+        .slide.active {
+          display: flex;
+        }
+
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .slide h1 {
+          font-size: 3.5em;
+          color: #667eea;
+          margin-bottom: 20px;
+          font-weight: 700;
+        }
+
+        .slide h2 {
+          font-size: 2.5em;
+          color: #333;
+          margin-bottom: 30px;
+          font-weight: 600;
+        }
+
+        .slide h3 {
+          font-size: 1.8em;
+          color: #667eea;
+          margin: 30px 0 20px 0;
+        }
+
+        .slide p {
+          font-size: 1.4em;
+          color: #555;
+          line-height: 1.8;
+          margin-bottom: 20px;
+        }
+
+        .slide ul {
+          font-size: 1.3em;
+          color: #555;
+          line-height: 2;
+          margin-left: 40px;
+        }
+
+        .slide li {
+          margin-bottom: 15px;
+        }
+
+        .subtitle {
+          font-size: 1.8em;
+          color: #764ba2;
+          margin-top: 20px;
+        }
+
+        .highlight {
+          background: linear-gradient(120deg, #ffecd2 0%, #fcb69f 100%);
+          padding: 30px;
+          border-radius: 15px;
+          margin: 20px 0;
+        }
+
+        .highlight h3 {
+          color: #2c3e50;
+          margin: 0 0 15px 0;
+        }
+
+        .highlight p {
+          color: #2c3e50;
+          font-size: 1.2em;
+        }
+
+        .legal-box {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 30px;
+          border-radius: 15px;
+          margin: 20px 0;
+        }
+
+        .legal-box h3 {
+          color: white;
+          margin-bottom: 15px;
+        }
+
+        .legal-box p {
+          color: white;
+          font-size: 1.2em;
+        }
+
+        .warning-box {
+          background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+          color: white;
+          padding: 30px;
+          border-radius: 15px;
+          margin: 20px 0;
+          border-left: 8px solid #c92a2a;
+        }
+
+        .warning-box h3 {
+          color: white;
+          margin-bottom: 15px;
+        }
+
+        .warning-box p {
+          color: white;
+          font-size: 1.2em;
+        }
+
+        .case-study {
+          background: #f8f9fa;
+          border-left: 5px solid #667eea;
+          padding: 30px;
+          border-radius: 10px;
+          margin: 20px 0;
+        }
+
+        .rights-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+          margin-top: 30px;
+        }
+
+        .rights-card {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          padding: 30px;
+          border-radius: 15px;
+          color: white;
+        }
+
+        .rights-card h4 {
+          font-size: 1.5em;
+          margin-bottom: 15px;
+        }
+
+        .rights-card p {
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 1em;
+        }
+
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+          margin-top: 30px;
+        }
+
+        .stat-box {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 30px;
+          border-radius: 15px;
+          text-align: center;
+        }
+
+        .stat-number {
+          font-size: 3em;
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+
+        .stat-label {
+          font-size: 1.1em;
+          opacity: 0.9;
+        }
+
+        .comparison-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 20px 0;
+          font-size: 1.1em;
+        }
+
+        .comparison-table th {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 15px;
+          text-align: left;
+        }
+
+        .comparison-table td {
+          padding: 15px;
+          border-bottom: 2px solid #eee;
+        }
+
+        .comparison-table tr:hover {
+          background: #f5f5f5;
+        }
+
+        .document-template {
+          background: white;
+          border: 3px solid #667eea;
+          padding: 25px;
+          margin: 15px 0;
+          border-radius: 10px;
+          font-family: "Georgia", serif;
+        }
+
+        .navigation {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          display: flex;
+          gap: 15px;
+        }
+
+        .nav-btn {
+          background: white;
+          color: #667eea;
+          border: none;
+          padding: 15px 30px;
+          font-size: 1.2em;
+          border-radius: 50px;
+          cursor: pointer;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s;
+          font-weight: 600;
+        }
+
+        .nav-btn:hover {
+          background: #667eea;
+          color: white;
+          transform: translateY(-2px);
+        }
+
+        .slide-counter {
+          position: fixed;
+          bottom: 30px;
+          left: 30px;
+          background: white;
+          color: #667eea;
+          padding: 10px 20px;
+          border-radius: 50px;
+          font-size: 1.2em;
+          font-weight: 600;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+          .slide {
+            padding: 30px;
+          }
+          .slide h1 {
+            font-size: 2em;
+          }
+          .slide h2 {
+            font-size: 1.8em;
+          }
+          .rights-grid {
+            grid-template-columns: 1fr;
+          }
+          .stats-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="presentation">
+        <!-- Slide 1: Naslovnica -->
+        <div class="slide active">
+          <h1>⚖️ PRAVNA REGULATIVA</h1>
+          <p class="subtitle">Tjedan 15: Zakoni, prava i etika u e-trgovini</p>
+          <div class="legal-box" style="margin-top: 80px">
+            <h3>📜 NAPOMENA:</h3>
+            <p>
+              Ova prezentacija daje OPĆI pregled zakona.<br />
+              NE predstavlja pravni savjet!<br />
+              Za specifične situacije - konzultirajte odvjetnika! :-) ⚖️
+            </p>
+          </div>
+
+          <div class="stats-grid" style="margin-top: 40px">
+            <div class="stat-box">
+              <div class="stat-number">€20M</div>
+              <div class="stat-label">Max GDPR kazna</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">14 dana</div>
+              <div class="stat-label">Pravo na povrat u EU</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">72h</div>
+              <div class="stat-label">Breach notification rok</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: E-commerce zakoni u EU -->
+        <div class="slide">
+          <h2>🇪🇺 E-commerce zakoni u EU</h2>
+
+          <p>
+            Ako prodajete u EU (pa i iz Hrvatske, BiH ide u tom smjeru), morate
+            poštivati EU zakone!
+          </p>
+
+          <div class="highlight">
+            <h3>📜 Ključne direktive:</h3>
+            <p>
+              <strong>1. E-Commerce Directive (2000/31/EC)</strong><br />
+              Osnovna pravila za online trgovinu<br />
+              <br />
+              <strong>2. Consumer Rights Directive (2011/83/EU)</strong><br />
+              Prava kupaca (14-day return, informacije...)<br />
+              <br />
+              <strong>3. GDPR (2016/679)</strong><br />
+              Zaštita osobnih podataka<br />
+              <br />
+              <strong>4. PSD2 (Payment Services Directive)</strong><br />
+              Online plaćanja i sigurnost
+            </p>
+          </div>
+
+          <h3>Obavezne informacije na web shopu:</h3>
+
+          <div class="case-study">
+            <h4>✅ MORATE imati:</h4>
+            <ul style="margin-left: 20px; line-height: 1.8">
+              <li>
+                <strong>Company info:</strong> Ime tvrtke, adresa, OIB/VAT
+              </li>
+              <li>
+                <strong>Contact:</strong> Email, telefon (ne samo kontakt
+                forma!)
+              </li>
+              <li><strong>Cijene:</strong> S PDV-om, jasno prikazano</li>
+              <li><strong>Shipping costs:</strong> Prije checkout-a!</li>
+              <li><strong>Delivery time:</strong> Koliko traje dostava</li>
+              <li><strong>Payment methods:</strong> Koje načine prihvaćate</li>
+              <li><strong>Return policy:</strong> 14-day return right</li>
+              <li><strong>Terms & Conditions:</strong> Uvjeti korištenja</li>
+              <li><strong>Privacy Policy:</strong> Kako koristite podatke</li>
+              <li><strong>Cookie Policy:</strong> Što prikupljate</li>
+            </ul>
+          </div>
+
+          <div class="warning-box" style="margin-top: 30px">
+            <h3>⚠️ Kazne za non-compliance:</h3>
+            <p>
+              • Novčane kazne do €50,000<br />
+              • Tužbe od strane kupaca<br />
+              • Zatvaranje web shopa<br />
+              • Zabranu prodaje
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 3: Prava kupaca u EU -->
+        <div class="slide">
+          <h2>🛍️ Prava kupaca (Consumer Rights)</h2>
+
+          <p>EU ima NAJJAČE zaštite kupaca u svijetu!</p>
+
+          <div class="rights-grid">
+            <div class="rights-card">
+              <h4>1️⃣ Right to Information</h4>
+              <p>
+                <strong>Prije kupnje:</strong><br />
+                • Puna cijena (s PDV-om)<br />
+                • Shipping costs<br />
+                • Delivery time<br />
+                • Return policy<br />
+                <br />
+                Informacije moraju biti jasne i vidljive!
+              </p>
+            </div>
+
+            <div
+              class="rights-card"
+              style="
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+              "
+            >
+              <h4>2️⃣ Right to Withdraw (14 dana)</h4>
+              <p>
+                <strong>Kupac može vratiti proizvod u 14 dana:</strong><br />
+                • Bez davanja razloga!<br />
+                • Full refund (+ delivery cost ako ste lažno oglašavali)<br />
+                • Refund u 14 dana od primitka<br />
+                <br />
+                <strong>Iznimke:</strong> Personalizirani proizvodi, perishable
+                goods...
+              </p>
+            </div>
+
+            <div
+              class="rights-card"
+              style="
+                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+              "
+            >
+              <h4>3️⃣ Right to Repair/Replace</h4>
+              <p>
+                <strong>2-year warranty:</strong><br />
+                Proizvod mora raditi najmanje 2 godine!<br />
+                <br />
+                Ako ne radi:<br />
+                1. Repair (popravak)<br />
+                2. Replace (zamjena)<br />
+                3. Refund (povrat novca)
+              </p>
+            </div>
+
+            <div
+              class="rights-card"
+              style="
+                background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+              "
+            >
+              <h4>4️⃣ Protection Against Unfair Terms</h4>
+              <p>
+                <strong>Ne možete:</strong><br />
+                • Izbjeći odgovornost u T&C<br />
+                • Prisiliti arbitražu<br />
+                • Ograničiti prava kupaca<br />
+                <br />
+                <strong>Ako pokušate:</strong> Odredba je nevažeća!
+              </p>
+            </div>
+          </div>
+
+          <div class="warning-box" style="margin-top: 30px">
+            <h3>⚠️ Česte greške:</h3>
+            <p>
+              • "No returns" policy → ILEGALNO u EU!<br />
+              • Charging za return shipping → Možete, ali morate reći PRIJE<br />
+              • Ne odgovarati na return request → Automatski dobijate complaint
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 4: Return policy detalji -->
+        <div class="slide">
+          <h2>↩️ 14-Day Return Right - Detalji</h2>
+
+          <div class="highlight">
+            <h3>🎯 Kako radi 14-day return:</h3>
+            <p>
+              <strong>DAY 0:</strong> Proizvod dostavljen<br />
+              <strong>DAY 1-14:</strong> Kupac može odlučiti vratiti<br />
+              <strong>DAY 14:</strong> Kupac vas obavještava da vraća<br />
+              <strong>+14 days:</strong> Kupac ima još 14 dana da pošalje
+              natrag<br />
+              <strong>Vaša obaveza:</strong> Refund u 14 dana od primitka
+            </p>
+          </div>
+
+          <h3>Što kupac može vratiti:</h3>
+
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Proizvod</th>
+                <th>Može se vratiti?</th>
+                <th>Napomena</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Odjeća</td>
+                <td>✅ DA</td>
+                <td>Čak i ako je probana (ali ne nošena vani)</td>
+              </tr>
+              <tr>
+                <td>Elektronika</td>
+                <td>✅ DA</td>
+                <td>Ako je zapečaćena, ne smije otvoriti (ali rijetko)</td>
+              </tr>
+              <tr>
+                <td>Knjige</td>
+                <td>✅ DA</td>
+                <td>Ako nisu zapečaćene</td>
+              </tr>
+              <tr>
+                <td>Hrana/Kozmetika</td>
+                <td>❌ NE</td>
+                <td>Perishable goods - hygiene razlozi</td>
+              </tr>
+              <tr>
+                <td>Custom made</td>
+                <td>❌ NE</td>
+                <td>Personalizirani proizvodi (gravura, custom print)</td>
+              </tr>
+              <tr>
+                <td>Software (digital)</td>
+                <td>❌ NE</td>
+                <td>Ako je kupac pristao i download počeo</td>
+              </tr>
+              <tr>
+                <td>Avionske/Event karte</td>
+                <td>❌ NE</td>
+                <td>Ako je datum određen</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="case-study" style="margin-top: 30px">
+            <h3>💡 Best practice:</h3>
+            <p>
+              <strong>Return form template:</strong><br />
+              Morate pružiti standard withdrawal form (možete preuzeti s EU
+              stranica).<br />
+              <br />
+              <strong>Što uključiti:</strong><br />
+              • Jasne instrukcije kako vratiti<br />
+              • Adresa za povrat<br />
+              • Tko plaća shipping (obično kupac, ali morate reći!)<br />
+              • Rok za refund (14 dana)<br />
+              • Kontakt za pitanja
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 5: GDPR - Dubinski dive -->
+        <div class="slide">
+          <h2>📜 GDPR - Detaljnije</h2>
+
+          <p>
+            General Data Protection Regulation - najstroži zakon o zaštiti
+            podataka na svijetu.
+          </p>
+
+          <div class="warning-box">
+            <h3>💰 Kazne (STVARNE!)</h3>
+            <p>
+              <strong>Tier 1:</strong> Do €10M ili 2% godišnjeg prometa<br />
+              <strong>Tier 2:</strong> Do €20M ili 4% godišnjeg prometa<br />
+              <br />
+              <strong>Primjeri:</strong><br />
+              • Amazon: €746M (2021) - largest ever!<br />
+              • Google: €50M (2019)<br />
+              • British Airways: €22M (2020) - data breach<br />
+              • H&M: €35M (2020) - excessive monitoring
+            </p>
+          </div>
+
+          <h3>Što je "Personal Data" po GDPR-u?</h3>
+
+          <div class="case-study">
+            <h4>✅ Personal Data (mora biti zaštićeno):</h4>
+            <ul style="margin-left: 20px; line-height: 1.8">
+              <li>
+                <strong>Basic:</strong> Ime, prezime, email, telefon, adresa
+              </li>
+              <li><strong>Online:</strong> IP adresa, cookie ID, device ID</li>
+              <li>
+                <strong>Economic:</strong> Income, credit score, payment info
+              </li>
+              <li><strong>Location:</strong> GPS coordinates, checkin-s</li>
+              <li>
+                <strong>Sensitive (special category):</strong><br />
+                - Health data<br />
+                - Biometrics<br />
+                - Race/ethnicity<br />
+                - Political views<br />
+                - Religious beliefs<br />
+                - Sexual orientation<br />
+                → Pojačana zaštita!
+              </li>
+            </ul>
+          </div>
+
+          <div class="case-study">
+            <h4>❌ Nije Personal Data:</h4>
+            <ul style="margin-left: 20px">
+              <li>Anonymizirani podaci (ne može se identificirati osoba)</li>
+              <li>Company data (OIB tvrtke)</li>
+              <li>Podatci umrlih (GDPR ne pokriva)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Slide 6: Legal Basis za procesiranje -->
+        <div class="slide">
+          <h2>⚖️ Legal Basis - Zašto smijete prikupiti podatke?</h2>
+
+          <p>
+            Po GDPR-u, morate imati <strong>legal basis</strong> za svako
+            prikupljanje podataka!
+          </p>
+
+          <h3>6 legal bases (članak 6 GDPR-a):</h3>
+
+          <div class="case-study">
+            <h4>1️⃣ Consent (Pristanak)</h4>
+            <p>
+              Osoba vam <strong>eksplicitno dozvoli</strong>.<br />
+              <br />
+              <strong>Zahtjevi:</strong><br />
+              • Freely given (dobrovoljno)<br />
+              • Specific (za točnu svrhu)<br />
+              • Informed (znaju što dopuštaju)<br />
+              • Unambiguous (jasna akcija - klik)<br />
+              <br />
+              <strong>Primjer:</strong> Newsletter signup<br />
+              <strong>Može se opozvati:</strong> DA - lako kao i davanje!
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>2️⃣ Contract (Ugovor)</h4>
+            <p>
+              Potrebno za izvršenje ugovora.<br />
+              <br />
+              <strong>Primjer:</strong><br />
+              Kupac kupi proizvod → trebate adresu za dostavu → to je contract
+              basis!<br />
+              <br />
+              <strong>NE možete:</strong> Tražiti dodatne podatke "za marketing"
+              pod contract basis!
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>3️⃣ Legal Obligation (Zakonska obaveza)</h4>
+            <p>
+              Zakon vas PRISILJAVA da prikupite.<br />
+              <br />
+              <strong>Primjer:</strong><br />
+              • Accounting records (7 godina)<br />
+              • Tax information<br />
+              • Anti-money laundering checks
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>4️⃣ Vital Interests (Vitalni interesi)</h4>
+            <p>
+              Potrebno da spasite život.<br />
+              <br />
+              <strong>Primjer:</strong> Medical emergency - dijeljenje health
+              data s bolnicom<br />
+              <br />
+              <strong>Rijetko u e-commerce!</strong>
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>5️⃣ Public Task</h4>
+            <p>
+              Javna institucija izvršava zadatak.<br />
+              <br />
+              <strong>Ne primjenjuje se na privatne tvrtke!</strong>
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>6️⃣ Legitimate Interest</h4>
+            <p>
+              Imate legitimni poslovni razlog ALI ne smije biti intruzivan.<br />
+              <br />
+              <strong>Test:</strong><br />
+              1. Je li potrebno za vašbizniss?<br />
+              2. Očekuje li osoba to?<br />
+              3. Je li proporcionalno?<br />
+              <br />
+              <strong>Primjer (OK):</strong> Fraud prevention<br />
+              <strong>Primjer (NOT OK):</strong> Profiling za targeted ads
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 7: Data Breach Notification -->
+        <div class="slide">
+          <h2>🚨 Data Breach - Što napraviti?</h2>
+
+          <p>
+            <strong>Data Breach</strong> = neovlašteni pristup, gubitak ili
+            curenje osobnih podataka.
+          </p>
+
+          <div class="warning-box">
+            <h3>⏰ 72-HOUR RULE!</h3>
+            <p>
+              Morate obavijestiti nadležno tijelo (u HR: AZOP u BiH Agencija za
+              zaštitu osobnih podataka https://www.azlp.ba) u roku od
+              <strong>72 SATA</strong> od saznanja o breach-u!<br />
+              <br />
+              <strong>Ako ne prijavite:</strong> Do €10M ili 2% godišnjeg
+              prometa!
+            </p>
+          </div>
+
+          <h3>Proces prijave breach-a:</h3>
+
+          <div class="case-study">
+            <h4>KORAK 1: Detekcija (0-24h)</h4>
+            <p>
+              • Otkrili ste breach (hacking, gubitak laptopa, phishing...)<br />
+              • Dokumentirajte: Što, kada, kako?<br />
+              • Containment: Zaustavite širenje!
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>KORAK 2: Assessment (24-48h)</h4>
+            <p>
+              • Koliko osoba pogođeno?<br />
+              • Koji podaci kompromititirani?<br />
+              • Koliki je rizik za osobe? (Low/Medium/High)<br />
+              <br />
+              <strong>Ako je HIGH RISK:</strong> Morate obavijestiti I OSOBE!
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>KORAK 3: Notification (do 72h)</h4>
+            <p>
+              <strong>Prijavite AZOP-u:</strong><br />
+              • Nature of breach<br />
+              • Broj pogođenih osoba<br />
+              • Ime i kontakt DPO-a<br />
+              • Mjere koje ste poduzeli<br />
+              •Mere za sprječavanje<br />
+              <br />
+              <strong>Portal (BiH):</strong> https://azlp.ba/
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>KORAK 4: Communication sa žrtvama</h4>
+            <p>
+              <strong>Ako je visok rizik, obavijestite osobe:</strong><br />
+              • Jasno recite što se dogodilo<br />
+              • Koji podaci su kompromititirani<br />
+              • Što mogu napraviti (promijeniti lozinku...)<br />
+              • Vaš kontakt za pitanja<br />
+              <br />
+              <strong>Email/SMS/Letter - ovisno o situaciji</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 8: Cookies i Tracking -->
+        <div class="slide">
+          <h2>🍪 Cookie Policy i Tracking</h2>
+
+          <p>
+            <strong>ePrivacy Directive</strong> (cookie law) + GDPR regulira
+            korištenje cookieja.
+          </p>
+
+          <div class="highlight">
+            <h3>🎯 Što je cookie?</h3>
+            <p>
+              Mali file koji web stranica sprema u vaš preglednik.<br />
+              <br />
+              <strong>Primjer:</strong><br />
+              • Session ID (da zna da ste ulogirani)<br />
+              • Shopping cart (proizvodi u košarici)<br />
+              • Language preference<br />
+              • Tracking ID (Google Analytics)
+            </p>
+          </div>
+
+          <h3>Vrste cookija:</h3>
+
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Tip</th>
+                <th>Svrha</th>
+                <th>Consent potreban?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Strictly Necessary</strong></td>
+                <td>Nužni za rad stranice (session, security)</td>
+                <td>❌ NE</td>
+              </tr>
+              <tr>
+                <td><strong>Functional</strong></td>
+                <td>Preference (jezik, regija)</td>
+                <td>✅ DA (ali low-risk)</td>
+              </tr>
+              <tr>
+                <td><strong>Analytics</strong></td>
+                <td>Google Analytics, heatmaps</td>
+                <td>✅ DA</td>
+              </tr>
+              <tr>
+                <td><strong>Marketing/Advertising</strong></td>
+                <td>Facebook Pixel, remarketing</td>
+                <td>✅✅ DEFINITIVNO DA!</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="case-study" style="margin-top: 30px">
+            <h3>📋 Cookie Banner zahtjevi:</h3>
+            <p>
+              <strong>MORA biti:</strong><br />
+              • Vidljiv PRIJE postavljanja cookieja<br />
+              • "Accept" I "Reject" opcije (ne samo "Accept"!)<br />
+              • Granular choice (odabir kategorija)<br />
+              • Link na Cookie Policy<br />
+              • Lako povući pristanak<br /><br />
+              <strong>NE SMIJE biti:</strong><br />
+              • Pre-checked boxes<br />
+              • "Scroll = consent"<br />
+              • Sakriveni "Reject" button<br />
+              • Nastavak bez odgovora
+            </p>
+          </div>
+          <div class="warning-box" style="margin-top: 30px">
+            <h3>⚠️ Česte greške:</h3>
+            <p>
+              • Postavljanje Google Analytics PRIJE consenta → ILEGALNO!<br />
+              • Facebook Pixel bez consenta → Kazna!<br />
+              • Cookie wall ("Accept ili idi") → Consent nije freely given!<br />
+              • "We use cookies. OK?" bez opcije odbijanja → Nije valjan consent
+            </p>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>🔧 Cookie management alati:</h3>
+            <p>
+              • <strong>OneTrust:</strong> Enterprise rješenje<br />
+              • <strong>Cookiebot:</strong> €9/mj, popularan<br />
+              • <strong>Iubenda:</strong> €25/mj, compliance suite<br />
+              • <strong>Cookie-Script:</strong> Free tier dostupan<br />
+              <br />
+              <strong>Što rade:</strong><br />
+              Automatski detektiraju cookije, prave banner, blokiraju dok nema
+              consenta
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 9: Email Marketing zakoni -->
+        <div class="slide">
+          <h2>📧 Email Marketing - SPAM zakoni</h2>
+
+          <p>Email marketing je VISOKO reguliran!</p>
+
+          <div class="warning-box">
+            <h3>⚠️ CAN-SPAM Act (USA) vs GDPR (EU)</h3>
+            <p>
+              <strong>USA (CAN-SPAM):</strong> Opt-out (možeš slati dok ne kažu
+              "stop")<br />
+              <strong>EU (GDPR):</strong> Opt-in (možeš slati SAMO ako
+              pristanu)<br />
+              <br />
+              <strong>Ako prodajete u EU → mora biti OPT-IN!</strong>
+            </p>
+          </div>
+
+          <h3>GDPR zahtjevi za email marketing:</h3>
+
+          <div class="case-study">
+            <h4>1️⃣ Explicit Consent</h4>
+            <p>
+              <strong>Kako dobiti valjan consent:</strong><br />
+              <br />
+              ✅ DOBRO:<br />
+              ☐ "Želim primati newsletter s ponudama"<br />
+              (Unchecked box - korisnik mora kliknuti)<br />
+              <br />
+              ❌ LOŠE:<br />
+              ☑ "Želim primati newsletter" (Pre-checked)<br />
+              <br />
+              ❌ JAKO LOŠE:<br />
+              "Nastavljanjem kupnje pristajete na marketing"<br />
+              (Bundled consent - nije freely given!)
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>2️⃣ Double Opt-in (preporučeno)</h4>
+            <p>
+              <strong>Što je:</strong><br />
+              1. Korisnik se prijavi<br />
+              2. Šaljete confirmation email<br />
+              3. Korisnik klikne "Potvrdi"<br />
+              4. Sada je STVARNO opted-in<br />
+              <br />
+              <strong>Zašto:</strong><br />
+              • Dokaz consenta<br />
+              • Sprječava fake signups<br />
+              • Viša kvaliteta liste
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>3️⃣ Što MORA biti u emailu:</h4>
+            <ul style="margin-left: 20px; line-height: 1.8">
+              <li><strong>From:</strong> Jasno tko šalje (ne "noreply@")</li>
+              <li><strong>Subject:</strong> Ne smije biti misleading</li>
+              <li><strong>Physical address:</strong> Vaša poslovna adresa</li>
+              <li>
+                <strong>Unsubscribe link:</strong><br />
+                - Mora biti vidljiv<br />
+                - Mora raditi<br />
+                - Processing u 30 dana (EU: odmah!)
+              </li>
+            </ul>
+          </div>
+
+          <div class="case-study">
+            <h4>4️⃣ Segmentacija i Relevantnost</h4>
+            <p>
+              Ne šaljite sve svima!<br />
+              <br />
+              <strong>Primjer:</strong><br />
+              Kupac kupi dječju odjeću → šalji ponude za dječju garderobu<br />
+              NE šalji: tehnika, kozmetika...<br />
+              <br />
+              <strong>Benefiti:</strong><br />
+              • Viši open rate<br />
+              • Manje unsubscribe<br />
+              • Legalno - "legitimate interest" pod GDPR-om
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 10: Case Study - British Airways -->
+        <div class="slide">
+          <h2>✈️ Case Study: British Airways GDPR Fine</h2>
+
+          <div class="warning-box">
+            <h3>💰 €22.5 milijuna kazna (2020)</h3>
+            <p>Originalno €204M, sniženo na €22.5M zbog COVID-a</p>
+          </div>
+
+          <h3>Što se dogodilo:</h3>
+
+          <div class="case-study">
+            <h4>📅 Timeline:</h4>
+            <p>
+              <strong>Lipanj 2018:</strong> Hakeri kompromitirali BA web
+              stranicu<br />
+              <strong>22 dana:</strong> Trajanje napada (neotkriveno!)<br />
+              <strong>380,000 transakcija:</strong> Ukradene kreditne kartice i
+              putničke informacije<br />
+              <strong>Rujan 2018:</strong> BA otkriva breach i prijavljuje
+              ICO-u<br />
+              <strong>Srpanj 2019:</strong> ICO najavljuje kaznu od €204M<br />
+              <strong>Listopad 2020:</strong> Konačna kazna €22.5M
+            </p>
+          </div>
+
+          <h3>Detalji napada:</h3>
+
+          <div class="case-study">
+            <h4>🎯 Magecart Attack</h4>
+            <p>
+              <strong>Kako je radilo:</strong><br />
+              1. Hakeri su dobili pristup BA serveru<br />
+              2. Modificirali JavaScript na checkout stranici<br />
+              3. Kod je "skimmao" kreditne kartice dok kupci plaćaju<br />
+              4. Slao podatke na haker server (baways.com - primijetite
+              typo!)<br />
+              <br />
+              <strong>Ukradeno:</strong><br />
+              • Imena<br />
+              • Email adrese<br />
+              • Kreditne kartice (broj, CVV, expiry)<br />
+              • Billing adrese
+            </p>
+          </div>
+
+          <h3>Zašto je BA kažnjen?</h3>
+
+          <div class="case-study">
+            <h4>❌ GDPR violations:</h4>
+            <ul style="margin-left: 20px; line-height: 1.8">
+              <li>
+                <strong>Inadequate security:</strong><br />
+                • Nisu imali proper monitoring<br />
+                • Stara verzija softwarea s poznatim ranjivostima<br />
+                • Nedostatak MFA (Multi-Factor Authentication)
+              </li>
+
+              <li>
+                <strong>Delayed detection:</strong><br />
+                22 dana da otkriju breach = prendugo!
+              </li>
+
+              <li>
+                <strong>Lack of encryption:</strong><br />
+                Kreditne kartice nisu bile dodatno enkriptirane
+              </li>
+
+              <li>
+                <strong>Third-party risk management:</strong><br />
+                Slaba kontrola vendor pristupa
+              </li>
+            </ul>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>💡 Lekcije:</h3>
+            <p>
+              1. <strong>Security monitoring je obavezan:</strong> SIEM,
+              intrusion detection<br />
+              2. <strong>Patch redovno:</strong> Known vulnerabilities se
+              eksploatiraju brzo<br />
+              3. <strong>Encrypt everything:</strong> Posebno payment data<br />
+              4. <strong>Sub-resource integrity:</strong> Provjeravajte da
+              JavaScript nije modificiran<br />
+              5. <strong>Incident response plan:</strong> Morate znati što
+              raditi PRIJE breach-a
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 11: Terms & Conditions template -->
+        <div class="slide">
+          <h2>📄 Terms & Conditions - Što uključiti?</h2>
+
+          <p>T&C = ugovor između vas i kupca.</p>
+
+          <div class="document-template">
+            <h3 style="text-align: center; color: #667eea">
+              UVJETI KORIŠTENJA (T&C)
+            </h3>
+            <h4 style="margin-top: 20px">1. OPĆE INFORMACIJE</h4>
+            <ul style="margin-left: 20px; font-size: 1.1em">
+              <li>Naziv tvrtke, OIB, adresa</li>
+              <li>Kontakt informacije</li>
+              <li>Registracijske informacije</li>
+            </ul>
+
+            <h4 style="margin-top: 20px">2. DEFINICIJE</h4>
+            <p style="font-size: 1.1em">
+              • "Mi/Nas" = [Vaša tvrtka]<br />
+              • "Vi/Kupac" = osoba koja kupuje<br />
+              • "Proizvod" = roba koja se prodaje<br />
+              • "Usluga" = dostava, support...
+            </p>
+
+            <h4 style="margin-top: 20px">3. SKLAPANJE UGOVORA</h4>
+            <p style="font-size: 1.1em">
+              • Kada nastaje ugovor? (Klik na "Kupi")<br />
+              • Order confirmation email<br />
+              • Što ako nema na stocku?
+            </p>
+
+            <h4 style="margin-top: 20px">4. CIJENE I PLAĆANJE</h4>
+            <p style="font-size: 1.1em">
+              • Cijene uključuju PDV<br />
+              • Načini plaćanja<br />
+              • Kada se zadužuje kartica?<br />
+              • Greške u cijeni
+            </p>
+
+            <h4 style="margin-top: 20px">5. DOSTAVA</h4>
+            <p style="font-size: 1.1em">
+              • Rokovi dostave<br />
+              • Shipping costs<br />
+              • Rizik prijelaza (kada proizvod postaje vaš?)<br />
+              • Što ako paket izgubi?
+            </p>
+
+            <h4 style="margin-top: 20px">6. PRAVO NA POVRAT (14 dana)</h4>
+            <p style="font-size: 1.1em">
+              • EU withdrawal right<br />
+              • Kako vratiti (adresa, kontakt)<br />
+              • Tko plaća return shipping?<br />
+              • Rok za refund
+            </p>
+
+            <h4 style="margin-top: 20px">7. JAMSTVO (2 godine)</h4>
+            <p style="font-size: 1.1em">
+              • Legal warranty<br />
+              • Procedure za complaint<br />
+              • Repair/Replace/Refund
+            </p>
+
+            <h4 style="margin-top: 20px">8. OGRANIČENJE ODGOVORNOSTI</h4>
+            <p style="font-size: 1.1em">
+              • Što niste odgovorni<br />
+              • Force majeure<br />
+              • Maksimalni iznos kompenzacije
+            </p>
+
+            <h4 style="margin-top: 20px">9. RJEŠAVANJE SPOROVA</h4>
+            <p style="font-size: 1.1em">
+              • Online Dispute Resolution (ODR platform)<br />
+              • Nadležni sud<br />
+              • Arbitraža opcija
+            </p>
+
+            <h4 style="margin-top: 20px">10. IZMJENE T&C</h4>
+            <p style="font-size: 1.1em">
+              • Pravo izmjene uz obavijest<br />
+              • Kako će kupci biti obaviješteni
+            </p>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>⚠️ NAPOMENA:</h3>
+            <p>
+              Ovo je samo template!<br />
+              Svaki web shop je drukčiji.<br />
+              <strong>Preporučam:</strong> Konzultirati odvjetnika za specificni
+              T&C!
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 12: Privacy Policy template -->
+        <div class="slide">
+          <h2>🔒 Privacy Policy - GDPR compliant</h2>
+
+          <div class="document-template">
+            <h3 style="text-align: center; color: #667eea">
+              POLITIKA PRIVATNOSTI
+            </h3>
+
+            <h4 style="margin-top: 20px">1. TKNEE PRIKUPLJAMO PODATKE</h4>
+            <p style="font-size: 1.1em">
+              <strong>Data Controller:</strong><br />
+              [Vaša tvrtka], [Adresa], [Email], [OIB]
+            </p>
+
+            <h4 style="margin-top: 20px">2. KOJE PODATKE PRIKUPLJAMO</h4>
+            <ul style="margin-left: 20px; font-size: 1.1em">
+              <li>Osobni podaci: Ime, prezime, email, telefon, adresa</li>
+              <li>
+                Platežni podaci: (tokenized - ne spremamo cijele kreditne
+                kartice!)
+              </li>
+              <li>Tehnički podaci: IP adresa, browser, device ID, cookies</li>
+              <li>Behaviour: Što gledate, klikovi, cart abandonment</li>
+            </ul>
+
+            <h4 style="margin-top: 20px">3. ZAŠTO PRIKUPLJAMO (Legal Basis)</h4>
+            <table
+              style="
+                width: 100%;
+                margin-top: 10px;
+                border-collapse: collapse;
+                font-size: 1.05em;
+              "
+            >
+              <tr style="background: #f0f0f0">
+                <td style="padding: 8px; border: 1px solid #ddd">
+                  <strong>Svrha</strong>
+                </td>
+                <td style="padding: 8px; border: 1px solid #ddd">
+                  <strong>Legal Basis</strong>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 8px; border: 1px solid #ddd">
+                  Obrada narudžbe
+                </td>
+                <td style="padding: 8px; border: 1px solid #ddd">Contract</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px; border: 1px solid #ddd">Newsletter</td>
+                <td style="padding: 8px; border: 1px solid #ddd">Consent</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px; border: 1px solid #ddd">
+                  Fraud prevention
+                </td>
+                <td style="padding: 8px; border: 1px solid #ddd">
+                  Legitimate Interest
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 8px; border: 1px solid #ddd">
+                  Tax/accounting
+                </td>
+                <td style="padding: 8px; border: 1px solid #ddd">
+                  Legal Obligation
+                </td>
+              </tr>
+            </table>
+
+            <h4 style="margin-top: 20px">4. S KIM DIJELIMO</h4>
+            <ul style="margin-left: 20px; font-size: 1.1em">
+              <li>Payment processor: Stripe (PCI DSS compliant)</li>
+              <li>Shipping: DHL, GLS</li>
+              <li>Email service: Mailchimp</li>
+              <li>Analytics: Google Analytics (anonymized IP)</li>
+              <li>Hosting: AWS (EU region)</li>
+            </ul>
+
+            <h4 style="margin-top: 20px">5. KOLIKO DUGO ČUVAMO</h4>
+            <ul style="margin-left: 20px; font-size: 1.1em">
+              <li>Account data: Dok je account aktivan + 2 godine</li>
+              <li>Order data: 7 godina (tax law)</li>
+              <li>Newsletter: Dok ne odjave</li>
+              <li>Analytics: 26 mjeseci</li>
+            </ul>
+
+            <h4 style="margin-top: 20px">6. VAŠA PRAVA</h4>
+            <ul style="margin-left: 20px; font-size: 1.1em">
+              <li>
+                <strong>Right to Access:</strong> Zatražite kopiju podataka
+              </li>
+              <li>
+                <strong>Right to Rectification:</strong> Ispravak netočnih
+                podataka
+              </li>
+              <li>
+                <strong>Right to Erasure:</strong> Obriši me ("right to be
+                forgotten")
+              </li>
+              <li>
+                <strong>Right to Portability:</strong> Export podataka
+                (JSON/CSV)
+              </li>
+              <li><strong>Right to Object:</strong> Odbiti processing</li>
+              <li>
+                <strong>Right to Withdraw Consent:</strong> Opoziv pristanka
+              </li>
+            </ul>
+            <p style="font-size: 1.1em; margin-top: 10px">
+              <strong>Kako:</strong> Email na privacy@[vasdomain].com
+            </p>
+
+            <h4 style="margin-top: 20px">7. SIGURNOST</h4>
+            <p style="font-size: 1.1em">
+              • SSL/TLS encryption<br />
+              • Access control (RBAC)<br />
+              • Regular security audits<br />
+              • Employee training
+            </p>
+
+            <h4 style="margin-top: 20px">8. COOKIES</h4>
+            <p style="font-size: 1.1em">
+              Koristimo cookije. Detalji u Cookie Policy.<br />
+              Možete upravljati u postavkama preglednika.
+            </p>
+
+            <h4 style="margin-top: 20px">9. MEĐUNARODNI TRANSFERI</h4>
+            <p style="font-size: 1.1em">
+              Ako šaljemo podatke izvan EU:<br />
+              • Samo u zemlje s adequacy decision<br />
+              • Ili uz Standard Contractual Clauses (SCC)
+            </p>
+
+            <h4 style="margin-top: 20px">10. PRIGOVOR</h4>
+            <p style="font-size: 1.1em">
+              Imate pravo prigovora nadležnom tijelu:<br />
+              <strong>Hrvatska:</strong> AZOP (azop.hr)
+            </p>
+
+            <h4 style="margin-top: 20px">11. IZMJENE</h4>
+            <p style="font-size: 1.1em">
+              Zadnja izmjena: [Datum]<br />
+              Obavijestit ćemo vas o značajnim izmjenama.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 13: AI Ethics -->
+        <div class="slide">
+          <h2>🤖 AI Etika u e-trgovini</h2>
+
+          <p>AI je sve prisutniji - ali donosi etička pitanja!</p>
+
+          <div class="highlight">
+            <h3>🎯 Gdje se AI koristi u e-trgovini:</h3>
+            <p>
+              • Personalizirane preporuke proizvoda<br />
+              • Dynamic pricing (cijene se mijenjaju po korisniku)<br />
+              • Chatboti za customer support<br />
+              • Fraud detection<br />
+              • Inventory management<br />
+              • Targeted advertising
+            </p>
+          </div>
+
+          <h3>Etička pitanja:</h3>
+
+          <div class="case-study">
+            <h4>1️⃣ Bias (Pristranost)</h4>
+            <p>
+              <strong>Problem:</strong><br />
+              AI treniran na biased podacima = biased odluke!<br />
+              <br />
+              <strong>Primjer:</strong><br />
+              Amazon razvio AI za hiring.<br />
+              AI je penalizirao žene jer je treniran na 10 godina CV-a (većinom
+              muškarci).<br />
+              <strong>Rezultat:</strong> Projekt obustavljen!<br />
+              <br />
+              <strong>E-commerce primjer:</strong><br />
+              AI recommendation engine koji pokazuje skuplje proizvode bogatijim
+              područjima<br />
+              = diskriminacija po ekonomskom statusu?
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>2️⃣ Transparency (Prozirnost)</h4>
+            <p>
+              <strong>Problem:</strong><br />
+              "Black box" AI - ne znamo kako donosi odluke.<br />
+              <br />
+              <strong>GDPR zahtjev:</strong><br />
+              Right to explanation - ako AI odbije vaš kredit/loan, imate pravo
+              znati zašto!<br />
+              <br />
+              <strong>E-commerce:</strong><br />
+              Ako AI dynamic pricing pokazuje različite cijene = morate reći!
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>3️⃣ Privacy (Privatnost)</h4>
+            <p>
+              <strong>Problem:</strong><br />
+              AI treba PUNO podataka za treniranje.<br />
+              <br />
+              <strong>Pitanje:</strong><br />
+              • Je li consent dobiven za AI training?<br />
+              • Anonymizirani li su podaci?<br />
+              • Mogu li osobe opt-out iz AI processing-a?
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>4️⃣ Manipulation (Manipulacija)</h4>
+            <p>
+              <strong>Problem:</strong><br />
+              AI može biti PREVIŠE dobar u prodaji.<br />
+              <br />
+              <strong>Dark patterns:</strong><br />
+              • "Only 1 left!" (lažno)<br />
+              • "Your friend just bought this" (social proof manipulation)<br />
+              • Scarcity timers koji se resetiraju<br />
+              <br />
+              <strong>Etika:</strong> Gdje je granica između persuasion i
+              manipulation?
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 14: Praktična vježba -->
+        <div class="slide">
+          <h2>🔧 Praktična vježba</h2>
+
+          <div class="highlight">
+            <h3>💻 Zadatak 1: Privacy Policy analiza</h3>
+            <p>
+              Odaberite 3 poznata web shopa (Amazon, Zalando, Notino...).<br />
+              <br />
+              Analizirajte njihove Privacy Policy:<br />
+              1. Je li jasno napisano (ili legal mumbo-jumbo)?<br />
+              2. Koje podatke prikupljaju?<br />
+              3. Koji legal basis navode?<br />
+              4. Koliko dugo čuvaju podatke?<br />
+              5. Mentions li GDPR prava?<br />
+              6. Koji shop ima najbolji/najlošiji privacy policy?
+            </p>
+          </div>
+
+          <div class="highlight" style="margin-top: 20px">
+            <h3>💻 Zadatak 2: Cookie banner evaluation</h3>
+            <p>
+              Posjetite 5 različitih web shopova.<br />
+              <br />
+              Za svaki evaluirajte cookie banner:<br />
+              1. Postoji li "Reject all" button?<br />
+              2. Je li granular choice dostupan?<br />
+              3. Može li se lako povući consent?<br />
+              4. Je li compliant? (Da/Ne + obrazloženje)<br />
+              <br />
+              Koji banner je najbolji primjer?
+            </p>
+          </div>
+
+          <div class="highlight" style="margin-top: 20px">
+            <h3>💻 Zadatak 3: Return policy comparison</h3>
+            <p>
+              Usporedite return policy 3 web shopa:<br />
+              <br />
+              • Koliko dana za povrat?<br />
+              • Tko plaća return shipping?<br />
+              • Kako se vrši refund?<br />
+              • Je li u skladu s EU zakonom (14 dana)?<br />
+              • Koji shop ima najfleksibilniju policy?
+            </p>
+          </div>
+
+          <div class="highlight" style="margin-top: 20px">
+            <h3>💻 Zadatak 4: Napravite vlastiti T&C</h3>
+            <p>
+              Za vaš fiktivni web shop iz Tjedna 12:<br />
+              <br />
+              Napišite skraćenu verziju T&C (2-3 stranice) koja uključuje:<br />
+              • Opće info (tvrtka, kontakt)<br />
+              • Cijene i plaćanje<br />
+              • Dostava<br />
+              • 14-day return<br />
+              • 2-year warranty<br />
+              <br />
+              Bonus: +5 bodova za kompletnu Privacy Policy!
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 15: Domaća zadaća -->
+        <div class="slide">
+          <h2>📚 Domaća zadaća</h2>
+
+          <div class="highlight">
+            <h3>📝 Zadatak: Legal Compliance Checklist</h3>
+            <p>Napravite compliance checklist za web shop koji prodaje u EU.</p>
+          </div>
+
+          <h3>Struktura zadaće:</h3>
+
+          <div class="case-study">
+            <h4>1. GDPR Compliance (30%)</h4>
+            <p>
+              Checklist s minimum 15 stavki:<br />
+              • Privacy Policy ✓/✗<br />
+              • Cookie consent banner ✓/✗<br />
+              • Data processing agreement s vendorima ✓/✗<br />
+              • DPO appointed (ako > 250 zaposlenika) ✓/✗<br />
+              • Breach notification procedure ✓/✗<br />
+              • User rights mechanism (access, delete...) ✓/✗<br />
+              itd.
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>2. Consumer Rights Compliance (25%)</h4>
+            <p>
+              • 14-day return policy dokument ✓/✗<br />
+              • Return form template ✓/✗<br />
+              • Clear pricing (s PDV-om) ✓/✗<br />
+              • Shipping costs prije checkout ✓/✗<br />
+              • 2-year warranty info ✓/✗<br />
+              • Complaint procedure ✓/✗<br />
+              • ODR platform link ✓/✗
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>3. Legal Documents (25%)</h4>
+            <p>
+              Provjerite da postoje:<br />
+              • Terms & Conditions ✓/✗<br />
+              • Privacy Policy ✓/✗<br />
+              • Cookie Policy ✓/✗<br />
+              • Shipping & Delivery Policy ✓/✗<br />
+              • Return & Refund Policy ✓/✗<br />
+              • Imprint (Company info) ✓/✗
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>4. Email Marketing Compliance (20%)</h4>
+            <p>
+              • Opt-in checkbox (unchecked) ✓/✗<br />
+              • Double opt-in process ✓/✗<br />
+              • Unsubscribe link u svakom emailu ✓/✗<br />
+              • Physical address u emailu ✓/✗<br />
+              • Consent records stored ✓/✗
+            </p>
+          </div>
+
+          <p style="margin-top: 30px; font-size: 1.3em">
+            <strong>Format:</strong> Excel ili Word s checklistom<br />
+            <strong>Duljina:</strong> 4-6 stranica<br />
+            <strong>Rok:</strong> 1 tjedan<br />
+            <strong>Bodovi:</strong> Max 20 bodova
+          </p>
+        </div>
+
+        <!-- Slide 16: Što slijedi - Ispit 3 -->
+        <div class="slide">
+          <h2>🎯 Što nas čeka - ISPIT 3!</h2>
+
+          <div class="warning-box">
+            <h3>📝 TREĆI I ZADNJI ISPIT!</h3>
+            <p>
+              Sljedeći tjedan = ISPIT 3 (Prosinac/Siječanj)<br />
+              Modul 3: Sigurnost i pravna regulativa (Tjedni 13-15)
+            </p>
+          </div>
+
+          <h3>Što ponavljati za ispit:</h3>
+
+          <div class="case-study">
+            <h4>📖 TJEDAN 13: Cyber prijetnje</h4>
+            <ul style="margin-left: 20px">
+              <li>CIA Triad</li>
+              <li>
+                Vrste napada: Malware, Phishing, SQL Injection, XSS, DDoS, MITM
+              </li>
+              <li>Social Engineering tehnike</li>
+              <li>Case studies: Target, Equifax</li>
+              <li>Defense in Depth (6 layera)</li>
+            </ul>
+          </div>
+
+          <div class="case-study">
+            <h4>📖 TJEDAN 14: Zaštita</h4>
+            <ul style="margin-left: 20px">
+              <li>Encryption: Symmetric (AES) vs Asymmetric (RSA)</li>
+              <li>HTTPS & SSL/TLS handshake</li>
+              <li>Authentication:Passwords, 2FA, Biometrics</li>
+              <li>Authorization: RBAC, OAuth, JWT</li>
+              <li>PCI DSS (12 zahtjeva)</li>
+              <li>Password hashing (bcrypt, salt)</li>
+              <li>Security Headers</li>
+              <li>Backup & Disaster Recovery (3-2-1 rule)</li>
+            </ul>
+          </div>
+          <div class="case-study">
+            <h4>📖 TJEDAN 15: Pravna regulativa</h4>
+            <ul style="margin-left: 20px">
+              <li>GDPR: Legal basis, prava korisnika, kazne</li>
+              <li>Consumer Rights: 14-day return, 2-year warranty</li>
+              <li>Data breach notification (72h)</li>
+              <li>Cookie law & consent</li>
+              <li>Email marketing (opt-in vs opt-out)</li>
+              <li>T&C i Privacy Policy zahtjevi</li>
+              <li>Case study: British Airways</li>
+              <li>AI etika: Bias, transparency, privacy</li>
+            </ul>
+          </div>
+
+          <div class="stats-grid" style="margin-top: 40px">
+            <div class="stat-box">
+              <div class="stat-number">3</div>
+              <div class="stat-label">Tjedana gradiva</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">20-25</div>
+              <div class="stat-label">Pitanja na ispitu</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">90min</div>
+              <div class="stat-label">Vrijeme trajanja</div>
+            </div>
+          </div>
+
+          <div class="highlight" style="margin-top: 40px">
+            <h3>📚 Strategija učenja:</h3>
+            <p>
+              <strong>7 dana prije:</strong> Pročitaj sve 3 prezentacije,
+              napravi mind mapu<br />
+              <strong>3 dana prije:</strong> Fokus na case studies i brojeve<br />
+              <strong>1 dan prije:</strong> Samo ponavljanje, ne učenje
+              novog!<br />
+              <br />
+              <strong>Ključni brojevi za naučiti:</strong><br />
+              • GDPR kazne: €20M ili 4%<br />
+              • Breach notification: 72 sata<br />
+              • Consumer return: 14 dana<br />
+              • Warranty: 2 godine<br />
+              • AES-256: 3.67 × 10^51 godina za brute force<br />
+              • Target breach: 40M kartica, $290M settlement<br />
+              • British Airways: €22.5M kazna
+            </p>
+          </div>
+
+          <p style="margin-top: 50px; font-size: 1.5em; text-align: center">
+            Učite i sretno na ispitu! 📖💪
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">16</span>
+      </div>
+
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevSlide()">← Prethodni</button>
+        <button class="nav-btn" onclick="nextSlide()">Sljedeći →</button>
+      </div>
+
+      <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+        const total = slides.length;
+
+        document.getElementById("total").textContent = total;
+
+        function showSlide(n) {
+          slides[currentSlide].classList.remove("active");
+          currentSlide = (n + total) % total;
+          slides[currentSlide].classList.add("active");
+          document.getElementById("current").textContent = currentSlide + 1;
+        }
+
+        function nextSlide() {
+          showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+          showSlide(currentSlide - 1);
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight") nextSlide();
+          if (e.key === "ArrowLeft") prevSlide();
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener("touchend", (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 50) nextSlide();
+          if (touchEndX - touchStartX > 50) prevSlide();
+        });
+      </script>
+    </body>
+  </html>
+</artifact>

@@ -1,0 +1,914 @@
+<artifact
+  identifier="tjedan6-prezentacija"
+  type="text/html"
+  title="Tjedan 6: Strategija i struktura"
+>
+  <!DOCTYPE html>
+  <html lang="hr">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Tjedan 6: Strategija i struktura e-poslovanja</title>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body {
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          overflow: hidden;
+          height: 100vh;
+        }
+
+        .presentation {
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .slide {
+          background: white;
+          width: 90%;
+          max-width: 1200px;
+          height: 85vh;
+          border-radius: 20px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          padding: 60px;
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          animation: slideIn 0.5s ease;
+          overflow-y: auto;
+        }
+
+        .slide.active {
+          display: flex;
+        }
+
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .slide h1 {
+          font-size: 3.5em;
+          color: #667eea;
+          margin-bottom: 20px;
+          font-weight: 700;
+        }
+
+        .slide h2 {
+          font-size: 2.5em;
+          color: #333;
+          margin-bottom: 30px;
+          font-weight: 600;
+        }
+
+        .slide h3 {
+          font-size: 1.8em;
+          color: #667eea;
+          margin: 30px 0 20px 0;
+        }
+
+        .slide p {
+          font-size: 1.4em;
+          color: #555;
+          line-height: 1.8;
+          margin-bottom: 20px;
+        }
+
+        .slide ul {
+          font-size: 1.3em;
+          color: #555;
+          line-height: 2;
+          margin-left: 40px;
+        }
+
+        .slide li {
+          margin-bottom: 15px;
+        }
+
+        .subtitle {
+          font-size: 1.8em;
+          color: #764ba2;
+          margin-top: 20px;
+        }
+
+        .highlight {
+          background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+          padding: 30px;
+          border-radius: 15px;
+          margin: 20px 0;
+        }
+
+        .highlight h3 {
+          color: white;
+          margin: 0 0 15px 0;
+        }
+
+        .highlight p {
+          color: white;
+          font-size: 1.2em;
+        }
+
+        .value-chain {
+          background: #f8f9fa;
+          border: 3px solid #667eea;
+          border-radius: 15px;
+          padding: 30px;
+          margin: 20px 0;
+        }
+
+        .chain-flow {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 20px;
+          flex-wrap: wrap;
+          gap: 15px;
+        }
+
+        .chain-item {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 20px;
+          border-radius: 10px;
+          flex: 1;
+          min-width: 150px;
+          text-align: center;
+          font-weight: 600;
+        }
+
+        .chain-arrow {
+          font-size: 2em;
+          color: #667eea;
+        }
+
+        .disruption-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 25px;
+          margin-top: 30px;
+        }
+
+        .disruption-card {
+          background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+          padding: 30px;
+          border-radius: 15px;
+          color: white;
+        }
+
+        .disruption-card h4 {
+          font-size: 1.5em;
+          margin-bottom: 15px;
+        }
+
+        .disruption-card p {
+          color: rgba(255, 255, 255, 0.95);
+          font-size: 1.1em;
+        }
+
+        .case-study {
+          background: #f8f9fa;
+          border-left: 5px solid #667eea;
+          padding: 30px;
+          border-radius: 10px;
+          margin: 20px 0;
+        }
+
+        .ocean-comparison {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+          margin-top: 30px;
+        }
+
+        .red-ocean {
+          background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+          padding: 30px;
+          border-radius: 15px;
+          color: white;
+        }
+
+        .blue-ocean {
+          background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+          padding: 30px;
+          border-radius: 15px;
+          color: white;
+        }
+
+        .ocean-comparison h4 {
+          font-size: 1.6em;
+          margin-bottom: 15px;
+        }
+
+        .timeline {
+          position: relative;
+          padding: 20px 0;
+          margin: 30px 0;
+        }
+
+        .timeline-item {
+          background: #f8f9fa;
+          padding: 20px;
+          border-left: 4px solid #667eea;
+          margin-bottom: 20px;
+          border-radius: 5px;
+        }
+
+        .timeline-item h4 {
+          color: #667eea;
+          font-size: 1.3em;
+          margin-bottom: 10px;
+        }
+
+        .navigation {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          display: flex;
+          gap: 15px;
+        }
+
+        .nav-btn {
+          background: white;
+          color: #667eea;
+          border: none;
+          padding: 15px 30px;
+          font-size: 1.2em;
+          border-radius: 50px;
+          cursor: pointer;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s;
+          font-weight: 600;
+        }
+
+        .nav-btn:hover {
+          background: #667eea;
+          color: white;
+          transform: translateY(-2px);
+        }
+
+        .slide-counter {
+          position: fixed;
+          bottom: 30px;
+          left: 30px;
+          background: white;
+          color: #667eea;
+          padding: 10px 20px;
+          border-radius: 50px;
+          font-size: 1.2em;
+          font-weight: 600;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+          .slide {
+            padding: 30px;
+          }
+          .slide h1 {
+            font-size: 2em;
+          }
+          .slide h2 {
+            font-size: 1.8em;
+          }
+          .disruption-grid {
+            grid-template-columns: 1fr;
+          }
+          .ocean-comparison {
+            grid-template-columns: 1fr;
+          }
+          .chain-flow {
+            flex-direction: column;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="presentation">
+        <!-- Slide 1: Naslovnica -->
+        <div class="slide active">
+          <h1>⚡ STRATEGIJA I STRUKTURA</h1>
+          <p class="subtitle">Tjedan 6: Kako e-trgovina mijenja poslovanje</p>
+          <div style="margin-top: 80px; text-align: center">
+            <p style="font-size: 1.6em; color: #667eea; font-weight: 600">
+              Lanac vrijednosti | Mreže vrijednosti | Disruptivne tehnologije
+            </p>
+          </div>
+        </div>
+        <!-- Slide 2: Lanac vrijednosti (Value Chain) -->
+        <div class="slide">
+          <h2>⛓️ Lanac vrijednosti (Value Chain)</h2>
+
+          <p>
+            <strong>Koncept Michaela Portera:</strong> Svaka tvrtka kreira
+            vrijednost kroz niz aktivnosti.
+          </p>
+
+          <div class="value-chain">
+            <h3 style="color: #667eea; margin-bottom: 20px">
+              Klasični lanac vrijednosti:
+            </h3>
+            <div class="chain-flow">
+              <div class="chain-item">Ulazna logistika</div>
+              <span class="chain-arrow">→</span>
+              <div class="chain-item">Proizvodnja</div>
+              <span class="chain-arrow">→</span>
+              <div class="chain-item">Izlazna logistika</div>
+              <span class="chain-arrow">→</span>
+              <div class="chain-item">Marketing</div>
+              <span class="chain-arrow">→</span>
+              <div class="chain-item">Usluge</div>
+            </div>
+          </div>
+
+          <h3>Kako e-trgovina mijenja lanac vrijednosti?</h3>
+          <ul>
+            <li>
+              📦 <strong>Ulazna logistika:</strong> Automatizacija naručivanja,
+              IoT senzori
+            </li>
+            <li>
+              🏭 <strong>Proizvodnja:</strong> 3D printanje, customization
+            </li>
+            <li>
+              🚚 <strong>Izlazna logistika:</strong> Dronovi, Amazon Prime
+              dostava
+            </li>
+            <li>
+              📱 <strong>Marketing:</strong> Digitalni oglasi, influenceri
+            </li>
+            <li>💬 <strong>Usluge:</strong> Chatboti, self-service</li>
+          </ul>
+        </div>
+
+        <!-- Slide 3: Primjer - Amazon Value Chain -->
+        <div class="slide">
+          <h2>📦 Primjer: Amazon lanac vrijednosti</h2>
+
+          <div class="case-study">
+            <h3>Kako Amazon kreira vrijednost?</h3>
+
+            <div class="timeline">
+              <div class="timeline-item">
+                <h4>1️⃣ Nabava (Inbound Logistics)</h4>
+                <p>
+                  • Direktni odnosi s proizvođačima<br />
+                  • Automatizirana skladišta s robotima<br />
+                  • Prediktivna analitika (naručuju prije nego što kupci kupe!)
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <h4>2️⃣ Skladištenje (Operations)</h4>
+                <p>
+                  • 175+ fulfillment centara širom svijeta<br />
+                  • Roboti pakiraju 350+ proizvoda/sat<br />
+                  • Real-time inventory tracking
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <h4>3️⃣ Dostava (Outbound Logistics)</h4>
+                <p>
+                  • Amazon Prime - dostava za 1-2 dana<br />
+                  • Vlastita flota vozila<br />
+                  • Testiranje dostave dronovima
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <h4>4️⃣ Marketing & Prodaja</h4>
+                <p>
+                  • Personalizirane preporuke (AI)<br />
+                  • One-click kupovina<br />
+                  • Amazon Alexa integracija
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <h4>5️⃣ Usluge (Service)</h4>
+                <p>
+                  • 24/7 podrška<br />
+                  • Laki povrati (30 dana)<br />
+                  • A-to-Z Guarantee zaštita
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4: Mreže vrijednosti (Value Web) -->
+        <div class="slide">
+          <h2>🕸️ Mreže vrijednosti (Value Web)</h2>
+
+          <p>
+            <strong>Evolucija:</strong> Od linearnog lanca → ka mrežama
+            partnera.
+          </p>
+
+          <div class="highlight">
+            <h3>Razlika:</h3>
+            <p>
+              <strong>Lanac vrijednosti:</strong> A → B → C → D (linearno)<br />
+              <strong>Mreža vrijednosti:</strong> Svi su međusobno povezani i
+              surađuju
+            </p>
+          </div>
+
+          <h3>Primjer: Uber mreža vrijednosti</h3>
+          <ul>
+            <li>🚗 <strong>Vozači:</strong> Pružaju uslugu prijevoza</li>
+            <li>👥 <strong>Putnici:</strong> Koriste uslugu</li>
+            <li>📱 <strong>Uber platforma:</strong> Povezuje i olakšava</li>
+            <li>🗺️ <strong>Google Maps:</strong> Navigacija</li>
+            <li>💳 <strong>PayPal/Stripe:</strong> Plaćanje</li>
+            <li>⭐ <strong>Sustav ocjenjivanja:</strong> Gradi povjerenje</li>
+          </ul>
+
+          <p
+            style="
+              margin-top: 30px;
+              font-size: 1.3em;
+              color: #667eea;
+              font-weight: 600;
+            "
+          >
+            Nitko ne "posjeduje" proizvod - svi sudjeluju u kreiranju
+            vrijednosti! 🌐
+          </p>
+        </div>
+
+        <!-- Slide 5: Disruptivne tehnologije -->
+        <div class="slide">
+          <h2>💥 Disruptivne tehnologije</h2>
+
+          <p>
+            <strong>Definicija:</strong> Tehnologija koja ZAMJENJUJE postojeću
+            industriju, a ne samo poboljšava je.
+          </p>
+
+          <div class="disruption-grid">
+            <div class="disruption-card">
+              <h4>📸 Kodak → Digitalna fotografija</h4>
+              <p>
+                Kodak je bio kralj filma.<br />
+                Digitalne kamere su ih UNIŠTILE.<br />
+                Ironija: Kodak je izumio digitalnu kameru 1975., ali je
+                ignorirao!
+              </p>
+            </div>
+
+            <div
+              class="disruption-card"
+              style="
+                background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+              "
+            >
+              <h4>🎬 Blockbuster → Netflix</h4>
+              <p>
+                Blockbuster: 9,000 trgovina, $5B prihod<br />
+                Netflix: Streaming uništio model iznajmljivanja<br />
+                2010: Blockbuster bankrot
+              </p>
+            </div>
+
+            <div
+              class="disruption-card"
+              style="
+                background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+              "
+            >
+              <h4>🚕 Taxi → Uber</h4>
+              <p>
+                Taxi: Skupo, teško naći, bez transparentnosti<br />
+                Uber: Jeftino, na klik, svi se ocjenjuju<br />
+                Rezultat: Taxi industrija u krizi
+              </p>
+            </div>
+
+            <div
+              class="disruption-card"
+              style="
+                background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+              "
+            >
+              <h4>🏨 Hoteli → Airbnb</h4>
+              <p>
+                Airbnb ne posjeduje NIJEDNU sobu<br />
+                Ali vrijednost veća od Marriott lanca!<br />
+                Disruption: "Svatko može biti hotel"
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 6: Zašto velike tvrtke propadaju? -->
+        <div class="slide">
+          <h2>🤔 Zašto velike tvrtke propadaju?</h2>
+
+          <h3>Clayton Christensen - "Innovator's Dilemma"</h3>
+
+          <div class="highlight">
+            <h3>Problem:</h3>
+            <p>
+              Velike tvrtke PREVIŠE slušaju svoje postojeće kupce!<br />
+              Fokusiraju se na poboljšanja → propuštaju revolucije.
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h3>📖 Primjer: Nokia</h3>
+            <p>
+              <strong>2007:</strong> Nokia - 50% tržišta mobitela, kralj
+              industrije<br />
+              <strong>2007:</strong> Apple lansira iPhone - touchscreen, app
+              store<br />
+              <strong>Nokia reakcija:</strong> "Touchscreen je gimmick, ljudi
+              žele tipke!"<br />
+              <strong>2013:</strong> Nokia prodan Microsoftu za djelić bivše
+              vrijednosti<br />
+              <strong>2024:</strong> Nokia gotovo irelevantan u mobilima
+            </p>
+          </div>
+
+          <h3 style="margin-top: 40px">Lekcija:</h3>
+          <ul>
+            <li>🚫 Ne ignorirajte nove tehnologije</li>
+            <li>🔬 Eksperimentirajte, čak i ako prijeti postojećem bizni su</li>
+            <li>👂 Slušajte BUDUĆE kupce, ne samo sadašnje</li>
+            <li>🏃 Budite spremni kanibalizirati vlastiti proizvod</li>
+          </ul>
+        </div>
+
+        <!-- Slide 7: Blue Ocean vs Red Ocean -->
+        <div class="slide">
+          <h2>🌊 Blue Ocean vs Red Ocean strategija</h2>
+
+          <div class="ocean-comparison">
+            <div class="red-ocean">
+              <h4>🔴 RED OCEAN (Crveni ocean)</h4>
+              <ul style="margin-left: 20px; color: white">
+                <li>Konkurencija u postojećem tržištu</li>
+                <li>Borba za iste kupce</li>
+                <li>Natjecanje na cijeni</li>
+                <li>Tržište je zasićeno</li>
+                <li>Profit se smanjuje</li>
+              </ul>
+              <p style="margin-top: 20px; font-weight: 600">
+                Primjer: 100 trgovina prodaje iste majice
+              </p>
+            </div>
+
+            <div class="blue-ocean">
+              <h4>🔵 BLUE OCEAN (Plavi ocean)</h4>
+              <ul style="margin-left: 20px; color: white">
+                <li>Stvaranje novog tržišta</li>
+                <li>Nema konkurencije (još!)</li>
+                <li>Definiraš vlastite cijene</li>
+                <li>Novi kupci</li>
+                <li>Visok profit</li>
+              </ul>
+              <p style="margin-top: 20px; font-weight: 600">
+                Primjer: Cirque du Soleil - nije cirkus, nije teatar, nešto
+                novo!
+              </p>
+            </div>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>💡 Kako pronaći Blue Ocean?</h3>
+            <p>
+              • Kombinirajte industrije (Uber = taxi + tech)<br />
+              • Eliminirajte nešto što svi rade (Airbnb = bez hotela)<br />
+              • Dodajte nešto što nitko ne nudi (Netflix = neograničeno
+              gledanje)
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 8: Case Study - Twitter/X -->
+        <div class="slide">
+          <h2>🐦 Case Study: Twitter/X - Prebrođivanje oluje</h2>
+
+          <div class="case-study">
+            <h3>Povijesni pregled:</h3>
+
+            <div class="timeline">
+              <div class="timeline-item">
+                <h4>2006. - Osnivanje</h4>
+                <p>
+                  Jack Dorsey, Biz Stone, Evan Williams<br />
+                  Ideja: "SMS interneta" - kratke poruke (140 znakova)
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <h4>2009-2015. - Zlatno doba</h4>
+                <p>
+                  • Arab Spring revolucije organizirane na Twitteru<br />
+                  • Postaje platforma za breaking news<br />
+                  • Broj korisnika eksplodira
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <h4>2016-2020. - Problemi</h4>
+                <p>
+                  • Dezinformacije i fake news<br />
+                  • Političke kontroverze<br />
+                  • Toksično okruženje i harassment<br />
+                  • Konkurencija (TikTok, Instagram)
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <h4>2022. - Elon Musk preuzima</h4>
+                <p>
+                  • Kupljeno za $44 milijarde<br />
+                  • Rebrand u "X"<br />
+                  • Masovna otpuštanja (50% zaposlenika)<br />
+                  • Kontroverze oko moderacije sadržaja
+                </p>
+              </div>
+
+              <div class="timeline-item">
+                <h4>2023-2024. - Neizvjesna budućnost</h4>
+                <p>
+                  • Korisnici prelaze na alternative (Threads, Bluesky)<br />
+                  • Oglašivači povlače kampanje<br />
+                  • Pokušaji monetizacije (X Premium)<br />
+                  • Gubitak ~71% vrijednosti
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 9: Twitter - Što je pošlo po zlu? -->
+        <div class="slide">
+          <h2>❌ Twitter/X: Analiza problema</h2>
+
+          <h3>Poslovni izazovi:</h3>
+          <ul>
+            <li>
+              💰 <strong>Prihodni model:</strong> 90% od oglašavanja -
+              rizično!<br />
+              <em>Usporedba: Twitter $5B vs Facebook $117B (2021)</em>
+            </li>
+
+            <li>
+              👥 <strong>Stagnacija korisnika:</strong> Nije rastao kao
+              TikTok/Instagram<br />
+              <em>Twitter: 330M vs TikTok: 1.5B korisnika</em>
+            </li>
+
+            <li>
+              🤖 <strong>Bot problem:</strong> Milijuni fake računa<br />
+              <em>Elon Musk je tražio pad cijene zbog ovoga</em>
+            </li>
+
+            <li>
+              ⚖️ <strong>Moderacija sadržaja:</strong> Balans između slobode
+              govora i sigurnosti<br />
+              <em>Gubili oglašivače zbog toksičnog sadržaja</em>
+            </li>
+          </ul>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>🎯 Lekcija:</h3>
+            <p>
+              Čak i revolucionarne platforme mogu propasti ako:<br />
+              • Ne diversificiraju prihode<br />
+              • Gube povjerenje korisnika<br />
+              • Ne inoviraju dovoljno brzo
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 10: Priprema za ispit -->
+        <div class="slide">
+          <h2>📚 Priprema za 1. OCJENU - TJEDAN 7!</h2>
+
+          <div
+            class="highlight"
+            style="
+              background: linear-gradient(120deg, #ff6b6b 0%, #ee5a6f 100%);
+            "
+          >
+            <h3 style="color: white">⚠️ VAŽNO: Ispit je SLJEDEĆI TJEDAN!</h3>
+            <p style="color: white; font-size: 1.4em">13-19. listopada 2025.</p>
+          </div>
+
+          <h3>Što ponavljati?</h3>
+          <div class="value-chain" style="margin-top: 20px">
+            <h4 style="color: #667eea; margin-bottom: 15px">
+              TJEDAN 1-2: Osnove
+            </h4>
+            <ul style="margin-left: 20px">
+              <li>Što je e-trgovina? Razlika od e-poslovanja</li>
+              <li>Tehnološki temelji (Internet, Web, Mobile)</li>
+              <li>8 jedinstvenih značajki e-trgovine</li>
+            </ul>
+
+            <h4 style="color: #667eea; margin: 20px 0 15px 0">
+              TJEDAN 3: Vrste
+            </h4>
+            <ul style="margin-left: 20px">
+              <li>B2C, B2B, C2C razlike</li>
+              <li>M-commerce i Social commerce</li>
+              <li>Primjeri svake vrste</li>
+            </ul>
+
+            <h4 style="color: #667eea; margin: 20px 0 15px 0">
+              TJEDAN 4-5: Poslovni modeli
+            </h4>
+            <ul style="margin-left: 20px">
+              <li>8 elemenata poslovnog modela</li>
+              <li>Prihodni modeli (prodaja, pretplata, oglasi...)</li>
+              <li>
+                5 B2C modela (E-tailer, Community, Content, Portal, Transaction
+                Broker)
+              </li>
+            </ul>
+
+            <h4 style="color: #667eea; margin: 20px 0 15px 0">
+              TJEDAN 6: Strategija
+            </h4>
+            <ul style="margin-left: 20px">
+              <li>Lanac vrijednosti vs Mreže vrijednosti</li>
+              <li>Disruptivne tehnologije (primjeri)</li>
+              <li>Blue Ocean vs Red Ocean</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Slide 11: Format ispita -->
+        <div class="slide">
+          <h2>📝 Format ispita - Što očekivati?</h2>
+
+          <h3>Struktura ispita:</h3>
+          <div class="disruption-grid">
+            <div class="disruption-card">
+              <h4>📋 DIO 1: Pitanja (50 bodova)</h4>
+              <p>
+                • 10 pitanja kratkog odgovora<br />
+                • Definicije i pojmovi<br />
+                • Primjer: "Što je B2B e-trgovina?"
+              </p>
+            </div>
+
+            <div
+              class="disruption-card"
+              style="
+                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+              "
+            >
+              <h4>🎯 DIO 2: Primjeri (30 bodova)</h4>
+              <p>
+                • Prepoznati poslovni model<br />
+                • Analizirati case study<br />
+                • Primjer: "Netflix koristi koji prihodni model?"
+              </p>
+            </div>
+
+            <div
+              class="disruption-card"
+              style="
+                background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+              "
+            >
+              <h4>💬 DIO 3: Usmeno (20 bodova)</h4>
+              <p>
+                • Diskusija o jednoj temi<br />
+                • Case study analiza<br />
+                • 5-10 minuta po učeniku
+              </p>
+            </div>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>💡 Savjeti za pripremu:</h3>
+            <p>
+              ✅ Pregledajte SVE prezentacije (Tjedan 1-6)<br />
+              ✅ Napravite svoje bilješke - pojmovi i definicije<br />
+              ✅ Ponovite case studies (TikTok, Canva, Amazon, Twitter)<br />
+              ✅ Vježbajte s kolegama - test jedan drugog<br />
+              ✅ Dođite na konzultacije ako nešto nije jasno!
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 12: Što slijedi? -->
+        <div class="slide">
+          <h2>🎯 Što nas čeka?</h2>
+
+          <h3>📅 TJEDAN 7 (13-19. listopad)</h3>
+          <div
+            class="highlight"
+            style="
+              background: linear-gradient(120deg, #ff6b6b 0%, #ee5a6f 100%);
+            "
+          >
+            <h3 style="color: white">📝 1. OCJENA - ISPIT</h3>
+            <p style="color: white">
+              Poglavlja 1-2 (Tjedni 1-6)<br />
+              Pismeni test + Usmeno
+            </p>
+          </div>
+
+          <h3 style="margin-top: 40px">📅 Nakon ispita - TJEDAN 8:</h3>
+          <p style="font-size: 1.3em">
+            🔜 <strong>MODUL 2: Tehnološka infrastruktura</strong>
+            <br />
+            • Internet infrastruktura (kako zapravo radi)<br />
+            • Cloud computing u dubinu<br />
+            • Web tehnologije<br />
+            • Mobilne platforme
+          </p>
+          <div class="case-study" style="margin-top: 30px">
+            <h3>📖 Za čitanje preko vikenda:</h3>
+            <p>
+              <strong>Think with Google:</strong> "The Future of E-commerce"<br />
+              <strong>Case study:</strong> Kako je internet preživio COVID-19
+              pandemiju?<br />
+              (Link će biti na Google Classroom)
+            </p>
+          </div>
+
+          <p
+            style="
+              margin-top: 50px;
+              font-size: 1.8em;
+              text-align: center;
+              color: #667eea;
+              font-weight: 700;
+            "
+          >
+            SRETNO NA ISPITU! 💪📚
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">12</span>
+      </div>
+
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevSlide()">← Prethodni</button>
+        <button class="nav-btn" onclick="nextSlide()">Sljedeći →</button>
+      </div>
+
+      <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+        const total = slides.length;
+
+        document.getElementById("total").textContent = total;
+
+        function showSlide(n) {
+          slides[currentSlide].classList.remove("active");
+          currentSlide = (n + total) % total;
+          slides[currentSlide].classList.add("active");
+          document.getElementById("current").textContent = currentSlide + 1;
+        }
+
+        function nextSlide() {
+          showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+          showSlide(currentSlide - 1);
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight") nextSlide();
+          if (e.key === "ArrowLeft") prevSlide();
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener("touchend", (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 50) nextSlide();
+          if (touchEndX - touchStartX > 50) prevSlide();
+        });
+      </script>
+    </body>
+  </html>
+</artifact>

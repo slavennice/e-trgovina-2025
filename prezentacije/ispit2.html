@@ -1,0 +1,1581 @@
+<artifact
+  identifier="ispit2-priprema"
+  type="text/html"
+  title="Ispit 2 - Priprema i pregled gradiva"
+>
+  <!DOCTYPE html>
+  <html lang="hr">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Ispit 2 - Priprema i pregled gradiva</title>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body {
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          overflow: hidden;
+          height: 100vh;
+        }
+
+        .presentation {
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .slide {
+          background: white;
+          width: 90%;
+          max-width: 1200px;
+          height: 85vh;
+          border-radius: 20px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          padding: 60px;
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          animation: slideIn 0.5s ease;
+          overflow-y: auto;
+        }
+
+        .slide.active {
+          display: flex;
+        }
+
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .slide h1 {
+          font-size: 3.5em;
+          color: #667eea;
+          margin-bottom: 20px;
+          font-weight: 700;
+        }
+
+        .slide h2 {
+          font-size: 2.5em;
+          color: #333;
+          margin-bottom: 30px;
+          font-weight: 600;
+        }
+
+        .slide h3 {
+          font-size: 1.8em;
+          color: #667eea;
+          margin: 30px 0 20px 0;
+        }
+
+        .slide p {
+          font-size: 1.4em;
+          color: #555;
+          line-height: 1.8;
+          margin-bottom: 20px;
+        }
+
+        .slide ul {
+          font-size: 1.3em;
+          color: #555;
+          line-height: 2;
+          margin-left: 40px;
+        }
+
+        .slide li {
+          margin-bottom: 15px;
+        }
+
+        .subtitle {
+          font-size: 1.8em;
+          color: #764ba2;
+          margin-top: 20px;
+        }
+
+        .exam-alert {
+          background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+          color: white;
+          padding: 30px;
+          border-radius: 15px;
+          margin: 20px 0;
+          text-align: center;
+        }
+
+        .exam-alert h3 {
+          color: white;
+          font-size: 2em;
+          margin-bottom: 15px;
+        }
+
+        .exam-alert p {
+          color: white;
+          font-size: 1.3em;
+        }
+
+        .highlight {
+          background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+          padding: 30px;
+          border-radius: 15px;
+          margin: 20px 0;
+        }
+
+        .highlight h3 {
+          color: #2c3e50;
+          margin: 0 0 15px 0;
+        }
+
+        .highlight p {
+          color: #2c3e50;
+          font-size: 1.2em;
+        }
+
+        .topic-card {
+          background: #f8f9fa;
+          border-left: 5px solid #667eea;
+          padding: 25px;
+          border-radius: 10px;
+          margin: 15px 0;
+        }
+
+        .topic-card h4 {
+          color: #667eea;
+          font-size: 1.5em;
+          margin-bottom: 15px;
+        }
+
+        .question-box {
+          background: white;
+          border: 3px solid #667eea;
+          padding: 25px;
+          border-radius: 15px;
+          margin: 15px 0;
+        }
+
+        .question-box h4 {
+          color: #667eea;
+          font-size: 1.4em;
+          margin-bottom: 15px;
+        }
+
+        .answer-box {
+          background: #e8f5e9;
+          border-left: 5px solid #4caf50;
+          padding: 20px;
+          margin-top: 15px;
+          border-radius: 8px;
+        }
+
+        .answer-box strong {
+          color: #2e7d32;
+        }
+
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+          margin-top: 30px;
+        }
+
+        .stat-box {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 30px;
+          border-radius: 15px;
+          text-align: center;
+        }
+
+        .stat-number {
+          font-size: 3em;
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+
+        .stat-label {
+          font-size: 1.1em;
+          opacity: 0.9;
+        }
+
+        .checklist {
+          background: #fff3cd;
+          border-left: 5px solid #ffc107;
+          padding: 25px;
+          border-radius: 10px;
+          margin: 20px 0;
+        }
+
+        .checklist h3 {
+          color: #856404;
+          margin-bottom: 15px;
+        }
+
+        .checklist ul {
+          list-style: none;
+          margin-left: 0;
+        }
+
+        .checklist li {
+          padding: 10px;
+          border-bottom: 1px solid #ffeaa7;
+        }
+
+        .checklist li:before {
+          content: "☐ ";
+          font-size: 1.5em;
+          margin-right: 10px;
+          color: #667eea;
+        }
+
+        .comparison-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 20px 0;
+          font-size: 1.1em;
+        }
+
+        .comparison-table th {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 15px;
+          text-align: left;
+        }
+
+        .comparison-table td {
+          padding: 15px;
+          border-bottom: 2px solid #eee;
+        }
+
+        .comparison-table tr:hover {
+          background: #f5f5f5;
+        }
+
+        .key-concept {
+          background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+          padding: 20px;
+          border-radius: 10px;
+          margin: 15px 0;
+        }
+
+        .key-concept h4 {
+          color: #2c3e50;
+          font-size: 1.3em;
+          margin-bottom: 10px;
+        }
+
+        .key-concept p {
+          color: #2c3e50;
+          font-size: 1.1em;
+        }
+
+        .navigation {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          display: flex;
+          gap: 15px;
+        }
+
+        .nav-btn {
+          background: white;
+          color: #667eea;
+          border: none;
+          padding: 15px 30px;
+          font-size: 1.2em;
+          border-radius: 50px;
+          cursor: pointer;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s;
+          font-weight: 600;
+        }
+
+        .nav-btn:hover {
+          background: #667eea;
+          color: white;
+          transform: translateY(-2px);
+        }
+
+        .slide-counter {
+          position: fixed;
+          bottom: 30px;
+          left: 30px;
+          background: white;
+          color: #667eea;
+          padding: 10px 20px;
+          border-radius: 50px;
+          font-size: 1.2em;
+          font-weight: 600;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+          .slide {
+            padding: 30px;
+          }
+          .slide h1 {
+            font-size: 2em;
+          }
+          .slide h2 {
+            font-size: 1.8em;
+          }
+          .stats-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="presentation">
+        <!-- Slide 1: Naslovnica -->
+        <div class="slide active">
+          <h1>📝 ISPIT 2</h1>
+          <p class="subtitle">Tehnološka infrastruktura e-trgovine</p>
+          <div class="exam-alert" style="margin-top: 80px">
+            <h3>🎯 MODUL 2: Tjedni 8-12</h3>
+            <p>Internet • Cloud • Web • Mobile • E-commerce platforme</p>
+          </div>
+
+          <div class="stats-grid" style="margin-top: 40px">
+            <div class="stat-box">
+              <div class="stat-number">5</div>
+              <div class="stat-label">Tjedana gradiva</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">20-25</div>
+              <div class="stat-label">Pitanja na ispitu</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">90min</div>
+              <div class="stat-label">Vrijeme trajanja</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Format ispita -->
+        <div class="slide">
+          <h2>📋 Format ispita</h2>
+
+          <div class="highlight">
+            <h3>📝 Struktura ispita:</h3>
+            <p>
+              <strong>Ukupno bodova:</strong> 100 bodova<br />
+              <strong>Prolazna ocjena:</strong> 60%
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>DIO 1: Kratka pitanja (30 bodova)</h4>
+            <p>
+              • 10 pitanja × 3 boda<br />
+              • Definicije, objašnjenja ključnih koncepata<br />
+              • Primjer: "Što je DNS i koja mu je uloga?"
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>DIO 2: Usporedbe (25 bodova)</h4>
+            <p>
+              • 5 usporedbi × 5 bodova<br />
+              • Usporedite i kontrastirajte<br />
+              • Primjer: "Usporedite IaaS, PaaS i SaaS"
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>DIO 3: Praktični scenariji (30 bodova)</h4>
+            <p>
+              • 3 scenarija × 10 bodova<br />
+              • Primjena znanja na stvarne situacije<br />
+              • Primjer: "Startup želi pokrenuti web shop. Shopify ili
+              WooCommerce? Obrazložite."
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>DIO 4: Esej pitanje (15 bodova)</h4>
+            <p>
+              • 1 esej × 15 bodova<br />
+              • Detaljno objašnjenje case studya<br />
+              • Primjer: "Analizirajte zašto je Zoom uspio skalirati tijekom
+              COVID-19"
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 3: Tjedan 8 - Internet infrastruktura -->
+        <div class="slide">
+          <h2>🌐 TJEDAN 8: Internet infrastruktura</h2>
+
+          <div class="key-concept">
+            <h4>🔑 Ključni koncepti:</h4>
+            <p>TCP/IP • DNS • HTTP/HTTPS • Routing • Bandwidth</p>
+          </div>
+
+          <h3>Što morate znati:</h3>
+
+          <div class="topic-card">
+            <h4>1. TCP/IP model (4 layera)</h4>
+            <ul style="margin-left: 20px">
+              <li><strong>Application Layer:</strong> HTTP, FTP, SMTP</li>
+              <li>
+                <strong>Transport Layer:</strong> TCP (pouzdano) vs UDP (brzo)
+              </li>
+              <li><strong>Internet Layer:</strong> IP addressing, routing</li>
+              <li><strong>Link Layer:</strong> Fizička konekcija</li>
+            </ul>
+          </div>
+
+          <div class="topic-card">
+            <h4>2. DNS (Domain Name System)</h4>
+            <p>
+              • Kako DNS pretvara domene u IP adrese<br />
+              • DNS hierarchy: Root → TLD → Authoritative<br />
+              • DNS cache (browser, OS, ISP)<br />
+              • TTL (Time To Live)
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>3. HTTP vs HTTPS</h4>
+            <p>
+              • HTTP = nesigurno (plain text)<br />
+              • HTTPS = SSL/TLS enkripcija<br />
+              • Zašto je SSL obavezan za e-trgovinu?<br />
+              • SEO prednost HTTPS-a
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>4. Bandwidth i latency</h4>
+            <p>
+              • <strong>Bandwidth:</strong> Količina podataka (Mbps)<br />
+              • <strong>Latency:</strong> Vrijeme putovanja (ms)<br />
+              • Kako utječu na e-commerce performanse
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 4: Primjer pitanja - Tjedan 8 -->
+        <div class="slide">
+          <h2>💡 Primjeri pitanja - Internet infrastruktura</h2>
+
+          <div class="question-box">
+            <h4>❓ PITANJE 1: Objasni DNS proces (5 bodova)</h4>
+            <p>
+              Korisnik upisuje "amazon.com" u preglednik. Opiši korak-po-korak
+              što se događa dok se stranica ne učita.
+            </p>
+
+            <div class="answer-box">
+              <strong>ODGOVOR:</strong><br />
+              1. Browser provjerava svoj DNS cache<br />
+              2. Ako nema, pita OS cache<br />
+              3. OS pita resolver (ISP)<br />
+              4. Resolver pita Root DNS server → .com TLD server → Amazon
+              authoritative server<br />
+              5. Dobiva IP adresu (npr. 205.251.242.103)<br />
+              6. Browser šalje HTTP request na taj IP<br />
+              7. Amazon server odgovara s HTML stranicom
+            </div>
+          </div>
+
+          <div class="question-box">
+            <h4>❓ PITANJE 2: TCP vs UDP (3 boda)</h4>
+            <p>
+              Koja je ključna razlika između TCP i UDP protokola? Kada biste
+              koristili svaki?
+            </p>
+
+            <div class="answer-box">
+              <strong>ODGOVOR:</strong><br />
+              <strong>TCP:</strong> Connection-oriented, garantira isporuku,
+              spor. Za: web, email, file transfer.<br />
+              <strong>UDP:</strong> Connectionless, ne garantira isporuku, brz.
+              Za: streaming, gaming, VoIP.
+            </div>
+          </div>
+
+          <div class="question-box">
+            <h4>❓ PITANJE 3: Praktični scenario (10 bodova)</h4>
+            <p>
+              Vaš web shop je spor. Korisnici iz Amerike čekaju 5+ sekundi za
+              učitavanje. Koje tehnologije biste koristili da riješite problem?
+              Objasnite svaku.
+            </p>
+
+            <div class="answer-box">
+              <strong>ODGOVOR:</strong><br />
+              1. <strong>CDN (Content Delivery Network):</strong> Statički
+              sadržaj serviran iz geografski bliskih servera<br />
+              2. <strong>Caching:</strong> Browser cache, server-side cache
+              (Redis)<br />
+              3. <strong>Image optimization:</strong> Kompresija, lazy loading,
+              WebP format<br />
+              4. <strong>Minification:</strong> CSS/JS minifikacija<br />
+              5. <strong>HTTP/2:</strong> Multiplexing, server push
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 5: Tjedan 9 - Cloud i mobilne platforme -->
+        <div class="slide">
+          <h2>☁️ TJEDAN 9: Cloud computing i mobilne platforme</h2>
+
+          <div class="key-concept">
+            <h4>🔑 Ključni koncepti:</h4>
+            <p>
+              IaaS/PaaS/SaaS • AWS/Azure/Google Cloud • iOS vs Android • 4G vs
+              5G
+            </p>
+          </div>
+
+          <h3>Što morate znati:</h3>
+
+          <div class="topic-card">
+            <h4>1. Tri modela cloud servisa</h4>
+            <p>
+              <strong>IaaS:</strong> Iznajmite infrastrukturu (serveri,
+              storage). AWS EC2.<br />
+              <strong>PaaS:</strong> Platforma za razvoj. Heroku, Google App
+              Engine.<br />
+              <strong>SaaS:</strong> Gotov software. Gmail, Salesforce.<br />
+              <br />
+              <strong>Pizza analogija:</strong> IaaS=sastojci,
+              PaaS=tijesto+umak, SaaS=gotova pizza
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>2. Cloud provideri usporedba</h4>
+            <p>
+              <strong>AWS:</strong> 32% share, najveći, prvi (2006)<br />
+              <strong>Azure:</strong> 23% share, Microsoft, najbolja integracija
+              s Windows<br />
+              <strong>Google Cloud:</strong> 10% share, najbolji za ML/AI
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>3. iOS vs Android</h4>
+            <p>
+              <strong>iOS:</strong> 28% share, premium korisnici, striktan
+              review, $99/god<br />
+              <strong>Android:</strong> 72% share, fragmentacija, brži review,
+              $25 jednom<br />
+              <br />
+              <strong>Development:</strong> iOS=Swift/Xcode,
+              Android=Kotlin/Android Studio
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>4. 4G vs 5G</h4>
+            <p>
+              <strong>4G:</strong> 100 Mbps, 30-50ms latency<br />
+              <strong>5G:</strong> 10 Gbps, 1ms latency<br />
+              <strong>Utjecaj:</strong> AR shopping, live commerce, IoT
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 6: Primjer pitanja - Tjedan 9 -->
+        <div class="slide">
+          <h2>💡 Primjeri pitanja - Cloud i mobilne platforme</h2>
+
+          <div class="question-box">
+            <h4>❓ PITANJE 4: Usporedi IaaS, PaaS, SaaS (5 bodova)</h4>
+            <p>
+              Napravite tablicu koja uspoređuje tri modela po: kontroli,
+              troškovima, primjerima.
+            </p>
+
+            <div class="answer-box">
+              <strong>ODGOVOR:</strong><br />
+              <table
+                style="width: 100%; margin-top: 10px; border-collapse: collapse"
+              >
+                <tr style="background: #f0f0f0">
+                  <td style="padding: 8px; border: 1px solid #ddd">
+                    <strong>Model</strong>
+                  </td>
+                  <td style="padding: 8px; border: 1px solid #ddd">
+                    <strong>Kontrola</strong>
+                  </td>
+                  <td style="padding: 8px; border: 1px solid #ddd">
+                    <strong>Primjer</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px; border: 1px solid #ddd">IaaS</td>
+                  <td style="padding: 8px; border: 1px solid #ddd">
+                    Najviše - vi upravljate OS
+                  </td>
+                  <td style="padding: 8px; border: 1px solid #ddd">AWS EC2</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px; border: 1px solid #ddd">PaaS</td>
+                  <td style="padding: 8px; border: 1px solid #ddd">
+                    Srednje - fokus na kod
+                  </td>
+                  <td style="padding: 8px; border: 1px solid #ddd">Heroku</td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px; border: 1px solid #ddd">SaaS</td>
+                  <td style="padding: 8px; border: 1px solid #ddd">
+                    Najmanje - samo koristite
+                  </td>
+                  <td style="padding: 8px; border: 1px solid #ddd">Gmail</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="question-box">
+            <h4>❓ PITANJE 5: iOS vs Android za e-commerce (10 bodova)</h4>
+            <p>
+              Planirate pokrenuti e-commerce mobilnu aplikaciju. Budžet je
+              ograničen. Analizirajte prednosti i nedostatke razvoja samo za
+              iOS, samo za Android, ili za obje platforme.
+            </p>
+
+            <div class="answer-box">
+              <strong>ODGOVOR:</strong><br />
+              <strong>Samo iOS:</strong><br />
+              ✅ Premium korisnici troše više<br />
+              ✅ Lakše testiranje (manji broj uređaja)<br />
+              ❌ Samo 28% tržišta<br />
+              ❌ Potreban Mac za razvoj<br />
+              <br />
+              <strong>Samo Android:</strong><br />
+              ✅ 72% tržišta<br />
+              ✅ Jeftiniji ulaz ($25 vs $99/god)<br />
+              ❌ Fragmentacija uređaja<br />
+              ❌ Manji prihod po korisniku<br />
+              <br />
+              <strong>Preporuka:</strong> S ograničenim budžetom, počnite s
+              Android (veće tržište). Kasnije dodajte iOS kad validirate
+              proizvod.
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 7: Tjedan 10 - Web tehnologije -->
+        <div class="slide">
+          <h2>🌐 TJEDAN 10: Web tehnologije i tražilice</h2>
+
+          <div class="key-concept">
+            <h4>🔑 Ključni koncepti:</h4>
+            <p>Web 1.0/2.0/3 • SEO • PageRank • PWA • Voice Commerce</p>
+          </div>
+
+          <h3>Što morate znati:</h3>
+
+          <div class="topic-card">
+            <h4>1. Evolucija weba</h4>
+            <p>
+              <strong>Web 1.0 (1991-2004):</strong> Read-only, statične
+              stranice<br />
+              <strong>Web 2.0 (2004-danas):</strong> Read-write, user-generated
+              content, društvene mreže<br />
+              <strong>Web3 (budućnost):</strong> Read-write-own, blockchain,
+              decentralizacija
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>2. Kako Google Search radi</h4>
+            <p>
+              <strong>1. Crawling:</strong> Googlebot "puze" po webu, prati
+              linkove<br />
+              <strong>2. Indexing:</strong> Analizira sadržaj, pohranjuje u
+              index<br />
+              <strong>3. Ranking:</strong> 200+ faktora odlučuju poredak
+              rezultata
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>3. SEO osnove</h4>
+            <p>
+              <strong>On-page:</strong> Title, meta description, H1/H2,
+              keywords<br />
+              <strong>Off-page:</strong> Backlinks, domain authority<br />
+              <strong>Technical:</strong> Site speed, mobile-friendly, HTTPS<br />
+              <strong>Content:</strong> Quality, freshness, E-A-T
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>4. PWA (Progressive Web Apps)</h4>
+            <p>
+              Web app koja se ponaša kao native app:<br />
+              • Instalira se na home screen<br />
+              • Radi offline<br />
+              • Push notifikacije<br />
+              <strong>Primjeri:</strong> Twitter Lite, Starbucks
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 8: Primjer pitanja - Tjedan 10 -->
+        <div class="slide">
+          <h2>💡 Primjeri pitanja - Web tehnologije</h2>
+
+          <div class="question-box">
+            <h4>❓ PITANJE 6: PageRank algoritam (5 bodova)</h4>
+            <p>
+              Objasni osnovni princip PageRank algoritma. Zašto link s New York
+              Times-a vrijedi više od linka s nepoznatog bloga?
+            </p>
+
+            <div class="answer-box">
+              <strong>ODGOVOR:</strong><br />
+              PageRank tretira linkove kao "glasove". Stranica je važnija
+              ako:<br />
+              1. Ima više linkova koji vode na nju<br />
+              2. Ti linkovi dolaze s autoritativnih stranica<br />
+              <br />
+              NYT link vrijedi više jer:<br />
+              • NYT ima visok PageRank (mnogi linkaju na njih)<br />
+              • "Glas" autoritativne stranice prenosi više "PageRank juice"<br />
+              • Kvaliteta > Kvantiteta
+            </div>
+          </div>
+
+          <div class="question-box">
+            <h4>❓ PITANJE 7: Top 5 SEO taktika za web shop (10 bodova)</h4>
+            <p>
+              Pokrenuli ste novi web shop. Navedite i obrazložite 5 najvažnijih
+              SEO taktika koje morate implementirati.
+            </p>
+
+            <div class="answer-box">
+              <strong>ODGOVOR:</strong><br />
+              1. <strong>Optimizacija product pages:</strong> Unique opisi 300+
+              riječi, kvalitetne slike s alt text<br />
+              2. <strong>Long-tail keywords:</strong> "muške tenisice za trčanje
+              crne 42" umjesto samo "tenisice"<br />
+              3. <strong>Page speed:</strong> &lt;3 sec učitavanje - Google
+              prioritizira brze stranice<br />
+              4. <strong>Content marketing:</strong> Blog članci privlače
+              organski promet<br />
+              5. <strong>Local SEO:</strong> Google My Business, lokalne ključne
+              riječi
+            </div>
+          </div>
+
+          <div class="question-box">
+            <h4>❓ PITANJE 8: Web 2.0 vs Web3 (5 bodova)</h4>
+            <p>
+              Koja je ključna razlika između Web 2.0 i Web3 u kontekstu
+              vlasništva podataka?
+            </p>
+
+            <div class="answer-box">
+              <strong>ODGOVOR:</strong><br />
+              <strong>Web 2.0:</strong> Korisnici stvaraju sadržaj, ali
+              platforme ga posjeduju. Facebook posjeduje vaše slike.<br />
+              <strong>Web3:</strong> Korisnici I stvaraju I posjeduju sadržaj
+              putem blockchaina i NFT-a.<br />
+              <br />
+              Primjer: Na Facebooku (Web 2.0) ne kontrolirate svoj sadržaj. Na
+              decentraliziranoj platformi (Web3), vi posjedujete sve putem
+              kriptografskog vlasništva.
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 9: Tjedan 11 - Mobilne aplikacije -->
+        <div class="slide">
+          <h2>📱 TJEDAN 11: Mobilne aplikacije</h2>
+
+          <div class="key-concept">
+            <h4>🔑 Ključni koncepti:</h4>
+            <p>
+              Native/Hybrid/PWA • React Native vs Flutter • ASO • Push
+              Notifications
+            </p>
+          </div>
+
+          <h3>Što morate znati:</h3>
+
+          <div class="topic-card">
+            <h4>1. Tri pristupa razvoju</h4>
+            <p>
+              <strong>Native:</strong> iOS (Swift) i Android (Kotlin) odvojeno.
+              Najbolje performanse, najviši trošak.<br />
+              <strong>Hybrid:</strong> React Native, Flutter - jedna code baza.
+              Dobar balans.<br />
+              <strong>PWA:</strong> Web tehnologije. Najjeftinije, ograničene
+              mogućnosti.
+            </p>
+          </div>
+          <div class="topic-card">
+            <h4>2. React Native vs Flutter</h4>
+            <p>
+              <strong>React Native:</strong> JavaScript, veća zajednica,
+              Facebook<br />
+              <strong>Flutter:</strong> Dart, brže performanse, Google<br />
+              <br />
+              <strong>Kada Native?</strong> Gaming, AR/VR, kompleksne
+              animacije<br />
+              <strong>Kada Hybrid?</strong> E-commerce, većina business apps
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>3. ASO (App Store Optimization)</h4>
+            <p>
+              SEO za mobilne aplikacije:<br />
+              • <strong>App Name:</strong> Najvažniji faktor, uključi
+              keywords<br />
+              • <strong>Keywords:</strong> iOS 100 chars, Android u opisu<br />
+              • <strong>Icon & Screenshots:</strong> Vizualno privlačno<br />
+              • <strong>Ratings:</strong> 4+ zvjezdice kritično<br />
+              • <strong>Download velocity:</strong> Brzi downloadi = bolje
+              rangiranje
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>4. Monetizacija</h4>
+            <p>
+              <strong>Paid app:</strong> Jednokratna kupnja ($0.99-$9.99)<br />
+              <strong>Subscription:</strong> Mjesečna/godišnja pretplata -
+              predvidiv prihod<br />
+              <strong>In-app purchases:</strong> Freemium model - najviše
+              zarađuje<br />
+              <strong>Ads:</strong> Besplatno s oglasima
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 10: Primjer pitanja - Tjedan 11 -->
+        <div class="slide">
+          <h2>💡 Primjeri pitanja - Mobilne aplikacije</h2>
+
+          <div class="question-box">
+            <h4>❓ PITANJE 9: Native vs Hybrid vs PWA (5 bodova)</h4>
+            <p>
+              Popunite tablicu s prednostima i nedostacima svake tehnologije.
+            </p>
+
+            <div class="answer-box">
+              <strong>ODGOVOR:</strong><br />
+              <table
+                style="width: 100%; margin-top: 10px; border-collapse: collapse"
+              >
+                <tr style="background: #f0f0f0">
+                  <td style="padding: 8px; border: 1px solid #ddd">
+                    <strong>Tip</strong>
+                  </td>
+                  <td style="padding: 8px; border: 1px solid #ddd">
+                    <strong>Prednost</strong>
+                  </td>
+                  <td style="padding: 8px; border: 1px solid #ddd">
+                    <strong>Nedostatak</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px; border: 1px solid #ddd">Native</td>
+                  <td style="padding: 8px; border: 1px solid #ddd">
+                    Najbolje performanse, pun pristup hardware-u
+                  </td>
+                  <td style="padding: 8px; border: 1px solid #ddd">
+                    Najskuplje, 2 code baze
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px; border: 1px solid #ddd">Hybrid</td>
+                  <td style="padding: 8px; border: 1px solid #ddd">
+                    Jedna code baza, jeftinije, brži razvoj
+                  </td>
+                  <td style="padding: 8px; border: 1px solid #ddd">
+                    Sporije od Native
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 8px; border: 1px solid #ddd">PWA</td>
+                  <td style="padding: 8px; border: 1px solid #ddd">
+                    Najjeftinije, instant updates
+                  </td>
+                  <td style="padding: 8px; border: 1px solid #ddd">
+                    Ograničene mogućnosti, nema App Store
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="question-box">
+            <h4>❓ PITANJE 10: Case Study - Airbnb (15 bodova ESEJ)</h4>
+            <p>
+              Airbnb je 2018. napustio React Native i vratio se na Native
+              development. Analizirajte razloge njihove odluke i lekcije koje
+              možemo naučiti.
+            </p>
+
+            <div class="answer-box">
+              <strong>ODGOVOR (struktura):</strong><br />
+              <br />
+              <strong>1. Kontekst:</strong><br />
+              Airbnb je usvojio React Native 2016. za brži razvoj i jednu code
+              bazu za iOS i Android.<br />
+              <br />
+              <strong>2. Problemi:</strong><br />
+              • <strong>Performance:</strong> Animacije su lagale, bridge
+              overhead spor<br />
+              • <strong>Debugging:</strong> Teško pronaći bugove između JS i
+              native koda<br />
+              • <strong>Održavanje:</strong> Svaki OS update lomio je stvari<br />
+              • <strong>Tim problem:</strong> Native devovi nisu dobro znali
+              JavaScript<br />
+              <br />
+              <strong>3. Lekcija:</strong><br />
+              React Native NIJE uvijek pravo rješenje. Za kompleksne apps s puno
+              animacija i custom UI, Native je bolji. ALI za većinu e-commerce
+              apps, React Native je odličan.<br />
+              <br />
+              <strong>4. Kontraprimjer:</strong><br />
+              Facebook, Instagram i Discord još uvijek uspješno koriste React
+              Native. Ovisi o use caseu!<br />
+              <br />
+              <strong>5. Zaključak:</strong><br />
+              Odabir tehnologije ovisi o: budžetu, tim skillsovima, app
+              complexity i performance zahtjevima.
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 11: Tjedan 12 - E-commerce platforme -->
+        <div class="slide">
+          <h2>🛒 TJEDAN 12: E-commerce platforme</h2>
+
+          <div class="key-concept">
+            <h4>🔑 Ključni koncepti:</h4>
+            <p>
+              Shopify vs WooCommerce vs Magento • Themes • Payment Gateway •
+              Shipping
+            </p>
+          </div>
+
+          <h3>Što morate znati:</h3>
+
+          <div class="topic-card">
+            <h4>1. Tri glavne platforme</h4>
+            <p>
+              <strong>Shopify:</strong> 29% share, hosted, $29-$299/mj, najlakše
+              za početnike<br />
+              <strong>WooCommerce:</strong> 23% share, WordPress plugin,
+              besplatno (+hosting), najviše customizacije<br />
+              <strong>Magento:</strong> 9% share, enterprise, skupo ($50k+), za
+              velike tvrtke
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>2. Kada odabrati koju platformu?</h4>
+            <p>
+              <strong>Shopify:</strong> Startup, ne znate kod, brzo
+              pokretanje<br />
+              <strong>WooCommerce:</strong> Već imate WordPress blog, želite
+              punu kontrolu<br />
+              <strong>Magento:</strong> Enterprise s velikim budžetom, complex
+              B2B potrebe
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>3. Shopify Setup proces</h4>
+            <p>
+              1. Registracija (14-day free trial)<br />
+              2. Dodavanje proizvoda (title, description, variants, pricing)<br />
+              3. Theme odabir i customizacija<br />
+              4. Payment gateway (Shopify Payments, PayPal, Stripe)<br />
+              5. Shipping zones i rates<br />
+              6. Test narudžba
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>4. Ključne metrike</h4>
+            <p>
+              <strong>Conversion rate:</strong> % posjetitelja koji kupuju<br />
+              <strong>AOV (Average Order Value):</strong> Prosječna vrijednost
+              narudžbe<br />
+              <strong>Cart abandonment:</strong> % korisnika koji napuste
+              košaricu<br />
+              <strong>Customer lifetime value:</strong> Koliko kupac potroši
+              ukupno
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 12: Primjer pitanja - Tjedan 12 -->
+        <div class="slide">
+          <h2>💡 Primjeri pitanja - E-commerce platforme</h2>
+
+          <div class="question-box">
+            <h4>❓ PITANJE 11: Shopify vs WooCommerce (5 bodova)</h4>
+            <p>
+              Usporedite Shopify i WooCommerce po cijeni, lakoći korištenja i
+              customizaciji.
+            </p>
+
+            <div class="answer-box">
+              <strong>ODGOVOR:</strong><br />
+              <strong>Shopify:</strong><br />
+              • Cijena: $29-$299/mj + 0.5-2% transaction fee<br />
+              • Lakoća: 10/10 - drag-and-drop, sve uključeno<br />
+              • Customizacija: 6/10 - ograničeno bez kodiranja<br />
+              <br />
+              <strong>WooCommerce:</strong><br />
+              • Cijena: Besplatno + hosting ($20-100/mj)<br />
+              • Lakoća: 6/10 - treba osnovno WordPress znanje<br />
+              • Customizacija: 10/10 - potpuna kontrola koda
+            </div>
+          </div>
+
+          <div class="question-box">
+            <h4>❓ PITANJE 12: Praktični scenario (10 bodova)</h4>
+            <p>
+              Klijent želi pokrenuti handmade jewelry shop. Budžet €500. Koja
+              platforma i zašto? Koje dodatne troškove morate ukalkulirati?
+            </p>
+
+            <div class="answer-box">
+              <strong>ODGOVOR:</strong><br />
+              <strong>Preporuka: Shopify</strong><br />
+              <br />
+              <strong>Razlozi:</strong><br />
+              1. Brzo pokretanje - može online za 1 dan<br />
+              2. Ne treba tehničko znanje<br />
+              3. Sve uključeno (hosting, SSL, payment)<br />
+              4. Profesionalni izgled s free themes<br />
+              <br />
+              <strong>Budžet breakdown:</strong><br />
+              • Shopify Basic: $29/mj × 12 = $348/god<br />
+              • Domena (.com): $12/god<br />
+              • Product photography: €50 (DIY)<br />
+              • Marketing budget: €90<br />
+              <strong>TOTAL: €500 ✓</strong><br />
+              <br />
+              <strong>Dodatni troškovi kasnije:</strong><br />
+              • Premium theme: $180<br />
+              • Apps (email marketing, reviews): $20-50/mj<br />
+              • Packaging & shipping materials
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 13: Case Studies - Pregled -->
+        <div class="slide">
+          <h2>📚 Case Studies - Što morate znati</h2>
+
+          <div class="topic-card">
+            <h4>1. OVHcloud (Tjedan 9)</h4>
+            <p>
+              <strong>Kontekst:</strong> Europski cloud challenger<br />
+              <strong>Strategija:</strong> 30-50% jeftinije od AWS, GDPR
+              compliance, EU lokacija<br />
+              <strong>Izazov:</strong> Požar 2021 - multi-region backup
+              obavezan!<br />
+              <strong>Lekcija:</strong> Ne morate biti najbolji, možete biti
+              drugačiji (niche)
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>2. Zoom (Tjedan 9)</h4>
+            <p>
+              <strong>Kontekst:</strong> COVID-19 - 10M → 300M korisnika za 4
+              mjeseca<br />
+              <strong>Kako:</strong> Multi-cloud (AWS+Azure+Oracle),
+              auto-scaling, 17 data centara<br />
+              <strong>Lekcija:</strong> Cloud elastičnost omogućava brzu
+              ekspanziju koju vlastiti serveri ne mogu
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>3. Klook (Tjedan 10)</h4>
+            <p>
+              <strong>Kontekst:</strong> Travel booking app, Azija-Pacifik<br />
+              <strong>Inovacije:</strong> Mobile-first (70% bookinga), instant
+              potvrda, AR navigation<br />
+              <strong>Lekcija:</strong> Mobile-first design obavezan, instant
+              gratification ključan
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>4. Airbnb (Tjedan 11)</h4>
+            <p>
+              <strong>Kontekst:</strong> Napustili React Native 2018.<br />
+              <strong>Razlozi:</strong> Performance problemi, teško debugging,
+              fragmentacija<br />
+              <strong>Lekcija:</strong> Hybrid nije uvijek rješenje - za
+              kompleksne apps, Native bolji
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 14: Česte greške na ispitu -->
+        <div class="slide">
+          <h2>⚠️ Česte greške na ispitu - IZBJEGAVAJTE!</h2>
+
+          <div class="topic-card" style="border-left-color: #ff6b6b">
+            <h4>❌ GREŠKA 1: Miješanje koncepata</h4>
+            <p>
+              <strong>Krivo:</strong> "IaaS je kao Gmail"<br />
+              <strong>Točno:</strong> "SaaS je kao Gmail. IaaS je kao AWS
+              EC2."<br />
+              <br />
+              <strong>Savjet:</strong> Naučite primjere za svaki koncept!
+            </p>
+          </div>
+
+          <div class="topic-card" style="border-left-color: #ff6b6b">
+            <h4>❌ GREŠKA 2: Nedovoljno obrazloženje</h4>
+            <p>
+              <strong>Krivo:</strong> "Shopify je bolji."<br />
+              <strong>Točno:</strong> "Shopify je bolji ZA OVAJ SLUČAJ jer
+              klijent nema tehničko znanje i treba brzo pokrenuti shop."<br />
+              <br />
+              <strong>Savjet:</strong> Uvijek kontekstualizirajte odgovore!
+            </p>
+          </div>
+
+          <div class="topic-card" style="border-left-color: #ff6b6b">
+            <h4>❌ GREŠKA 3: Zaboravljanje brojeva/statistika</h4>
+            <p>
+              <strong>Krivo:</strong> "Android ima više korisnika"<br />
+              <strong>Točno:</strong> "Android ima 72% tržišnog udjela, iOS
+              28%"<br />
+              <br />
+              <strong>Savjet:</strong> Naučite ključne brojke!
+            </p>
+          </div>
+
+          <div class="topic-card" style="border-left-color: #ff6b6b">
+            <h4>❌ GREŠKA 4: Ignoriranje praktičnog iskustva</h4>
+            <p>
+              <strong>Krivo:</strong> Teorijski odgovor bez primjene<br />
+              <strong>Točno:</strong> "Na Shopify radionici vidio sam da..."<br />
+              <br />
+              <strong>Savjet:</strong> Koristite iskustvo iz praktičnih vježbi!
+            </p>
+          </div>
+
+          <div class="topic-card" style="border-left-color: #ff6b6b">
+            <h4>❌ GREŠKA 5: Prekratki odgovori na esej pitanja</h4>
+            <p>
+              <strong>Krivo:</strong> 5 rečenica za 15 bodova<br />
+              <strong>Točno:</strong> 2-3 paragrafa s konkretnim primjerima<br />
+              <br />
+              <strong>Savjet:</strong> Za esej, pišite minimum 300 riječi!
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 15: Ključni brojevi za naučiti -->
+        <div class="slide">
+          <h2>🔢 Ključni brojevi - NAUČITE IH!</h2>
+
+          <h3>Internet & Cloud:</h3>
+          <div class="key-concept">
+            <p>
+              • DNS lookup: 20-120ms<br />
+              • AWS tržišni udio: 32%<br />
+              • Azure tržišni udio: 23%<br />
+              • Google Cloud: 10%<br />
+              • Zoom rast: 10M → 300M korisnika (3000%)
+            </p>
+          </div>
+
+          <h3>Mobile:</h3>
+          <div class="key-concept">
+            <p>
+              • iOS tržišni udio: 28%<br />
+              • Android tržišni udio: 72%<br />
+              • 4G max brzina: 100 Mbps<br />
+              • 5G max brzina: 10 Gbps<br />
+              • 5G latency: 1ms (vs 4G 30-50ms)<br />
+              • iOS developer fee: $99/god<br />
+              • Android developer fee: $25 jednokratno
+            </p>
+          </div>
+
+          <h3>Search & SEO:</h3>
+          <div class="key-concept">
+            <p>
+              • Google pretraga dnevno: 8.5 milijardi<br />
+              • Google tržišni udio: 92%<br />
+              • Google ranking faktora: 200+<br />
+              • Indexed stranica: 30+ trillion<br />
+              • Novih pretraga dnevno: 15%
+            </p>
+          </div>
+
+          <h3>E-commerce platforme:</h3>
+          <div class="key-concept">
+            <p>
+              • Shopify trgovina: 4.3 milijuna<br />
+              • Shopify tržišni udio: 29%<br />
+              • WooCommerce: 23%<br />
+              • Magento: 9%<br />
+              • Shopify GMV 2023: $444 milijardi
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 16: Strategija učenja -->
+        <div class="slide">
+          <h2>📖 Strategija učenja za ispit</h2>
+
+          <div class="checklist">
+            <h3>✅ 7 dana prije ispita:</h3>
+            <ul>
+              <li>Pročitajte sve prezentacije (Tjedan 8-12)</li>
+              <li>Napravite mind mapu za svaki tjedan</li>
+              <li>Riješite sve praktične vježbe ponovno</li>
+            </ul>
+          </div>
+
+          <div class="checklist">
+            <h3>✅ 3 dana prije ispita:</h3>
+            <ul>
+              <li>Fokus na case studies - naučite ih detaljno</li>
+              <li>Riješite primjere pitanja iz ove prezentacije</li>
+              <li>Napravite flashcards za ključne brojeve</li>
+            </ul>
+          </div>
+
+          <div class="checklist">
+            <h3>✅ Dan prije ispita:</h3>
+            <ul>
+              <li>Ponavljanje ključnih koncepata</li>
+              <li>Ne učite nove stvari - samo ponavljanje!</li>
+              <li>Spavajte 8 sati - odmoren mozak = bolji rezultati</li>
+            </ul>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>💡 Pro tip:</h3>
+            <p>
+              Učite aktivno, ne pasivno!<br />
+              <strong>Loše:</strong> Samo čitanje prezentacija<br />
+              <strong>Dobro:</strong> Objašnjavajte koncepte prijatelju
+              naglas<br />
+              <strong>Najbolje:</strong> Napišite vlastite primjere pitanja i
+              odgovorite na njih!
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 17: Mock ispit pitanja -->
+        <div class="slide">
+          <h2>📝 MOCK ISPIT - Testirajte se!</h2>
+
+          <div class="exam-alert">
+            <h3>⏱️ 90 minuta • 100 bodova</h3>
+            <p>Probajte riješiti ova pitanja kao da je pravi ispit!</p>
+          </div>
+
+          <div class="question-box">
+            <h4>1. Objasni tri faze Google Search procesa (3 boda)</h4>
+          </div>
+
+          <div class="question-box">
+            <h4>2. Razlika između TCP i UDP protokola (3 boda)</h4>
+          </div>
+
+          <div class="question-box">
+            <h4>3. Nabroji 5 SEO faktora za e-commerce (5 bodova)</h4>
+          </div>
+
+          <div class="question-box">
+            <h4>4. Usporedi IaaS, PaaS i SaaS - tablica (5 bodova)</h4>
+          </div>
+
+          <div class="question-box">
+            <h4>5. iOS vs Android za developere - 3 razlike (5 bodova)</h4>
+          </div>
+
+          <div class="question-box">
+            <h4>6. Objasni PWA i navedi 2 primjera (4 boda)</h4>
+          </div>
+
+          <div class="question-box">
+            <h4>7. React Native vs Flutter usporedba (5 bodova)</h4>
+          </div>
+
+          <div class="question-box">
+            <h4>
+              8. SCENARIO: Startup treba cloud - AWS ili Azure? (10 bodova)
+            </h4>
+          </div>
+
+          <div class="question-box">
+            <h4>9. SCENARIO: SEO strategija za novi web shop (10 bodova)</h4>
+          </div>
+
+          <div class="question-box">
+            <h4>10. ESEJ: Zoom case study - kako su skalirali? (15 bodova)</h4>
+          </div>
+        </div>
+
+        <!-- Slide 18: Dan ispita - Savjeti -->
+        <div class="slide">
+          <h2>🎯 Dan ispita - Savjeti za uspjeh</h2>
+
+          <div class="highlight">
+            <h3>⏰ Prije ispita:</h3>
+            <ul style="margin-left: 20px; color: #2c3e50">
+              <li>Doručkujte dobro - mozgu treba energija!</li>
+              <li>Dođite 10 minuta ranije</li>
+              <li>Donesite olovke, gumiću, vodu</li>
+              <li>Mobilni na silent i u torbu</li>
+            </ul>
+          </div>
+
+          <div class="topic-card">
+            <h4>📝 Tijekom ispita:</h4>
+            <ol style="margin-left: 20px; line-height: 1.8">
+              <li>
+                <strong>Pročitajte SVA pitanja prvo</strong> (5 min) - dajte
+                mozgu vrijeme da "inkubira" odgovore
+              </li>
+              <li>
+                <strong>Počnite s lakim pitanjima</strong> - build momentum!
+              </li>
+              <li>
+                <strong>Bodovna raspodjela:</strong> Više bodova = više
+                vremena<br />
+                • 3 boda = 3-4 min<br />
+                • 10 bodova = 10-12 min<br />
+                • 15 bodova = 15-20 min
+              </li>
+              <li>
+                <strong>Struktura odgovora:</strong><br />
+                • Kratka pitanja: 3-5 rečenica<br />
+                • Scenariji: 2 paragrafa<br />
+                • Esej: 3-4 paragrafa s uvodom i zaključkom
+              </li>
+              <li>
+                <strong>Zadnjih 15 minuta:</strong> Provjera i ispravljanje
+                grešaka
+              </li>
+            </ol>
+          </div>
+
+          <div class="topic-card">
+            <h4>✅ Što pisati u esej odgovoru:</h4>
+            <p>
+              <strong>Struktura:</strong><br />
+              1. Uvod - kontekst i thesis<br />
+              2. 2-3 paragrafa - argumenti s primjerima<br />
+              3. Zaključak - summirajte ključne points<br />
+              <br />
+              <strong>Koristite:</strong> Konkretne brojeve, primjere iz case
+              studyja, vlastito iskustvo iz radionice
+            </p>
+          </div>
+
+          <div class="exam-alert" style="margin-top: 30px">
+            <h3>🌟 Zapamtite:</h3>
+            <p>
+              Bolje je napisati NEŠTO nego ostaviti prazno!<br />
+              Čak i parcijalni odgovor donosi neke bodove! 💪
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 19:After the exam -->
+        <div class="slide">
+          <h2>🎊 Nakon ispita</h2>
+
+          <div class="highlight">
+            <h3>✅ Što slijedi nakon Ispita 2?</h3>
+          </div>
+
+          <div class="topic-card">
+            <h4>📊 Ocjenjivanje:</h4>
+            <p>
+              • Ispit će biti ocijenjen za 7 dana<br />
+              • Rezultati će biti objavljeni na Google Classroom<br />
+              • Moguć uvid u ispit (po dogovoru s nastavnikom)
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>📈 Ukupna ocjena predmeta:</h4>
+            <p>
+              <strong>Komponente:</strong><br />
+              • Ispit 1 (Modul 1): 30%<br />
+              • Ispit 2 (Modul 2): 30%<br />
+              • Domaće zadaće: 20%<br />
+              • Praktične vježbe: 15%<br />
+              • Aktivnost na nastavi: 5%
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <h4>🚀 Što dalje učiti?</h4>
+            <p>
+              Ako vas zanima web development i e-commerce:<br />
+              • <strong>Frontend:</strong> React.js, Next.js<br />
+              • <strong>Backend:</strong> Node.js, Python Django<br />
+              • <strong>Databases:</strong> PostgreSQL, MongoDB<br />
+              • <strong>DevOps:</strong> Docker, Kubernetes<br />
+              • <strong>Certifikati:</strong> AWS Certified Cloud Practitioner,
+              Google Analytics
+            </p>
+          </div>
+
+          <div class="exam-alert" style="margin-top: 30px">
+            <h3>💼 Karijere u e-trgovini:</h3>
+            <p>
+              • E-commerce Manager<br />
+              • Digital Marketing Specialist<br />
+              • Full-stack Developer<br />
+              • UX/UI Designer<br />
+              • Data Analyst<br />
+              • SEO Specialist<br />
+              <br />
+              Prosječna plaća DM-a u Njemačkoj: cca 4.900 Eura/mj (pa kad
+              filozofi kažu da se ne isplati učiti strane jezike :-) A kako tebi
+              idu njemački i engleski? :-))
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 20: Zaključak -->
+        <div class="slide">
+          <h2>🎓 Zaključak</h2>
+
+          <div
+            class="exam-alert"
+            style="
+              background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            "
+          >
+            <h3 style="color: #2c3e50">✨ Prošli ste nevjerojatan put!</h3>
+            <p style="color: #2c3e50">
+              Od osnova interneta do kreiranja vlastitog web shopa!<br />
+              Sada znate KAKO funkcionira moderna e-trgovina! 🚀
+            </p>
+          </div>
+
+          <h3 style="margin-top: 40px">Što ste naučili u Modulu 2:</h3>
+          <div class="key-concept">
+            <p>
+              ✅ Kako internet radi - od TCP/IP do DNS-a<br />
+              ✅ Cloud computing - AWS, Azure, IaaS/PaaS/SaaS<br />
+              ✅ Web tehnologije - SEO, tražilice, Web3<br />
+              ✅ Mobilne aplikacije - Native vs Hybrid<br />
+              ✅ E-commerce platforme - praktično kreiranje shopa!
+            </p>
+          </div>
+
+          <div class="highlight" style="margin-top: 40px">
+            <h3>💪 Motivacijska poruka:</h3>
+            <p style="font-size: 1.3em">
+              Tehnologija koju ste naučili koristi se u stvarnim tvrtkama!<br />
+              <br />
+              Amazon, Netflix, Uber - sve koristi koncepte koje ste naučili.<br />
+              <br />
+              Vi ste sada spremni razumjeti I kreirati moderne web shopove! 🌟
+            </p>
+          </div>
+
+          <div class="stats-grid" style="margin-top: 40px">
+            <div class="stat-box">
+              <div class="stat-number">5</div>
+              <div class="stat-label">Tjedana učenja</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">15</div>
+              <div class="stat-label">Prezentacija</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">∞</div>
+              <div class="stat-label">Mogućnosti! 🚀</div>
+            </div>
+          </div>
+          <p
+            style="
+              margin-top: 60px;
+              font-size: 2em;
+              text-align: center;
+              color: #667eea;
+              font-weight: 700;
+            "
+          >
+            SRETNO NA ISPITU! 🍀📚✨
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">20</span>
+      </div>
+
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevSlide()">← Prethodni</button>
+        <button class="nav-btn" onclick="nextSlide()">Sljedeći →</button>
+      </div>
+
+      <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+        const total = slides.length;
+
+        document.getElementById("total").textContent = total;
+
+        function showSlide(n) {
+          slides[currentSlide].classList.remove("active");
+          currentSlide = (n + total) % total;
+          slides[currentSlide].classList.add("active");
+          document.getElementById("current").textContent = currentSlide + 1;
+        }
+
+        function nextSlide() {
+          showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+          showSlide(currentSlide - 1);
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight") nextSlide();
+          if (e.key === "ArrowLeft") prevSlide();
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener("touchend", (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 50) nextSlide();
+          if (touchEndX - touchStartX > 50) prevSlide();
+        });
+      </script>
+    </body>
+  </html>
+</artifact>

@@ -1,0 +1,705 @@
+<artifact
+  identifier="tjedan2-prezentacija"
+  type="text/html"
+  title="Tjedan 2: Tehnološki temelji"
+>
+  <!DOCTYPE html>
+  <html lang="hr">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Tjedan 2: Tehnološki temelji e-trgovine</title>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body {
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          overflow: hidden;
+          height: 100vh;
+        }
+
+        .presentation {
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+        }
+
+        .slide {
+          background: white;
+          width: 90%;
+          max-width: 1200px;
+          height: 85vh;
+          border-radius: 20px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          padding: 60px;
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          animation: slideIn 0.5s ease;
+          overflow-y: auto;
+        }
+
+        .slide.active {
+          display: flex;
+        }
+
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .slide h1 {
+          font-size: 3.5em;
+          color: #667eea;
+          margin-bottom: 20px;
+          font-weight: 700;
+        }
+
+        .slide h2 {
+          font-size: 2.5em;
+          color: #333;
+          margin-bottom: 30px;
+          font-weight: 600;
+        }
+
+        .slide h3 {
+          font-size: 1.8em;
+          color: #667eea;
+          margin: 30px 0 20px 0;
+        }
+
+        .slide p {
+          font-size: 1.4em;
+          color: #555;
+          line-height: 1.8;
+          margin-bottom: 20px;
+        }
+
+        .slide ul {
+          font-size: 1.3em;
+          color: #555;
+          line-height: 2;
+          margin-left: 40px;
+        }
+
+        .slide li {
+          margin-bottom: 15px;
+        }
+
+        .subtitle {
+          font-size: 1.8em;
+          color: #764ba2;
+          margin-top: 20px;
+        }
+
+        .highlight {
+          background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+          padding: 30px;
+          border-radius: 15px;
+          margin: 20px 0;
+        }
+
+        .highlight h3 {
+          color: #2c3e50;
+          margin: 0 0 15px 0;
+        }
+
+        .highlight p {
+          color: #2c3e50;
+          font-size: 1.2em;
+        }
+
+        .tech-stack {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+          margin-top: 30px;
+        }
+
+        .tech-box {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          padding: 30px;
+          border-radius: 15px;
+          color: white;
+          text-align: center;
+          transition: transform 0.3s;
+        }
+
+        .tech-box:hover {
+          transform: translateY(-10px);
+        }
+
+        .tech-icon {
+          font-size: 3em;
+          margin-bottom: 15px;
+        }
+
+        .tech-box h4 {
+          font-size: 1.5em;
+          margin-bottom: 10px;
+        }
+
+        .tech-box p {
+          color: white;
+          font-size: 1em;
+        }
+
+        .comparison {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+          margin-top: 20px;
+        }
+
+        .comparison-box {
+          background: #f8f9fa;
+          padding: 25px;
+          border-radius: 15px;
+          border-top: 5px solid #667eea;
+        }
+
+        .comparison-box h4 {
+          color: #667eea;
+          font-size: 1.5em;
+          margin-bottom: 15px;
+        }
+
+        .example-code {
+          background: #2c3e50;
+          color: #2ecc71;
+          padding: 20px;
+          border-radius: 10px;
+          font-family: "Courier New", monospace;
+          font-size: 1.1em;
+          margin: 20px 0;
+          overflow-x: auto;
+        }
+
+        .navigation {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          display: flex;
+          gap: 15px;
+        }
+
+        .nav-btn {
+          background: white;
+          color: #667eea;
+          border: none;
+          padding: 15px 30px;
+          font-size: 1.2em;
+          border-radius: 50px;
+          cursor: pointer;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s;
+          font-weight: 600;
+        }
+
+        .nav-btn:hover {
+          background: #667eea;
+          color: white;
+          transform: translateY(-2px);
+          box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide-counter {
+          position: fixed;
+          bottom: 30px;
+          left: 30px;
+          background: white;
+          color: #667eea;
+          padding: 10px 20px;
+          border-radius: 50px;
+          font-size: 1.2em;
+          font-weight: 600;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .diagram {
+          background: white;
+          border: 3px solid #667eea;
+          border-radius: 15px;
+          padding: 30px;
+          margin: 20px 0;
+          text-align: center;
+        }
+
+        .flow {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 20px;
+          flex-wrap: wrap;
+        }
+
+        .flow-item {
+          background: #667eea;
+          color: white;
+          padding: 20px 30px;
+          border-radius: 10px;
+          font-weight: 600;
+          font-size: 1.2em;
+        }
+
+        .flow-arrow {
+          font-size: 2em;
+          color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+          .slide {
+            padding: 30px;
+          }
+          .slide h1 {
+            font-size: 2em;
+          }
+          .slide h2 {
+            font-size: 1.8em;
+          }
+          .tech-stack {
+            grid-template-columns: 1fr;
+          }
+          .comparison {
+            grid-template-columns: 1fr;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="presentation">
+        <!-- Slide 1: Naslovnica -->
+        <div class="slide active">
+          <h1>💻 TEHNOLOŠKI TEMELJI</h1>
+          <p class="subtitle">Tjedan 2: Kako funkcionira e-trgovina</p>
+          <div class="tech-stack" style="margin-top: 80px">
+            <div class="tech-box">
+              <div class="tech-icon">🌐</div>
+              <h4>INTERNET</h4>
+            </div>
+            <div class="tech-box">
+              <div class="tech-icon">🕸️</div>
+              <h4>WEB</h4>
+            </div>
+            <div class="tech-box">
+              <div class="tech-icon">📱</div>
+              <h4>MOBILE</h4>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2: Što je Internet? -->
+        <div class="slide">
+          <h2>🌐 Što je Internet?</h2>
+          <p>
+            <strong>Internet</strong> je globalna mreža međusobno povezanih
+            računala i uređaja.
+          </p>
+
+          <h3>Ključni pojmovi:</h3>
+          <ul>
+            <li>
+              🔗 <strong>Mreža mreža</strong> - nije jedna mreža, već milijuni
+              povezanih mreža
+            </li>
+            <li>
+              📡 <strong>TCP/IP protokoli</strong> - "pravila" kako računala
+              komuniciraju
+            </li>
+            <li>
+              🌍 <strong>Globalni doseg</strong> - povezuje milijarde uređaja
+              širom svijeta
+            </li>
+            <li>
+              ⚡ <strong>Decentraliziran</strong> - nema jednog "vlasnika" ili
+              središta
+            </li>
+          </ul>
+
+          <div class="highlight">
+            <h3>💡 Zanimljivost</h3>
+            <p>
+              Internet je nastao 1969. kao vojni projekt ARPANET. Prva poruka
+              poslana je između UCLA i Stanford univerziteta - bio je pokušaj
+              slanja riječi "LOGIN", ali sustav se srušio nakon "LO"! 😄
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 3: Kako Internet funkcionira? -->
+        <div class="slide">
+          <h2>🔧 Kako Internet funkcionira?</h2>
+
+          <div class="diagram">
+            <h3>Od vas do web stranice:</h3>
+            <div class="flow">
+              <div class="flow-item">Vaše računalo</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-item">Router</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-item">ISP</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-item">Web server</div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 40px">Ključni pojmovi:</h3>
+          <ul>
+            <li>
+              <strong>ISP</strong> (Internet Service Provider) - vaš pružatelj
+              interneta (Eronet, Novotel, BH Telecom)
+            </li>
+            <li>
+              <strong>IP adresa</strong> - jedinstvena adresa svakog uređaja
+              (npr. 192.168.1.1)
+            </li>
+            <li>
+              <strong>Paketi</strong> - podaci se šalju u malim paketima, ne
+              odjednom
+            </li>
+            <li>
+              <strong>Routing</strong> - automatski odabir najbržeg puta do
+              odredišta
+            </li>
+          </ul>
+        </div>
+
+        <!-- Slide 4: Web vs Internet -->
+        <div class="slide">
+          <h2>🕸️ Web vs Internet - Koja je razlika?</h2>
+
+          <div class="comparison">
+            <div class="comparison-box">
+              <h4>🌐 INTERNET</h4>
+              <ul style="margin-left: 20px">
+                <li>Fizička infrastruktura</li>
+                <li>Kabeli, serveri, usmjernici</li>
+                <li>TCP/IP protokoli</li>
+                <li>Postoji od 1969.</li>
+              </ul>
+              <p style="margin-top: 20px">
+                <strong>Analogija:</strong> Cestovna mreža 🛣️
+              </p>
+            </div>
+
+            <div class="comparison-box" style="border-top-color: #764ba2">
+              <h4>🕸️ WEB (World Wide Web)</h4>
+              <ul style="margin-left: 20px">
+                <li>Usluga NA internetu</li>
+                <li>Web stranice i linkovi</li>
+                <li>HTTP/HTTPS protokol</li>
+                <li>Postoji od 1991.</li>
+              </ul>
+              <p style="margin-top: 20px">
+                <strong>Analogija:</strong> Automobili na cesti 🚗
+              </p>
+            </div>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>🎯 Zaključak</h3>
+            <p>
+              Internet = infrastruktura | Web = jedna od usluga na internetu (uz
+              email, streaming, igre...)
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 5: URL i HTTP -->
+        <div class="slide">
+          <h2>🔗 URL - Adresa web stranice</h2>
+
+          <div class="example-code">https://www.ekonomska.edu.ba/onama/</div>
+          <h3>Anatomija URL-a:</h3>
+          <ul>
+            <li><strong>https://</strong> - Protokol (sigurna komunikacija)</li>
+            <li><strong>www</strong> - Subdomena (nije obavezna)</li>
+            <li>
+              <strong>ekonomska.edu.ba</strong> - Domena (naziv web stranice)
+            </li>
+            <li><strong>/onama</strong> - Path (put do stranice)</li>
+          </ul>
+
+          <div class="highlight">
+            <h3>🔒 HTTP vs HTTPS</h3>
+            <p>
+              <strong>HTTP</strong> = nezaštićen | <strong>HTTPS</strong> =
+              šifriran (S = Secure)<br />
+              Uvijek provjerite <strong>zelenu bravicu 🔒</strong> prije
+              upisivanja osjetljivih podataka!
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 6: Web preglednici -->
+        <div class="slide">
+          <h2>🌐 Web preglednici (Browsers)</h2>
+
+          <p>Softver koji vam omogućava pristup webu:</p>
+
+          <div class="tech-stack">
+            <div class="tech-box">
+              <div class="tech-icon">🔵</div>
+              <h4>Chrome</h4>
+              <p>Google (65% tržišta)</p>
+            </div>
+            <div class="tech-box">
+              <div class="tech-icon">🍎</div>
+              <h4>Safari</h4>
+              <p>Apple (19% tržišta)</p>
+            </div>
+            <div class="tech-box">
+              <div class="tech-icon">🦊</div>
+              <h4>Firefox</h4>
+              <p>Mozilla (3% tržišta)</p>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 40px">Što preglednik radi?</h3>
+          <ul>
+            <li>📄 Preuzima HTML, CSS, JavaScript kod</li>
+            <li>🎨 Renderira (prikazuje) web stranicu</li>
+            <li>🍪 Sprema cookies i cache</li>
+            <li>🔐 Provjerava sigurnosne certifikate</li>
+            <li>🔖 Upravlja bookmarksima i historijom</li>
+          </ul>
+        </div>
+
+        <!-- Slide 7: Mobilne platforme -->
+        <div class="slide">
+          <h2>📱 Mobilne platforme</h2>
+
+          <div class="comparison">
+            <div class="comparison-box">
+              <h4>📱 MOBILNI WEB</h4>
+              <ul style="margin-left: 20px">
+                <li>Pristup kroz preglednik</li>
+                <li>Responsive dizajn</li>
+                <li>Ne treba instalacija</li>
+                <li>Ažurira se automatski</li>
+              </ul>
+              <p style="margin-top: 15px">
+                <strong>Primjer:</strong> m.amazon.com
+              </p>
+            </div>
+
+            <div class="comparison-box" style="border-top-color: #764ba2">
+              <h4>📲 MOBILNE APLIKACIJE</h4>
+              <ul style="margin-left: 20px">
+                <li>Native app (iOS/Android)</li>
+                <li>Preuzimanje iz store-a</li>
+                <li>Rad offline moguć</li>
+                <li>Push notifikacije</li>
+              </ul>
+              <p style="margin-top: 15px">
+                <strong>Primjer:</strong> Amazon app
+              </p>
+            </div>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>📊 Statistika</h3>
+            <p>
+              60% e-trgovinskog prometa dolazi s mobilnih uređaja! 📈<br />
+              Ali, desktop još uvijek ima veću stopu konverzije (kupnje).
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 8: Jedinstvene značajke e-trgovine -->
+        <div class="slide">
+          <h2>⭐ 8 Jedinstvenih značajki e-trgovine</h2>
+
+          <ul>
+            <li>
+              <strong>1. Sveprisutnost (Ubiquity)</strong> - dostupno svugdje,
+              uvijek
+            </li>
+            <li>
+              <strong>2. Globalni doseg</strong> - prodaja širom svijeta iz sobe
+            </li>
+            <li>
+              <strong>3. Univerzalni standardi</strong> - isti Internet
+              standardi posvuda
+            </li>
+            <li>
+              <strong>4. Bogatstvo</strong> - video, audio, tekst, animacije
+            </li>
+            <li>
+              <strong>5. Interaktivnost</strong> - dvosmjerna komunikacija
+            </li>
+            <li>
+              <strong>6. Gustoća informacija</strong> - svi podaci na jednom
+              mjestu
+            </li>
+            <li>
+              <strong>7. Personalizacija</strong> - prilagođen sadržaj za svakog
+              korisnika
+            </li>
+            <li>
+              <strong>8. Društvena tehnologija</strong> - recenzije, komentari,
+              share
+            </li>
+          </ul>
+
+          <div class="highlight">
+            <h3>🎯 Zašto je ovo važno?</h3>
+            <p>
+              Ove značajke omogućavaju e-trgovini da bude efikasnija i jeftinija
+              od tradicionalne trgovine!
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 9: Praktična vježba -->
+        <div class="slide">
+          <h2>🔍 Praktična vježba</h2>
+
+          <div class="highlight">
+            <h3>📝 Zadatak 1: Analiza URL-a</h3>
+            <p>Otvorite Amazon.com i analizirajte URL adresu:</p>
+            <ul style="margin-left: 20px">
+              <li>Koji je protokol?</li>
+              <li>Koja je domena?</li>
+              <li>Ima li query parametara?</li>
+            </ul>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>📝 Zadatak 2: Mobilni vs Desktop</h3>
+            <p>Usporedite web shop na mobitelu i računalu:</p>
+            <ul style="margin-left: 20px">
+              <li>Koje su razlike u dizajnu?</li>
+              <li>Koje funkcije nedostaju na mobilnom?</li>
+              <li>Koji je lakši za korištenje?</li>
+            </ul>
+          </div>
+          <p style="margin-top: 30px; font-size: 1.3em">
+            💾 Spremite nalaze - koristit ćemo ih u Tjednu 3!
+          </p>
+        </div>
+
+        <!-- Slide 10: Domaća zadaća -->
+        <div class="slide">
+          <h2>📚 Domaća zadaća za Tjedan 3</h2>
+
+          <div class="highlight">
+            <h3>📝 Zadatak: Usporedba 3 web stranice</h3>
+            <p>Odaberite 3 poznate e-trgovinske stranice i analizirajte:</p>
+          </div>
+
+          <h3>Za svaku stranicu odgovorite:</h3>
+          <ul>
+            <li>1️⃣ Ima li mobilnu aplikaciju ili samo web?</li>
+            <li>2️⃣ Koristi li HTTPS (sigurnu konekciju)?</li>
+            <li>3️⃣ Je li dizajn responsive (prilagođava se mobitelu)?</li>
+            <li>
+              4️⃣ Koje jedinstvene značajke e-trgovine koriste? (personalizacija,
+              interaktivnost...)
+            </li>
+            <li>5️⃣ Ocjena korisničkog iskustva: 1-10</li>
+          </ul>
+
+          <p style="margin-top: 40px; font-size: 1.3em">
+            <strong>Format:</strong> Word dokument ili Google Doc<br />
+            <strong>Rok:</strong> Do sljedećeg tjedna<br />
+            <strong>Predaja:</strong> Google Classroom
+          </p>
+        </div>
+
+        <!-- Slide 11: Što slijedi? -->
+        <div class="slide">
+          <h2>🎯 Što nas čeka sljedeći tjedan?</h2>
+
+          <h3>📅 Tjedan 3: Vrste e-trgovine</h3>
+          <ul>
+            <li>🏢 <strong>B2C</strong> - Business to Consumer (Amazon)</li>
+            <li>🏭 <strong>B2B</strong> - Business to Business (Alibaba)</li>
+            <li>
+              👥 <strong>C2C</strong> - Consumer to Consumer (Njuškalo, eBay)
+            </li>
+            <li>📱 <strong>M-commerce</strong> - Mobile commerce</li>
+            <li>
+              💬 <strong>Social commerce</strong> - TikTok Shop, Instagram
+              Shopping
+            </li>
+          </ul>
+
+          <div class="highlight" style="margin-top: 40px">
+            <h3>🎓 Pripremite se!</h3>
+            <p>
+              Razmislite o primjerima svake vrste e-trgovine koje koristite u
+              svakodnevnom životu!
+            </p>
+          </div>
+
+          <p style="margin-top: 50px; font-size: 1.5em">
+            Vidimo se sljedeći tjedan! 👋
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">11</span>
+      </div>
+
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevSlide()">← Prethodni</button>
+        <button class="nav-btn" onclick="nextSlide()">Sljedeći →</button>
+      </div>
+
+      <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+        const total = slides.length;
+
+        document.getElementById("total").textContent = total;
+
+        function showSlide(n) {
+          slides[currentSlide].classList.remove("active");
+          currentSlide = (n + total) % total;
+          slides[currentSlide].classList.add("active");
+          document.getElementById("current").textContent = currentSlide + 1;
+        }
+
+        function nextSlide() {
+          showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+          showSlide(currentSlide - 1);
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight") nextSlide();
+          if (e.key === "ArrowLeft") prevSlide();
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener("touchend", (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 50) nextSlide();
+          if (touchEndX - touchStartX > 50) prevSlide();
+        });
+      </script>
+    </body>
+  </html>
+</artifact>

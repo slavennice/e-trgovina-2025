@@ -1,0 +1,786 @@
+<artifact
+  identifier="tjedan4-prezentacija"
+  type="text/html"
+  title="Tjedan 4: Poslovni modeli"
+>
+  <!DOCTYPE html>
+  <html lang="hr">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Tjedan 4: Poslovni modeli e-trgovine</title>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body {
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          overflow: hidden;
+          height: 100vh;
+        }
+
+        .presentation {
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .slide {
+          background: white;
+          width: 90%;
+          max-width: 1200px;
+          height: 85vh;
+          border-radius: 20px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          padding: 60px;
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          animation: slideIn 0.5s ease;
+          overflow-y: auto;
+        }
+
+        .slide.active {
+          display: flex;
+        }
+
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .slide h1 {
+          font-size: 3.5em;
+          color: #667eea;
+          margin-bottom: 20px;
+          font-weight: 700;
+        }
+
+        .slide h2 {
+          font-size: 2.5em;
+          color: #333;
+          margin-bottom: 30px;
+          font-weight: 600;
+        }
+
+        .slide h3 {
+          font-size: 1.8em;
+          color: #667eea;
+          margin: 30px 0 20px 0;
+        }
+
+        .slide p {
+          font-size: 1.4em;
+          color: #555;
+          line-height: 1.8;
+          margin-bottom: 20px;
+        }
+
+        .slide ul {
+          font-size: 1.3em;
+          color: #555;
+          line-height: 2;
+          margin-left: 40px;
+        }
+
+        .slide li {
+          margin-bottom: 15px;
+        }
+
+        .subtitle {
+          font-size: 1.8em;
+          color: #764ba2;
+          margin-top: 20px;
+        }
+
+        .element-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+          margin-top: 30px;
+        }
+
+        .element-card {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          padding: 25px;
+          border-radius: 15px;
+          color: white;
+          transition: transform 0.3s;
+        }
+
+        .element-card:hover {
+          transform: scale(1.05);
+        }
+
+        .element-number {
+          font-size: 2.5em;
+          font-weight: 700;
+          opacity: 0.7;
+          margin-bottom: 10px;
+        }
+
+        .element-card h4 {
+          font-size: 1.4em;
+          margin-bottom: 10px;
+        }
+
+        .element-card p {
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 1em;
+        }
+
+        .highlight {
+          background: linear-gradient(120deg, #ffecd2 0%, #fcb69f 100%);
+          padding: 30px;
+          border-radius: 15px;
+          margin: 20px 0;
+        }
+
+        .highlight h3 {
+          color: #2c3e50;
+          margin: 0 0 15px 0;
+        }
+
+        .highlight p {
+          color: #2c3e50;
+          font-size: 1.2em;
+        }
+
+        .case-study {
+          background: #f8f9fa;
+          border-left: 5px solid #667eea;
+          padding: 30px;
+          border-radius: 10px;
+          margin: 20px 0;
+        }
+
+        .revenue-models {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+          margin-top: 30px;
+        }
+
+        .revenue-card {
+          background: white;
+          border: 3px solid #667eea;
+          padding: 25px;
+          border-radius: 15px;
+          text-align: center;
+          transition: all 0.3s;
+        }
+
+        .revenue-card:hover {
+          background: #667eea;
+          color: white;
+        }
+
+        .revenue-card:hover h4,
+        .revenue-card:hover p {
+          color: white;
+        }
+
+        .revenue-icon {
+          font-size: 3em;
+          margin-bottom: 15px;
+        }
+
+        .revenue-card h4 {
+          color: #667eea;
+          font-size: 1.3em;
+          margin-bottom: 10px;
+        }
+
+        .revenue-card p {
+          color: #555;
+          font-size: 0.95em;
+        }
+
+        .comparison-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 20px 0;
+          font-size: 1.1em;
+        }
+
+        .comparison-table th {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 15px;
+          text-align: left;
+        }
+
+        .comparison-table td {
+          padding: 15px;
+          border-bottom: 2px solid #eee;
+        }
+
+        .comparison-table tr:hover {
+          background: #f5f5f5;
+        }
+
+        .navigation {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          display: flex;
+          gap: 15px;
+        }
+
+        .nav-btn {
+          background: white;
+          color: #667eea;
+          border: none;
+          padding: 15px 30px;
+          font-size: 1.2em;
+          border-radius: 50px;
+          cursor: pointer;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s;
+          font-weight: 600;
+        }
+
+        .nav-btn:hover {
+          background: #667eea;
+          color: white;
+          transform: translateY(-2px);
+        }
+
+        .slide-counter {
+          position: fixed;
+          bottom: 30px;
+          left: 30px;
+          background: white;
+          color: #667eea;
+          padding: 10px 20px;
+          border-radius: 50px;
+          font-size: 1.2em;
+          font-weight: 600;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+          .slide {
+            padding: 30px;
+          }
+          .slide h1 {
+            font-size: 2em;
+          }
+          .slide h2 {
+            font-size: 1.8em;
+          }
+          .element-grid {
+            grid-template-columns: 1fr;
+          }
+          .revenue-models {
+            grid-template-columns: 1fr;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="presentation">
+        <!-- Slide 1: Naslovnica -->
+        <div class="slide active">
+          <h1>💼 POSLOVNI MODELI</h1>
+          <p class="subtitle">Tjedan 4: Kako zarađuju online tvrtke?</p>
+          <div class="highlight" style="margin-top: 80px; text-align: center">
+            <h3>🎯 Ključno pitanje:</h3>
+            <p style="font-size: 1.8em; font-weight: 600">
+              Kako pretvoriti ideju u novac?
+            </p>
+          </div>
+        </div>
+        <!-- Slide 2: Što je poslovni model? -->
+        <div class="slide">
+          <h2>🤔 Što je poslovni model?</h2>
+
+          <p>
+            <strong>Poslovni model</strong> je plan kako će tvrtka
+            <strong>kreirati</strong>, <strong>isporučiti</strong> i
+            <strong>uhvatiti vrijednost</strong>.
+          </p>
+
+          <div class="highlight">
+            <h3>Jednostavno rečeno:</h3>
+            <p><strong>Poslovni model odgovara na 3 pitanja:</strong></p>
+            <ul style="margin-left: 30px; color: #2c3e50">
+              <li>💡 <strong>Što prodajete?</strong> (vrijednosna ponuda)</li>
+              <li>👥 <strong>Kome prodajete?</strong> (tržišni segment)</li>
+              <li>💰 <strong>Kako zarađujete?</strong> (prihodni model)</li>
+            </ul>
+          </div>
+
+          <div class="case-study">
+            <h3>🎬 Primjer: Netflix</h3>
+            <p>
+              <strong>Što?</strong> Streaming serija i filmova<br />
+              <strong>Kome?</strong> Svima koji vole gledati sadržaj bez
+              reklama<br />
+              <strong>Kako zarađuju?</strong> Mjesečna pretplata (€7.99 -
+              €17.99)
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 3: 8 ključnih elemenata -->
+        <div class="slide">
+          <h2>🔑 8 Ključnih elemenata poslovnog modela</h2>
+
+          <div class="element-grid">
+            <div class="element-card">
+              <div class="element-number">1</div>
+              <h4>Vrijednosna ponuda</h4>
+              <p>Što rješava problem kupca?</p>
+            </div>
+            <div class="element-card">
+              <div class="element-number">2</div>
+              <h4>Prihodni model</h4>
+              <p>Kako zarađujete novac?</p>
+            </div>
+            <div class="element-card">
+              <div class="element-number">3</div>
+              <h4>Tržišna prilika</h4>
+              <p>Koliko je tržište veliko?</p>
+            </div>
+            <div class="element-card">
+              <div class="element-number">4</div>
+              <h4>Konkurentsko okruženje</h4>
+              <p>Tko su vaši rivali?</p>
+            </div>
+            <div class="element-card">
+              <div class="element-number">5</div>
+              <h4>Konkurentska prednost</h4>
+              <p>Zašto baš vi?</p>
+            </div>
+            <div class="element-card">
+              <div class="element-number">6</div>
+              <h4>Tržišna strategija</h4>
+              <p>Kako privlačite kupce?</p>
+            </div>
+            <div class="element-card">
+              <div class="element-number">7</div>
+              <h4>Organizacijski razvoj</h4>
+              <p>Tko radi što u timu?</p>
+            </div>
+            <div class="element-card">
+              <div class="element-number">8</div>
+              <h4>Tim za upravljanje</h4>
+              <p>Tko vodi tvrtku?</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4: Vrijednosna ponuda -->
+        <div class="slide">
+          <h2>💎 Vrijednosna ponuda (Value Proposition)</h2>
+
+          <p>
+            <strong>Najvažniji element!</strong> Zašto bi kupac odabrao baš vas?
+          </p>
+
+          <h3>Dobar value proposition mora biti:</h3>
+          <ul>
+            <li>🎯 <strong>Specifičan</strong> - jasno što nudite</li>
+            <li>🔥 <strong>Relevantan</strong> - rješava stvarni problem</li>
+            <li>
+              ⚡ <strong>Jedinstven</strong> - nešto što konkurencija ne nudi
+            </li>
+            <li>
+              💪 <strong>Uvjerljiv</strong> - zašto je vaše rješenje najbolje
+            </li>
+          </ul>
+
+          <div class="highlight">
+            <h3>✅ DOBRI primjeri:</h3>
+            <p>
+              <strong>Uber:</strong> "Vožnja na klik - bez čekanja taksija"<br />
+              <strong>Spotify:</strong> "Milijuni pjesama, bez oglasa, za
+              €10/mj"<br />
+              <strong>Canva:</strong> "Profesionalni dizajn bez znanja
+              Photoshopa"
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h3>❌ LOŠ primjer:</h3>
+            <p>
+              "Mi smo najbolji web shop za kupovinu proizvoda online"<br />
+              <strong>Zašto je loš?</strong> Nije specifično, nema jedinstvene
+              vrijednosti.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 5: Prihodni modeli -->
+        <div class="slide">
+          <h2>💰 Prihodni modeli - Kako zarađivati?</h2>
+
+          <div class="revenue-models">
+            <div class="revenue-card">
+              <div class="revenue-icon">💳</div>
+              <h4>Prodaja</h4>
+              <p>Direktna prodaja proizvoda (Amazon)</p>
+            </div>
+            <div class="revenue-card">
+              <div class="revenue-icon">🔄</div>
+              <h4>Pretplata</h4>
+              <p>Mjesečna/godišnja naknada (Netflix, Spotify)</p>
+            </div>
+            <div class="revenue-card">
+              <div class="revenue-icon">📢</div>
+              <h4>Oglašavanje</h4>
+              <p>
+                Besplatno za korisnike, plaćaju oglašivači (Google, Facebook)
+              </p>
+            </div>
+            <div class="revenue-card">
+              <div class="revenue-icon">💼</div>
+              <h4>Komisija</h4>
+              <p>Postotak od transakcije (Uber, Airbnb, Njuškalo)</p>
+            </div>
+            <div class="revenue-card">
+              <div class="revenue-icon">🎁</div>
+              <h4>Freemium</h4>
+              <p>
+                Osnovno besplatno, napredne funkcije plaćaju (Canva, Dropbox)
+              </p>
+            </div>
+            <div class="revenue-card">
+              <div class="revenue-icon">🔐</div>
+              <h4>Licenciranje</h4>
+              <p>Prodaja softvera ili prava korištenja (Microsoft, Adobe)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 6: Usporedba modela -->
+        <div class="slide">
+          <h2>⚖️ Usporedba prihodnih modela</h2>
+
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Prednosti</th>
+                <th>Nedostaci</th>
+                <th>Primjer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Pretplata</strong></td>
+                <td>Stabilan prihod, predvidivo</td>
+                <td>Teško zadržati korisnike</td>
+                <td>Netflix</td>
+              </tr>
+              <tr>
+                <td><strong>Oglašavanje</strong></td>
+                <td>Besplatno za korisnike, skalabilno</td>
+                <td>Ovisi o broju korisnika</td>
+                <td>YouTube</td>
+              </tr>
+              <tr>
+                <td><strong>Komisija</strong></td>
+                <td>Zarada samo kad netko kupi</td>
+                <td>Niska marža</td>
+                <td>Uber</td>
+              </tr>
+              <tr>
+                <td><strong>Freemium</strong></td>
+                <td>Brzo raste baza korisnika</td>
+                <td>Malo ljudi prelazi na plaćeno</td>
+                <td>Spotify</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Slide 7: Case Study - Canva -->
+        <div class="slide">
+          <h3>🎨 Case Study: Canva - Od startupa do "super jednoroga"</h3>
+
+          <div class="case-study">
+            <h3>📊 Osnovni podaci:</h3>
+            <ul style="margin-left: 20px">
+              <li><strong>Osnovan:</strong> 2012. u Australiji</li>
+              <li>
+                <strong>Osnivači:</strong> Melanie Perkins, Cliff Obrecht,
+                Cameron Adams
+              </li>
+              <li><strong>Vrijednost danas:</strong> 26 milijardi dolara 🚀</li>
+              <li><strong>Korisnika:</strong> 150+ milijuna</li>
+            </ul>
+          </div>
+
+          <h3>💎 Vrijednosna ponuda:</h3>
+          <p>"Dizajn za sve - bez znanja Photoshopa"</p>
+
+          <h3>💰 Prihodni model: Freemium</h3>
+          <ul>
+            <li>
+              ✅ <strong>Canva Free</strong> - osnovne funkcije, besplatno
+            </li>
+            <li>
+              ⭐ <strong>Canva Pro</strong> - €12.99/mj (premium predlošci,
+              brand kit)
+            </li>
+            <li>
+              🏢 <strong>Canva Enterprise</strong> - za tvrtke, custom cijena
+            </li>
+          </ul>
+
+          <div class="highlight">
+            <h3>🎯 Ključ uspjeha:</h3>
+            <p>
+              95% funkcija je besplatno → privukli 150M korisnika<br />
+              Samo 3% prelazi na Pro → ali to je 4.5M × €12.99 = €58M mjesečno!
+              💰
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 8: Tržišna prilika -->
+        <div class="slide">
+          <h2>📈 Tržišna prilika - Koliko je tržište veliko?</h2>
+
+          <p>
+            Prije nego pokrenete biznis, morate znati
+            <strong>veličinu tržišta</strong>:
+          </p>
+
+          <h3>3 ključne metrike:</h3>
+          <ul>
+            <li>
+              <strong>TAM</strong> (Total Addressable Market) - ukupno
+              tržište<br />
+              <em
+                >Primjer: Svi ljudi na svijetu koji mogu koristiti dizajn
+                softver</em
+              >
+            </li>
+
+            <li>
+              <strong>SAM</strong> (Serviceable Available Market) - dostižno
+              tržište<br />
+              <em
+                >Primjer: Ljudi koji koriste internet i trebaju dizajn alate</em
+              >
+            </li>
+
+            <li>
+              <strong>SOM</strong> (Serviceable Obtainable Market) - realno
+              dostižno<br />
+              <em>Primjer: Koliko Canva realno može osvojiti u 5 godina</em>
+            </li>
+          </ul>
+
+          <div class="highlight">
+            <h3>💡 Pravilo:</h3>
+            <p>
+              Ako je tržište premalo (< 1 milijarda €), teško će privući
+              investitore.<br />
+              Ako je preveliko i prezasićeno, teško se probiti.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 9: Crowdfunding -->
+        <div class="slide">
+          <h2>💸 Crowdfunding - Financiranje od "gomile"</h2>
+
+          <p>
+            <strong>Crowdfunding</strong> = prikupljanje novca od velikog broja
+            ljudi (obično online).
+          </p>
+
+          <h3>Platforme:</h3>
+          <ul>
+            <li>🎯 <strong>Kickstarter</strong> - za proizvode i projekte</li>
+            <li>💡 <strong>Indiegogo</strong> - fleksibilnije pravila</li>
+            <li>
+              🎮 <strong>Patreon</strong> - za kreatore (mjesečna podrška)
+            </li>
+            <li>
+              🏠 <strong>GoFundMe</strong> - za osobne potrebe i dobrotvorne
+              svrhe
+            </li>
+          </ul>
+
+          <div class="case-study">
+            <h3>🎮 Uspješni primjer: Pebble Watch</h3>
+            <p>
+              <strong>Cilj:</strong> $100,000<br />
+              <strong>Prikupljeno:</strong> $10,266,845 (10.000% cilja!) 🤯<br />
+              <strong>Backed by:</strong> 68,929 ljudi
+            </p>
+          </div>
+
+          <h3>✅ Prednosti crowdfundinga:</h3>
+          <ul>
+            <li>Testiranje ideje prije investicije</li>
+            <li>Izgradnja zajednice fanova</li>
+            <li>Marketing i PR besplatno</li>
+          </ul>
+        </div>
+
+        <!-- Slide 10: Praktična vježba -->
+        <div class="slide">
+          <h2>🎯 Praktična vježba - Kreirajte poslovni model!</h2>
+
+          <div class="highlight">
+            <h3>📝 Zadatak (20 minuta):</h3>
+            <p>
+              U parovima, osmislite jednostavan poslovni model za jedan od ovih
+              scenarija:
+            </p>
+          </div>
+          <h3>Scenario 1: 🍕 Dostava hrane za studente</h3>
+          <p style="margin-left: 20px">
+            Problem: Restorani ne dostavljaju kasno navečer, a studenti su
+            gladni!
+          </p>
+
+          <h3>Scenario 2: 👗 Iznajmljivanje odjeće za posebne prilike</h3>
+          <p style="margin-left: 20px">
+            Problem: Skupo kupovati odjeću koju ćeš nositi samo jednom!
+          </p>
+
+          <h3>Scenario 3: 📚 Razmjena udžbenika</h3>
+          <p style="margin-left: 20px">
+            Problem: Novi udžbenici su preskupi, a stari završe u ormaru!
+          </p>
+
+          <h3>Za odabrani scenario definirajte:</h3>
+          <ol style="margin-left: 40px; font-size: 1.2em">
+            <li>💎 Vrijednosna ponuda</li>
+            <li>👥 Tko su kupci?</li>
+            <li>💰 Prihodni model</li>
+            <li>📈 Veličina tržišta (procjena)</li>
+          </ol>
+        </div>
+
+        <!-- Slide 11: Domaća zadaća -->
+        <div class="slide">
+          <h2>📚 Domaća zadaća za Tjedan 5</h2>
+
+          <div class="highlight">
+            <h3>📝 Zadatak: Analiza poslovnog modela</h3>
+            <p>
+              Odaberite JEDNU online tvrtku koja vam se sviđa i napravite
+              detaljnu analizu.
+            </p>
+          </div>
+
+          <h3>Obavezni elementi analize:</h3>
+          <ol style="margin-left: 40px; font-size: 1.3em; line-height: 1.8">
+            <li>
+              <strong>Osnovno o tvrtki</strong> (kada osnovana, gdje, osnivači)
+            </li>
+            <li><strong>Vrijednosna ponuda</strong> - što nude i kome?</li>
+            <li><strong>Prihodni model</strong> - kako zarađuju?</li>
+            <li>
+              <strong>Tržište</strong> - koliko je veliko, tko su konkurenti?
+            </li>
+            <li>
+              <strong>Vaša procjena</strong> - hoće li opstati za 5 godina?
+              Zašto?
+            </li>
+          </ol>
+
+          <p style="margin-top: 40px; font-size: 1.3em">
+            <strong>Format:</strong> Word/PDF, 3-4 stranice<br />
+            <strong>Dodajte:</strong> Slike, logotip, screenshotove<br />
+            <strong>Rok:</strong> Do sljedećeg tjedna<br />
+            <strong>Bodovi:</strong> Max 15 bodova
+          </p>
+        </div>
+
+        <!-- Slide 12: Što slijedi? -->
+        <div class="slide">
+          <h2>🎯 Što nas čeka sljedeći tjedan?</h2>
+
+          <h3>📅 Tjedan 5: Poslovni modeli B2C</h3>
+          <ul>
+            <li>🛒 <strong>E-tailer</strong> - online trgovci (Amazon)</li>
+            <li>👥 <strong>Community provider</strong> - društvene mreže</li>
+            <li>📰 <strong>Content provider</strong> - Netflix, Spotify</li>
+            <li>🌐 <strong>Portal</strong> - Yahoo, Google</li>
+            <li>💳 <strong>Transaction broker</strong> - PayPal, Booking</li>
+          </ul>
+
+          <div class="highlight" style="margin-top: 40px">
+            <h3>🎓 Pripremite se!</h3>
+            <p>
+              Razmislite koje od ovih kategorija koristite svakodnevno?<br />
+              Koji je vaš omiljeni B2C poslovni model i zašto?
+            </p>
+          </div>
+
+          <p style="margin-top: 50px; font-size: 1.5em">
+            Vidimo se sljedeći tjedan! 👋
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">12</span>
+      </div>
+
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevSlide()">← Prethodni</button>
+        <button class="nav-btn" onclick="nextSlide()">Sljedeći →</button>
+      </div>
+      <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+        const total = slides.length;
+
+        document.getElementById("total").textContent = total;
+
+        function showSlide(n) {
+          slides[currentSlide].classList.remove("active");
+          currentSlide = (n + total) % total;
+          slides[currentSlide].classList.add("active");
+          document.getElementById("current").textContent = currentSlide + 1;
+        }
+
+        function nextSlide() {
+          showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+          showSlide(currentSlide - 1);
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight") nextSlide();
+          if (e.key === "ArrowLeft") prevSlide();
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener("touchend", (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 50) nextSlide();
+          if (touchEndX - touchStartX > 50) prevSlide();
+        });
+      </script>
+    </body>
+  </html>
+</artifact>

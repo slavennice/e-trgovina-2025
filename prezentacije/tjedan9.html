@@ -1,0 +1,1268 @@
+<artifact
+  identifier="tjedan9-prezentacija"
+  type="text/html"
+  title="Tjedan 9: Cloud computing i mobilne platforme"
+>
+  <!DOCTYPE html>
+  <html lang="hr">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Tjedan 9: Cloud computing i mobilne platforme</title>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body {
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          overflow: hidden;
+          height: 100vh;
+        }
+
+        .presentation {
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .slide {
+          background: white;
+          width: 90%;
+          max-width: 1200px;
+          height: 85vh;
+          border-radius: 20px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          padding: 60px;
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          animation: slideIn 0.5s ease;
+          overflow-y: auto;
+        }
+
+        .slide.active {
+          display: flex;
+        }
+
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .slide h1 {
+          font-size: 3.5em;
+          color: #667eea;
+          margin-bottom: 20px;
+          font-weight: 700;
+        }
+
+        .slide h2 {
+          font-size: 2.5em;
+          color: #333;
+          margin-bottom: 30px;
+          font-weight: 600;
+        }
+
+        .slide h3 {
+          font-size: 1.8em;
+          color: #667eea;
+          margin: 30px 0 20px 0;
+        }
+
+        .slide p {
+          font-size: 1.4em;
+          color: #555;
+          line-height: 1.8;
+          margin-bottom: 20px;
+        }
+
+        .slide ul {
+          font-size: 1.3em;
+          color: #555;
+          line-height: 2;
+          margin-left: 40px;
+        }
+
+        .slide li {
+          margin-bottom: 15px;
+        }
+
+        .subtitle {
+          font-size: 1.8em;
+          color: #764ba2;
+          margin-top: 20px;
+        }
+
+        .highlight {
+          background: linear-gradient(120deg, #ffecd2 0%, #fcb69f 100%);
+          padding: 30px;
+          border-radius: 15px;
+          margin: 20px 0;
+        }
+
+        .highlight h3 {
+          color: #2c3e50;
+          margin: 0 0 15px 0;
+        }
+
+        .highlight p {
+          color: #2c3e50;
+          font-size: 1.2em;
+        }
+
+        .case-study {
+          background: #f8f9fa;
+          border-left: 5px solid #667eea;
+          padding: 30px;
+          border-radius: 10px;
+          margin: 20px 0;
+        }
+
+        .cloud-models {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+          margin-top: 30px;
+        }
+
+        .cloud-card {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          padding: 30px;
+          border-radius: 15px;
+          color: white;
+          text-align: center;
+          transition: transform 0.3s;
+        }
+
+        .cloud-card:hover {
+          transform: translateY(-10px);
+        }
+
+        .cloud-icon {
+          font-size: 3em;
+          margin-bottom: 15px;
+        }
+
+        .cloud-card h4 {
+          font-size: 1.5em;
+          margin-bottom: 15px;
+        }
+
+        .cloud-card p {
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 1em;
+        }
+
+        .provider-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 25px;
+          margin-top: 30px;
+        }
+
+        .provider-card {
+          background: white;
+          border: 3px solid #667eea;
+          padding: 30px;
+          border-radius: 15px;
+          text-align: center;
+          transition: all 0.3s;
+        }
+
+        .provider-card:hover {
+          background: #667eea;
+          color: white;
+          transform: translateY(-5px);
+        }
+
+        .provider-card:hover h4,
+        .provider-card:hover p {
+          color: white;
+        }
+
+        .provider-logo {
+          font-size: 3.5em;
+          margin-bottom: 15px;
+        }
+
+        .provider-card h4 {
+          color: #667eea;
+          font-size: 1.6em;
+          margin-bottom: 15px;
+        }
+
+        .provider-card p {
+          color: #555;
+          font-size: 1.1em;
+        }
+
+        .comparison-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 20px 0;
+          font-size: 1.1em;
+        }
+
+        .comparison-table th {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 15px;
+          text-align: left;
+        }
+
+        .comparison-table td {
+          padding: 15px;
+          border-bottom: 2px solid #eee;
+        }
+
+        .comparison-table tr:hover {
+          background: #f5f5f5;
+        }
+
+        .mobile-comparison {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 25px;
+          margin-top: 30px;
+        }
+
+        .mobile-card {
+          background: #f8f9fa;
+          border: 3px solid #667eea;
+          padding: 30px;
+          border-radius: 15px;
+        }
+
+        .mobile-card h4 {
+          color: #667eea;
+          font-size: 1.6em;
+          margin-bottom: 20px;
+          text-align: center;
+        }
+
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+          margin-top: 30px;
+        }
+
+        .stat-box {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 30px;
+          border-radius: 15px;
+          text-align: center;
+        }
+
+        .stat-number {
+          font-size: 3em;
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+
+        .stat-label {
+          font-size: 1.1em;
+          opacity: 0.9;
+        }
+
+        .navigation {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          display: flex;
+          gap: 15px;
+        }
+
+        .nav-btn {
+          background: white;
+          color: #667eea;
+          border: none;
+          padding: 15px 30px;
+          font-size: 1.2em;
+          border-radius: 50px;
+          cursor: pointer;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s;
+          font-weight: 600;
+        }
+
+        .nav-btn:hover {
+          background: #667eea;
+          color: white;
+          transform: translateY(-2px);
+        }
+
+        .slide-counter {
+          position: fixed;
+          bottom: 30px;
+          left: 30px;
+          background: white;
+          color: #667eea;
+          padding: 10px 20px;
+          border-radius: 50px;
+          font-size: 1.2em;
+          font-weight: 600;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+          .slide {
+            padding: 30px;
+          }
+          .slide h1 {
+            font-size: 2em;
+          }
+          .slide h2 {
+            font-size: 1.8em;
+          }
+          .cloud-models {
+            grid-template-columns: 1fr;
+          }
+          .provider-grid {
+            grid-template-columns: 1fr;
+          }
+          .mobile-comparison {
+            grid-template-columns: 1fr;
+          }
+          .stats-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="presentation">
+        <!-- Slide 1: Naslovnica -->
+        <div class="slide active">
+          <h1>☁️ CLOUD COMPUTING</h1>
+          <p class="subtitle">Tjedan 9: Cloud i mobilne platforme</p>
+          <div class="stats-grid" style="margin-top: 80px">
+            <div class="stat-box">
+              <div class="stat-number">$500B</div>
+              <div class="stat-label">Cloud tržište 2023</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">94%</div>
+              <div class="stat-label">Tvrtki koristi cloud</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">6.8B</div>
+              <div class="stat-label">Smartphone korisnika</div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2: Što je Cloud Computing? -->
+        <div class="slide">
+          <h2>☁️ Što je Cloud Computing?</h2>
+
+          <p>
+            <strong>Cloud computing</strong> = korištenje računalnih resursa
+            (serveri, storage, baze podataka, software) preko interneta umjesto
+            na vlastitom računalu.
+          </p>
+
+          <div class="highlight">
+            <h3>🎯 Jednostavna analogija:</h3>
+            <p>
+              <strong>Prije cloud-a:</strong> Imali ste vlastiti generator
+              struje u kući<br />
+              <strong>S cloud-om:</strong> Kupujete struju iz mreže (plaćate
+              samo što potrošite)
+            </p>
+          </div>
+
+          <h3>Ključne karakteristike:</h3>
+          <ul>
+            <li>
+              📱 <strong>On-demand self-service</strong> - pokreni server u 2
+              klika
+            </li>
+            <li>
+              🌍 <strong>Broad network access</strong> - pristup s bilo kojeg
+              uređaja
+            </li>
+            <li>
+              🔄 <strong>Resource pooling</strong> - dijeljeni resursi između
+              korisnika
+            </li>
+            <li>
+              ⚡ <strong>Rapid elasticity</strong> - automatsko skaliranje
+              gore/dolje
+            </li>
+            <li>
+              📊 <strong>Measured service</strong> - plaćate samo što koristite
+            </li>
+          </ul>
+
+          <div class="case-study" style="margin-top: 30px">
+            <h3>💡 Primjer: Netflix</h3>
+            <p>
+              Netflix NE posjeduje nijedan server!<br />
+              Sve njihove serije i filmovi su na
+              <strong>AWS (Amazon Web Services)</strong> cloud-u.<br />
+              Kada mnogo ljudi gleda u večernjim satima → automatski se pokrenu
+              dodatni serveri.<br />
+              Kad promet padne → serveri se gase → Netflix plaća manje.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 3: Tri modela cloud servisa -->
+        <div class="slide">
+          <h2>🏗️ Tri modela cloud servisa</h2>
+
+          <div class="cloud-models">
+            <div class="cloud-card">
+              <div class="cloud-icon">🖥️</div>
+              <h4>IaaS</h4>
+              <p><strong>Infrastructure as a Service</strong></p>
+              <p style="margin-top: 15px">
+                Iznajmite virtualne servere, storage, mreže
+              </p>
+              <p style="margin-top: 10px; font-weight: 600">
+                Primjer: AWS EC2, Azure VMs
+              </p>
+            </div>
+
+            <div
+              class="cloud-card"
+              style="
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+              "
+            >
+              <div class="cloud-icon">🔧</div>
+              <h4>PaaS</h4>
+              <p><strong>Platform as a Service</strong></p>
+              <p style="margin-top: 15px">
+                Platforma za razvoj aplikacija (ne brinete o serverima)
+              </p>
+              <p style="margin-top: 10px; font-weight: 600">
+                Primjer: Heroku, Google App Engine
+              </p>
+            </div>
+
+            <div
+              class="cloud-card"
+              style="
+                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+              "
+            >
+              <div class="cloud-icon">📱</div>
+              <h4>SaaS</h4>
+              <p><strong>Software as a Service</strong></p>
+              <p style="margin-top: 15px">
+                Gotova aplikacija dostupna preko weba
+              </p>
+              <p style="margin-top: 10px; font-weight: 600">
+                Primjer: Gmail, Salesforce, Canva
+              </p>
+            </div>
+          </div>
+
+          <div class="highlight" style="margin-top: 40px">
+            <h3>🍕 Pizza analogija:</h3>
+            <p>
+              <strong>IaaS:</strong> Kupite sastojke i sami pravite pizzu kod
+              kuće<br />
+              <strong>PaaS:</strong> Kupite gotovo tijesto i umak, samo stavite
+              preljev<br />
+              <strong>SaaS:</strong> Naručite gotovu pizzu - samo jedite!
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 4: Usporedba modela -->
+        <div class="slide">
+          <h2>⚖️ IaaS vs PaaS vs SaaS</h2>
+
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Što upravljate?</th>
+                <th>IaaS</th>
+                <th>PaaS</th>
+                <th>SaaS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Aplikacija</strong></td>
+                <td>✅ Vi</td>
+                <td>✅ Vi</td>
+                <td>❌ Provider</td>
+              </tr>
+              <tr>
+                <td><strong>Data</strong></td>
+                <td>✅ Vi</td>
+                <td>✅ Vi</td>
+                <td>❌ Provider</td>
+              </tr>
+              <tr>
+                <td><strong>Runtime</strong></td>
+                <td>✅ Vi</td>
+                <td>❌ Provider</td>
+                <td>❌ Provider</td>
+              </tr>
+              <tr>
+                <td><strong>Operating System</strong></td>
+                <td>✅ Vi</td>
+                <td>❌ Provider</td>
+                <td>❌ Provider</td>
+              </tr>
+              <tr>
+                <td><strong>Serveri</strong></td>
+                <td>❌ Provider</td>
+                <td>❌ Provider</td>
+                <td>❌ Provider</td>
+              </tr>
+              <tr>
+                <td><strong>Mreža</strong></td>
+                <td>❌ Provider</td>
+                <td>❌ Provider</td>
+                <td>❌ Provider</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="stats-grid" style="margin-top: 40px">
+            <div class="stat-box">
+              <div class="stat-number">IaaS</div>
+              <div class="stat-label">Najviše kontrole<br />Najviše posla</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">PaaS</div>
+              <div class="stat-label">Balans<br />Fokus na kod</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">SaaS</div>
+              <div class="stat-label">
+                Najmanje kontrole<br />Najmanje posla
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 5: Veliki cloud provideri -->
+        <div class="slide">
+          <h2>🏢 Velika trojka cloud provajdera</h2>
+
+          <div class="provider-grid">
+            <div class="provider-card">
+              <div class="provider-logo">📦</div>
+              <h4>AWS (Amazon)</h4>
+              <p>
+                <strong>Tržišni udio:</strong> 32%<br />
+                <strong>Prihod:</strong> $85B (2023)<br />
+                <strong>Osnovan:</strong> 2006<br />
+                <strong>Klijenti:</strong> Netflix, Airbnb, NASA
+              </p>
+            </div>
+
+            <div class="provider-card">
+              <div class="provider-logo">🪟</div>
+              <h4>Azure (Microsoft)</h4>
+              <p>
+                <strong>Tržišni udio:</strong> 23%<br />
+                <strong>Prihod:</strong> $60B (2023)<br />
+                <strong>Osnovan:</strong> 2010<br />
+                <strong>Klijenti:</strong> BMW, Adobe, eBay
+              </p>
+            </div>
+
+            <div class="provider-card">
+              <div class="provider-logo">🔍</div>
+              <h4>Google Cloud</h4>
+              <p>
+                <strong>Tržišni udio:</strong> 10%<br />
+                <strong>Prihod:</strong> $26B (2023)<br />
+                <strong>Osnovan:</strong> 2008<br />
+                <strong>Klijenti:</strong> Spotify, Snapchat, Twitter
+              </p>
+            </div>
+          </div>
+
+          <div class="highlight" style="margin-top: 40px">
+            <h3>💰 Zašto Amazon dominira?</h3>
+            <p>
+              <strong>First mover advantage:</strong> Počeli 4 godine prije
+              konkurencije<br />
+              <strong>Širina usluga:</strong> 200+ različitih servisa<br />
+              <strong>Iskustvo:</strong> AWS je nastao jer je Amazon trebao
+              cloud za vlastite potrebe
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 6: Case Study - OVHcloud -->
+        <div class="slide">
+          <h2>🔥 Case Study: OVHcloud - Europski challenger</h2>
+
+          <div class="case-study">
+            <h3>📊 O tvrtki:</h3>
+            <ul style="margin-left: 20px; line-height: 1.8">
+              <li><strong>Osnovan:</strong> 1999, Francuska</li>
+              <li>
+                <strong>Pozicija:</strong> Najveći europski cloud provider
+              </li>
+              <li><strong>Serveri:</strong> 400,000+ u 37 data centara</li>
+              <li>
+                <strong>Fokus:</strong> Privatnost podataka (GDPR compliance)
+              </li>
+            </ul>
+          </div>
+
+          <h3>🎯 Strategija:</h3>
+          <ul>
+            <li>💶 <strong>Cijene:</strong> 30-50% jeftinije od AWS/Azure</li>
+            <li>
+              🇪🇺 <strong>Lokacija:</strong> Svi data centri u Europi (GDPR
+              prednost)
+            </li>
+            <li>🔐 <strong>Privatnost:</strong> Podaci ne prelaze u USA</li>
+            <li>
+              🌱 <strong>Sustainability:</strong> 100% obnovljiva energija
+            </li>
+          </ul>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>💡 Lekcija za e-trgovinu:</h3>
+            <p>
+              Ne morate biti NAJBOLJI da uspijete.<br />
+              Možete biti DRUGAČIJI (fokus na privatnost) i osvojiti nišu!
+            </p>
+          </div>
+
+          <div class="case-study" style="margin-top: 20px">
+            <h3>⚠️ Izazov: Požar 2021.</h3>
+            <p>
+              Ožujak 2021. - požar u Strasbourgu uništio je cijeli data
+              centar.<br />
+              Tisuće web stranica offline 24+ sata.<br />
+              <strong>Lekcija:</strong> Multi-region backup je OBAVEZAN!
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 7: Prednosti i nedostaci cloud-a -->
+        <div class="slide">
+          <h2>⚖️ Cloud computing: Za i protiv</h2>
+
+          <div class="mobile-comparison">
+            <div class="mobile-card" style="border-color: #28a745">
+              <h4>✅ PREDNOSTI</h4>
+              <ul style="margin-left: 20px; line-height: 2">
+                <li>
+                  <strong>Niži početni troškovi</strong> - ne kupujete servere
+                </li>
+                <li><strong>Plaćate što koristite</strong> - kao struja</li>
+                <li>
+                  <strong>Brzo skaliranje</strong> - više prometa? Dodaj servere
+                  u minutama
+                </li>
+                <li>
+                  <strong>Automatski backupi</strong> - sigurnost podataka
+                </li>
+                <li><strong>Dostupnost 24/7</strong> - provider održava</li>
+                <li>
+                  <strong>Pristup svugdje</strong> - internet connection =
+                  dovoljno
+                </li>
+                <li><strong>Latest technology</strong> - automatski update</li>
+              </ul>
+            </div>
+
+            <div class="mobile-card" style="border-color: #dc3545">
+              <h4>❌ NEDOSTACI</h4>
+              <ul style="margin-left: 20px; line-height: 2">
+                <li>
+                  <strong>Ovisnost o internetu</strong> - bez interneta =
+                  offline
+                </li>
+                <li>
+                  <strong>Sigurnost podataka</strong> - vjerujete trećoj strani
+                </li>
+                <li>
+                  <strong>Vendor lock-in</strong> - teško preći na drugi
+                  provider
+                </li>
+                <li>
+                  <strong>Potencijalno skup</strong> - za velike workload-e može
+                  biti skuplje od vlastitih servera
+                </li>
+                <li>
+                  <strong>Manje kontrole</strong> - ne možete sve prilagoditi
+                </li>
+                <li>
+                  <strong>Compliance issues</strong> - neki sektori moraju imati
+                  vlastite servere (banke)
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 8: Mobilne platforme -->
+        <div class="slide">
+          <h2>📱 Mobilne platforme</h2>
+
+          <p>Dvije dominantne mobilne platforme kontroliraju tržište:</p>
+
+          <div class="mobile-comparison">
+            <div class="mobile-card" style="border-color: #999">
+              <h4>🍎 iOS (Apple)</h4>
+              <div
+                class="stats-grid"
+                style="grid-template-columns: 1fr 1fr; margin-top: 20px"
+              >
+                <div
+                  class="stat-box"
+                  style="
+                    background: linear-gradient(135deg, #999 0%, #666 100%);
+                  "
+                >
+                  <div class="stat-number">28%</div>
+                  <div class="stat-label">Tržišni udio</div>
+                </div>
+                <div
+                  class="stat-box"
+                  style="
+                    background: linear-gradient(135deg, #999 0%, #666 100%);
+                  "
+                >
+                  <div class="stat-number">1.5B</div>
+                  <div class="stat-label">iPhone korisnika</div>
+                </div>
+              </div>
+              <h4 style="margin-top: 30px; color: #667eea">Karakteristike:</h4>
+              <ul style="margin-left: 20px; line-height: 1.8">
+                <li>Zatvoreni ekosustav</li>
+                <li>Premium segment</li>
+                <li>Striktna App Store pravila</li>
+                <li>Bolja privatnost</li>
+                <li>Razvoj: Swift/Objective-C</li>
+              </ul>
+            </div>
+
+            <div class="mobile-card" style="border-color: #3ddc84">
+              <h4>🤖 Android (Google)</h4>
+              <div
+                class="stats-grid"
+                style="grid-template-columns: 1fr 1fr; margin-top: 20px"
+              >
+                <div
+                  class="stat-box"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #3ddc84 0%,
+                      #2ba05f 100%
+                    );
+                  "
+                >
+                  <div class="stat-number">72%</div>
+                  <div class="stat-label">Tržišni udio</div>
+                </div>
+                <div
+                  class="stat-box"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #3ddc84 0%,
+                      #2ba05f 100%
+                    );
+                  "
+                >
+                  <div class="stat-number">3B+</div>
+                  <div class="stat-label">Android uređaja</div>
+                </div>
+              </div>
+              <h4 style="margin-top: 30px; color: #667eea">Karakteristike:</h4>
+              <ul style="margin-left: 20px; line-height: 1.8">
+                <li>Otvoreni ekosustav</li>
+                <li>Svi cjenovni segmenti</li>
+                <li>Fleksibilniji Play Store</li>
+                <li>Više fragmentacija</li>
+                <li>Razvoj: Kotlin/Java</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 9: iOS vs Android za developere -->
+        <div class="slide">
+          <h2>👨‍💻 iOS vs Android za developere</h2>
+
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Aspekt</th>
+                <th>iOS</th>
+                <th>Android</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Jezik programiranja</strong></td>
+                <td>Swift, Objective-C</td>
+                <td>Kotlin, Java</td>
+              </tr>
+              <tr>
+                <td><strong>Razvojna okolina</strong></td>
+                <td>Xcode (samo Mac)</td>
+                <td>Android Studio (Win/Mac/Linux)</td>
+              </tr>
+              <tr>
+                <td><strong>Testiranje</strong></td>
+                <td>Manji broj uređaja</td>
+                <td>Tisuće različitih uređaja</td>
+              </tr>
+              <tr>
+                <td><strong>App Store</strong></td>
+                <td>Striktan review (1-2 tjedna)</td>
+                <td>Brži review (par sati)</td>
+              </tr>
+              <tr>
+                <td><strong>Godišnja naknada</strong></td>
+                <td>$99/godina</td>
+                <td>$25 jednokratno</td>
+              </tr>
+              <tr>
+                <td><strong>Komisija</strong></td>
+                <td>30% (15% za male developere)</td>
+                <td>30% (15% za male developere)</td>
+              </tr>
+              <tr>
+                <td><strong>Prosječan prihod po korisniku</strong></td>
+                <td>Viši (premium korisnici)</td>
+                <td>Niži (više ad-supported)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>💡 Strategija za e-trgovinu:</h3>
+            <p>
+              <strong>Za premium proizvode:</strong> Fokus na iOS<br />
+              <strong>Za masovno tržište:</strong> Fokus na Android<br />
+              <strong>Za maksimalan doseg:</strong> Razvijajte za OBA!
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 10: 4G vs 5G -->
+        <div class="slide">
+          <h2>📡 4G vs 5G - Nova generacija mobilnih mreža</h2>
+
+          <div class="mobile-comparison">
+            <div class="mobile-card">
+              <h4>4G LTE</h4>
+              <div
+                class="stats-grid"
+                style="grid-template-columns: 1fr; margin: 20px 0"
+              >
+                <div class="stat-box">
+                  <div class="stat-number">100 Mbps</div>
+                  <div class="stat-label">Max brzina download</div>
+                </div>
+                <div class="stat-box">
+                  <div class="stat-number">30-50ms</div>
+                  <div class="stat-label">Latency</div>
+                </div>
+              </div>
+              <p>
+                <strong>Lansiran:</strong> 2009<br />
+                <strong>Dobro za:</strong> Streaming HD videa, online gaming,
+                video pozivi
+              </p>
+            </div>
+            <div class="mobile-card">
+              <h4>5G</h4>
+              <div
+                class="stats-grid"
+                style="grid-template-columns: 1fr; margin: 20px 0"
+              >
+                <div
+                  class="stat-box"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #f093fb 0%,
+                      #f5576c 100%
+                    );
+                  "
+                >
+                  <div class="stat-number">10 Gbps</div>
+                  <div class="stat-label">Max brzina download</div>
+                </div>
+                <div
+                  class="stat-box"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #f093fb 0%,
+                      #f5576c 100%
+                    );
+                  "
+                >
+                  <div class="stat-number">1ms</div>
+                  <div class="stat-label">Latency</div>
+                </div>
+              </div>
+              <p>
+                <strong>Lansiran:</strong> 2019<br />
+                <strong>Dobro za:</strong> AR/VR, autonomna vozila, remote
+                surgery, IoT
+              </p>
+            </div>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>🚀 Što 5G omogućava za e-trgovinu?</h3>
+            <ul style="margin-left: 20px; color: #2c3e50">
+              <li>
+                <strong>AR Shopping:</strong> Virtualno isprobavanje
+                odjeće/namještaja u real-time
+              </li>
+              <li>
+                <strong>Live commerce:</strong> HD live streaming s nultim
+                buffering-om
+              </li>
+              <li><strong>Instant checkout:</strong> Plaćanje u < 100ms</li>
+              <li>
+                <strong>IoT:</strong> Smart refrigerator koji sam naručuje hranu
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Slide 11: Edge Computing -->
+        <div class="slide">
+          <h2>⚡ Edge Computing - Budućnost cloud-a?</h2>
+
+          <p>
+            <strong>Edge computing</strong> = računanje na "rubu" mreže, bliže
+            korisniku, umjesto u centralnom data centru.
+          </p>
+
+          <div class="case-study">
+            <h3>🎯 Problem s cloud-om:</h3>
+            <p>
+              Vaš zahtjev mora putovati do data centra (možda u drugoj zemlji) i
+              natrag.<br />
+              <strong>Latency:</strong> 50-100ms ili više<br />
+              <strong>Problem za:</strong> Autonomna vozila, VR, gaming, IoT
+            </p>
+          </div>
+
+          <div class="case-study" style="margin-top: 20px">
+            <h3>✅ Rješenje - Edge Computing:</h3>
+            <p>
+              Računanje se obavlja na lokalnom serveru ili čak na samom
+              uređaju.<br />
+              <strong>Latency:</strong> 1-5ms<br />
+              <strong>Primjer:</strong> Tesla Autopilot - sve odluke se donose u
+              automobilu, ne u cloud-u!
+            </p>
+          </div>
+
+          <h3 style="margin-top: 30px">Primjene u e-trgovini:</h3>
+          <ul>
+            <li>
+              🛒 <strong>Smart stores:</strong> Kamere procesiraju video lokalno
+              (Amazon Go)
+            </li>
+            <li>
+              📱 <strong>Personalizacija:</strong> AI preporuke računaju se na
+              uređaju
+            </li>
+            <li>
+              🎮 <strong>Cloud gaming:</strong> Edge serveri streaming igre s
+              minimalnom latency
+            </li>
+            <li>
+              📦 <strong>Logistics:</strong> Real-time tracking dronova i
+              robotskih vozila
+            </li>
+          </ul>
+        </div>
+
+        <!-- Slide 12: Case Study - Zoom -->
+        <div class="slide">
+          <h2>💬 Case Study: Zoom nastavlja s radom</h2>
+
+          <div class="case-study">
+            <h3>📊 COVID-19 eksplozija:</h3>
+            <ul style="margin-left: 20px; line-height: 1.8">
+              <li>
+                <strong>Prosinac 2019:</strong> 10 milijuna dnevno aktivnih
+                korisnika
+              </li>
+              <li>
+                <strong>Travanj 2020:</strong> 300 milijuna dnevno aktivnih
+                korisnika
+              </li>
+              <li><strong>Rast:</strong> 3000% u 4 mjeseca! 📈</li>
+            </ul>
+          </div>
+
+          <h3>🔧 Kako su preživjeli?</h3>
+          <ul>
+            <li>
+              ☁️ <strong>Multi-cloud strategija:</strong> AWS + Azure + Oracle
+              Cloud
+            </li>
+            <li>
+              🌍 <strong>Geografska distribucija:</strong> 17 data centara širom
+              svijeta
+            </li>
+            <li>
+              ⚡ <strong>Auto-scaling:</strong> Automatsko dodavanje servera po
+              potrebi
+            </li>
+            <li>
+              📊 <strong>Load balancing:</strong> Pametna raspodjela video
+              prometa
+            </li>
+            <li>
+              🎬 <strong>Optimizacija:</strong> Kompresija videa, adaptive
+              quality
+            </li>
+          </ul>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>💡 Lekcija:</h3>
+            <p>
+              Cloud omogućava <strong>elastičnost</strong> koju vlastiti serveri
+              ne mogu pružiti.<br />
+              Zoom je dodao kapacitet za 290 milijuna korisnika u
+              <strong>tjednima</strong>, ne godinama!
+            </p>
+          </div>
+
+          <div class="stats-grid" style="margin-top: 30px">
+            <div class="stat-box">
+              <div class="stat-number">$4B</div>
+              <div class="stat-label">Zoom prihod 2021</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">3.3T</div>
+              <div class="stat-label">Minuta meetinga (2021)</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">↑ 326%</div>
+              <div class="stat-label">Rast prihoda YoY</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 13: Praktična vježba -->
+        <div class="slide">
+          <h2>🔧 Praktična vježba</h2>
+
+          <div class="highlight">
+            <h3>💻 Zadatak 1: Isprobajte cloud besplatno!</h3>
+            <ol style="margin-left: 20px; color: #2c3e50; line-height: 1.8">
+              <li>Idite na: <strong>https://aws.amazon.com/free/</strong></li>
+              <li>
+                Kreirajte besplatni AWS račun (Free Tier - 12 mjeseci besplatno)
+              </li>
+              <li>Pokrenite EC2 instancu (virtualni server)</li>
+              <li>Instalirajte web server (Apache/Nginx)</li>
+              <li>Postavite jednostavnu HTML stranicu</li>
+            </ol>
+            <p style="margin-top: 15px; color: #2c3e50">
+              <strong>NAPOMENA:</strong> Trebat će vam kreditna kartica za
+              verifikaciju, ali NEĆE se naplatiti ništa!
+            </p>
+          </div>
+
+          <div class="highlight" style="margin-top: 20px">
+            <h3>💻 Zadatak 2: Usporedite brzinu mreže</h3>
+            <ol style="margin-left: 20px; color: #2c3e50; line-height: 1.8">
+              <li>Testirajte internet brzinu na WiFi (speedtest.net)</li>
+              <li>Testirajte brzinu na 4G/5G mobilnim podacima</li>
+              <li>Usporedite rezultate: Download, Upload, Ping</li>
+              <li>Koja konekcija ima bolju latency? Zašto?</li>
+            </ol>
+          </div>
+
+          <div class="highlight" style="margin-top: 20px">
+            <h3>💻 Zadatak 3: Istražite cloud pricing</h3>
+            <p style="color: #2c3e50">
+              Idite na AWS pricing calculator i izračunajte mjesečni trošak za
+              web shop s:<br />
+              • 2 EC2 servera (t3.medium)<br />
+              • 500GB storage<br />
+              • 1TB mjesečnog prometa<br />
+              <br />
+              <strong>Koliko bi vas koštalo?</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 14: Domaća zadaća -->
+        <div class="slide">
+          <h2>📚 Domaća zadaća za Tjedan 10</h2>
+
+          <div class="highlight">
+            <h3>📝 Zadatak: Komparativna analiza cloud provajdera</h3>
+            <p>Usporedite AWS, Azure i Google Cloud za specifičan use case.</p>
+          </div>
+
+          <h3>Odaberite jedan scenario:</h3>
+          <div class="cloud-models" style="margin-top: 20px">
+            <div class="cloud-card">
+              <h4>Scenario 1</h4>
+              <p>Startup web shop (10,000 posjeta/dan)</p>
+            </div>
+            <div
+              class="cloud-card"
+              style="
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+              "
+            >
+              <h4>Scenario 2</h4>
+              <p>Video streaming platforma (kao Netflix)</p>
+            </div>
+            <div
+              class="cloud-card"
+              style="
+                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+              "
+            >
+              <h4>Scenario 3</h4>
+              <p>Mobile gaming backend</p>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 40px">Analiza mora sadržavati:</h3>
+          <ul>
+            <li>
+              💰 <strong>Cijene:</strong> Mjesečni trošak za svaki provider
+            </li>
+            <li>
+              ⚡ <strong>Performanse:</strong> Brzina, latency, dostupnost
+            </li>
+            <li>
+              🔧 <strong>Servisi:</strong> Koje specifične servise svaki nudi?
+            </li>
+            <li>📊 <strong>Usporedna tablica</strong></li>
+            <li>🎯 <strong>Preporuka:</strong> Koji biste odabrali i zašto?</li>
+          </ul>
+
+          <p style="margin-top: 30px; font-size: 1.3em">
+            <strong>Format:</strong> Word/PDF, 3-4 stranice<br />
+            <strong>Rok:</strong> Do sljedećeg tjedna<br />
+            <strong>Bodovi:</strong> Max 15 bodova
+          </p>
+        </div>
+
+        <!-- Slide 15: Što slijedi? -->
+        <div class="slide">
+          <h2>🎯 Što nas čeka sljedeći tjedan?</h2>
+
+          <h3>📅 Tjedan 10: Web tehnologije i tražilice</h3>
+          <ul style="font-size: 1.3em; line-height: 2">
+            <li>🌐 <strong>Web 2.0 vs Web3:</strong> Evolucija weba</li>
+            <li>🔍 <strong>Kako rade tražilice:</strong> Google algoritam</li>
+            <li>🎨 <strong>SEO osnove:</strong> Kako biti prvi na Googleu?</li>
+            <li>
+              📱 <strong>PWA (Progressive Web Apps):</strong> Najbolje od oba
+              svijeta
+            </li>
+            <li>
+              🦾 <strong>AI asistenti:</strong> Alexa, Siri, Google Assistant
+            </li>
+            <li>
+              🥽 <strong>VR, AR i Metaverzum:</strong> Budućnost e-trgovine?
+            </li>
+          </ul>
+
+          <div class="case-study" style="margin-top: 40px">
+            <h3>📖 Za čitanje kroz tjedan:</h3>
+            <p>
+              <strong>Think with Google:</strong> "How search works"<br />
+              <strong>Article:</strong> "What is Web3?" (Wired)<br />
+              <strong>Video:</strong> "How Google Search really works" (YouTube)
+            </p>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>💡 Priprema za sljedeći tjedan:</h3>
+            <p>
+              Razmislite: Kako ste vi pronašli ovu prezentaciju?<br />
+              Koja je zadnja stvar koju ste guglali danas?<br />
+              Kako Google odlučuje koji rezultat pokazati prvi?
+            </p>
+          </div>
+
+          <p style="margin-top: 50px; font-size: 1.5em; text-align: center">
+            Vidimo se sljedeći tjedan! 👋
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">15</span>
+      </div>
+
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevSlide()">← Prethodni</button>
+        <button class="nav-btn" onclick="nextSlide()">Sljedeći →</button>
+      </div>
+
+      <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+        const total = slides.length;
+
+        document.getElementById("total").textContent = total;
+
+        function showSlide(n) {
+          slides[currentSlide].classList.remove("active");
+          currentSlide = (n + total) % total;
+          slides[currentSlide].classList.add("active");
+          document.getElementById("current").textContent = currentSlide + 1;
+        }
+
+        function nextSlide() {
+          showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+          showSlide(currentSlide - 1);
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight") nextSlide();
+          if (e.key === "ArrowLeft") prevSlide();
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener("touchend", (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 50) nextSlide();
+          if (touchEndX - touchStartX > 50) prevSlide();
+        });
+      </script>
+    </body>
+  </html>
+</artifact>

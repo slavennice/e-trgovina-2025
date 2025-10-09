@@ -1,0 +1,514 @@
+<artifact
+  identifier="tjedan1-prezentacija"
+  type="text/html"
+  title="Tjedan 1: Uvod u e-trgovinu - Prezentacija"
+>
+  <!DOCTYPE html>
+  <html lang="hr">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Tjedan 1: Uvod u e-trgovinu</title>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body {
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          overflow: hidden;
+          height: 100vh;
+        }
+
+        .presentation {
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+        }
+
+        .slide {
+          background: white;
+          width: 90%;
+          max-width: 1200px;
+          height: 85vh;
+          border-radius: 20px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          padding: 60px;
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          animation: slideIn 0.5s ease;
+        }
+
+        .slide.active {
+          display: flex;
+        }
+
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .slide h1 {
+          font-size: 3.5em;
+          color: #667eea;
+          margin-bottom: 20px;
+          font-weight: 700;
+        }
+
+        .slide h2 {
+          font-size: 2.5em;
+          color: #333;
+          margin-bottom: 30px;
+          font-weight: 600;
+        }
+
+        .slide h3 {
+          font-size: 1.8em;
+          color: #667eea;
+          margin: 30px 0 20px 0;
+        }
+
+        .slide p {
+          font-size: 1.4em;
+          color: #555;
+          line-height: 1.8;
+          margin-bottom: 20px;
+        }
+
+        .slide ul {
+          font-size: 1.3em;
+          color: #555;
+          line-height: 2;
+          margin-left: 40px;
+        }
+
+        .slide li {
+          margin-bottom: 15px;
+        }
+
+        .subtitle {
+          font-size: 1.8em;
+          color: #764ba2;
+          margin-top: 20px;
+        }
+
+        .highlight {
+          background: linear-gradient(120deg, #ffd89b 0%, #19547b 100%);
+          padding: 30px;
+          border-radius: 15px;
+          margin: 20px 0;
+        }
+
+        .highlight h3 {
+          color: white;
+          margin: 0 0 15px 0;
+        }
+
+        .highlight p {
+          color: white;
+          font-size: 1.2em;
+        }
+
+        .examples {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 20px;
+          margin-top: 30px;
+        }
+
+        .example-box {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          padding: 25px;
+          border-radius: 15px;
+          color: white;
+          text-align: center;
+          transition: transform 0.3s;
+        }
+
+        .example-box:hover {
+          transform: translateY(-5px);
+        }
+
+        .example-box h4 {
+          font-size: 1.5em;
+          margin-bottom: 10px;
+        }
+
+        .example-box p {
+          color: white;
+          font-size: 1.1em;
+        }
+
+        .navigation {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          display: flex;
+          gap: 15px;
+        }
+
+        .nav-btn {
+          background: white;
+          color: #667eea;
+          border: none;
+          padding: 15px 30px;
+          font-size: 1.2em;
+          border-radius: 50px;
+          cursor: pointer;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s;
+          font-weight: 600;
+        }
+
+        .nav-btn:hover {
+          background: #667eea;
+          color: white;
+          transform: translateY(-2px);
+          box-shadow: 0 7px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide-counter {
+          position: fixed;
+          bottom: 30px;
+          left: 30px;
+          background: white;
+          color: #667eea;
+          padding: 10px 20px;
+          border-radius: 50px;
+          font-size: 1.2em;
+          font-weight: 600;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .table-container {
+          overflow-x: auto;
+          margin: 20px 0;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          font-size: 1.2em;
+        }
+
+        th,
+        td {
+          padding: 15px;
+          text-align: left;
+          border-bottom: 2px solid #eee;
+        }
+
+        th {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+        }
+
+        tr:hover {
+          background: #f5f5f5;
+        }
+
+        .emoji {
+          font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+          .slide {
+            padding: 30px;
+          }
+          .slide h1 {
+            font-size: 2em;
+          }
+          .slide h2 {
+            font-size: 1.8em;
+          }
+          .slide p,
+          .slide ul {
+            font-size: 1.1em;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="presentation">
+        <!-- Slide 1: Naslovnica -->
+        <div class="slide active">
+          <h1>🛒 E-TRGOVINA</h1>
+          <p class="subtitle">Tjedan 1: Uvod u e-trgovinu</p>
+          <p style="margin-top: 50px; font-size: 1.3em">
+            Školska godina 2025/2026
+          </p>
+          <p style="font-size: 1.2em; color: #888">
+            Pritisnite → za sljedeći slide
+          </p>
+        </div>
+        <!-- Slide 2: Što je e-trgovina? -->
+        <div class="slide">
+          <h2>Što je e-trgovina?</h2>
+          <p><strong>E-trgovina (E-commerce)</strong> je:</p>
+          <ul>
+            <li>
+              📱 Kupnja i prodaja proizvoda ili usluga
+              <strong>preko interneta</strong>
+            </li>
+            <li>🌍 Dostupnost 24/7, s bilo koje lokacije</li>
+            <li>💳 Digitalno plaćanje i dostava</li>
+            <li>🚀 Revolucija u načinu poslovanja</li>
+          </ul>
+          <div class="highlight">
+            <h3>💡 Primjer</h3>
+            <p>
+              Kada kupujete igru na Steamu, naručujete hranu preko Glova, ili
+              gledate seriju na Netflixu - to je e-trgovina!
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 3: E-trgovina vs E-poslovanje -->
+        <div class="slide">
+          <h2>E-trgovina vs E-poslovanje</h2>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>E-trgovina (E-commerce)</th>
+                  <th>E-poslovanje (E-business)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>🛍️ Kupnja i prodaja online</td>
+                  <td>💼 Svi poslovni procesi online</td>
+                </tr>
+                <tr>
+                  <td>📦 Amazon, Njuškalo, Steam</td>
+                  <td>📊 ERP sustavi, CRM, interni alati</td>
+                </tr>
+                <tr>
+                  <td>🎯 Fokus: Transakcije</td>
+                  <td>🎯 Fokus: Cijela organizacija</td>
+                </tr>
+                <tr>
+                  <td>👥 B2C, B2B, C2C</td>
+                  <td>🏢 Interna i eksterna komunikacija</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top: 30px">
+            <strong>Zaključak:</strong> E-trgovina je DIO e-poslovanja koji se
+            fokusira na prodaju!
+          </p>
+        </div>
+
+        <!-- Slide 4: Tehnološki temelji -->
+        <div class="slide">
+          <h2>Tehnološki temelji e-trgovine</h2>
+          <h3>🌐 Tri ključna elementa:</h3>
+          <div class="examples">
+            <div class="example-box">
+              <h4>🌍 INTERNET</h4>
+              <p>Globalna mreža koja povezuje sve</p>
+            </div>
+            <div class="example-box">
+              <h4>🕸️ WEB</h4>
+              <p>Web stranice i preglednici (Chrome, Safari)</p>
+            </div>
+            <div class="example-box">
+              <h4>📱 MOBILNE PLATFORME</h4>
+              <p>Aplikacije i responsive dizajn</p>
+            </div>
+          </div>
+          <p style="margin-top: 40px; font-size: 1.3em">
+            Bez ovih tehnologija, e-trgovina ne bi bila moguća! 🚀
+          </p>
+        </div>
+
+        <!-- Slide 5: Primjeri koje koriste učenici -->
+        <div class="slide">
+          <h2>Primjeri e-trgovine koje KORISTITE</h2>
+          <div class="examples">
+            <div class="example-box">
+              <div class="emoji">🎮</div>
+              <h4>STEAM</h4>
+              <p>Kupnja igara online</p>
+            </div>
+            <div class="example-box">
+              <div class="emoji">🎬</div>
+              <h4>NETFLIX</h4>
+              <p>Streaming serija i filmova</p>
+            </div>
+            <div class="example-box">
+              <div class="emoji">🍕</div>
+              <h4>GLOVO</h4>
+              <p>Dostava hrane</p>
+            </div>
+            <div class="example-box">
+              <div class="emoji">🛍️</div>
+              <h4>AMAZON</h4>
+              <p>Online trgovina svime</p>
+            </div>
+            <div class="example-box">
+              <div class="emoji">🎵</div>
+              <h4>SPOTIFY</h4>
+              <p>Streaming glazbe</p>
+            </div>
+            <div class="example-box">
+              <div class="emoji">📱</div>
+              <h4>TIKTOK SHOP</h4>
+              <p>Kupnja kroz društvene mreže</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 6: Case Study - TikTok -->
+        <div class="slide">
+          <h2>📱 Case Study: TikTok i ekonomija kreatora</h2>
+          <div class="highlight">
+            <h3>Što je TikTok Shop?</h3>
+            <p>
+              Platforma koja omogućava kreatorima da prodaju proizvode direktno
+              kroz video sadržaj!
+            </p>
+          </div>
+          <h3>Kako funkcionira?</h3>
+          <ul>
+            <li>🎥 Kreator snima video s proizvodom</li>
+            <li>🔗 Link na proizvod u videu</li>
+            <li>🛒 Korisnici kupuju bez napuštanja aplikacije</li>
+            <li>💰 Kreator dobiva proviziju</li>
+          </ul>
+          <p style="margin-top: 30px">
+            <strong>Rezultat:</strong> Nova ekonomija gdje svako može biti
+            prodavač!
+          </p>
+        </div>
+
+        <!-- Slide 7: Zašto proučavati e-trgovinu? -->
+        <div class="slide">
+          <h2>Zašto proučavati e-trgovinu?</h2>
+          <ul>
+            <li>
+              💼 <strong>Karijera:</strong> E-trgovina je najbrže rastući sektor
+            </li>
+            <li>
+              💰 <strong>Zarađivanje:</strong> Možete pokrenuti vlastiti online
+              biznis
+            </li>
+            <li>
+              🎯 <strong>Digitalne vještine:</strong> Neophodne za 21. stoljeće
+            </li>
+            <li>
+              🌍 <strong>Globalna perspektiva:</strong> Prodajte bilo kome, bilo
+              gdje
+            </li>
+            <li>
+              📊 <strong>Razumijevanje tržišta:</strong> Kako funkcionira
+              moderna ekonomija
+            </li>
+          </ul>
+          <div class="highlight" style="margin-top: 40px">
+            <h3>📈 Statistika</h3>
+            <p>Globalna e-trgovina u 2024. prešla je 6 trilijuna dolara! 🚀</p>
+          </div>
+        </div>
+
+        <!-- Slide 8: Zadatak za učenike -->
+        <div class="slide">
+          <h2>📝 Zadatak za sljedeći sat</h2>
+          <div class="highlight">
+            <h3>Analizirajte 3 e-trgovinske stranice koje koristite</h3>
+          </div>
+          <h3>Za svaku stranicu odgovorite:</h3>
+          <ul>
+            <li>1️⃣ Što prodaju? (proizvodi/usluge)</li>
+            <li>2️⃣ Kako plaćate? (kartice, PayPal, crypto...)</li>
+            <li>3️⃣ Kako primate proizvod? (dostava, download...)</li>
+            <li>4️⃣ Što vam se sviđa/ne sviđa na stranici?</li>
+          </ul>
+          <p style="margin-top: 40px; font-size: 1.3em">
+            📧 Pošaljite analizu do sljedećeg tjedna!
+          </p>
+        </div>
+
+        <!-- Slide 9: Što slijedi? -->
+        <div class="slide">
+          <h2>Što nas čeka sljedeći tjedan?</h2>
+          <h3>📅 Tjedan 2: Tehnološki temelji</h3>
+          <ul>
+            <li>🌐 Kako radi internet (pojednostavljeno)</li>
+            <li>🔗 URL, HTTP, Web preglednici</li>
+            <li>📱 Mobilne aplikacije vs Web stranice</li>
+            <li>☁️ Cloud computing osnove</li>
+          </ul>
+          <p style="margin-top: 50px; font-size: 1.5em">
+            Vidimo se sljedeći tjedan! 👋
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">9</span>
+      </div>
+
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevSlide()">← Prethodni</button>
+        <button class="nav-btn" onclick="nextSlide()">Sljedeći →</button>
+      </div>
+
+      <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+        const total = slides.length;
+
+        document.getElementById("total").textContent = total;
+
+        function showSlide(n) {
+          slides[currentSlide].classList.remove("active");
+          currentSlide = (n + total) % total;
+          slides[currentSlide].classList.add("active");
+          document.getElementById("current").textContent = currentSlide + 1;
+        }
+
+        function nextSlide() {
+          showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+          showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight") nextSlide();
+          if (e.key === "ArrowLeft") prevSlide();
+        });
+
+        // Touch navigation for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener("touchend", (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 50) nextSlide();
+          if (touchEndX - touchStartX > 50) prevSlide();
+        });
+      </script>
+    </body>
+  </html></artifact
+>

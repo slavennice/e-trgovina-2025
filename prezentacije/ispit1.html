@@ -1,0 +1,1055 @@
+<artifact
+  identifier="ispit1-prezentacija"
+  type="text/html"
+  title="Ispit 1 - Priprema"
+>
+  <!DOCTYPE html>
+  <html lang="hr">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>1. OCJENA - Priprema za ispit</title>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body {
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+          overflow: hidden;
+          height: 100vh;
+        }
+
+        .presentation {
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .slide {
+          background: white;
+          width: 90%;
+          max-width: 1200px;
+          height: 85vh;
+          border-radius: 20px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          padding: 60px;
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          animation: slideIn 0.5s ease;
+          overflow-y: auto;
+        }
+
+        .slide.active {
+          display: flex;
+        }
+
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .slide h1 {
+          font-size: 3.5em;
+          color: #ff6b6b;
+          margin-bottom: 20px;
+          font-weight: 700;
+        }
+
+        .slide h2 {
+          font-size: 2.5em;
+          color: #333;
+          margin-bottom: 30px;
+          font-weight: 600;
+        }
+
+        .slide h3 {
+          font-size: 1.8em;
+          color: #ff6b6b;
+          margin: 30px 0 20px 0;
+        }
+
+        .slide p {
+          font-size: 1.4em;
+          color: #555;
+          line-height: 1.8;
+          margin-bottom: 20px;
+        }
+
+        .slide ul {
+          font-size: 1.3em;
+          color: #555;
+          line-height: 2;
+          margin-left: 40px;
+        }
+
+        .slide li {
+          margin-bottom: 15px;
+        }
+
+        .subtitle {
+          font-size: 1.8em;
+          color: #ee5a6f;
+          margin-top: 20px;
+        }
+
+        .exam-alert {
+          background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+          color: white;
+          padding: 30px;
+          border-radius: 15px;
+          margin: 20px 0;
+          text-align: center;
+        }
+
+        .exam-alert h3 {
+          color: white;
+          font-size: 2em;
+          margin-bottom: 15px;
+        }
+
+        .exam-alert p {
+          color: white;
+          font-size: 1.3em;
+        }
+
+        .review-section {
+          background: #f8f9fa;
+          border-left: 5px solid #ff6b6b;
+          padding: 30px;
+          border-radius: 10px;
+          margin: 20px 0;
+        }
+
+        .quiz-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 20px;
+          margin-top: 30px;
+        }
+
+        .quiz-card {
+          background: #f8f9fa;
+          border: 3px solid #ff6b6b;
+          padding: 25px;
+          border-radius: 15px;
+          transition: all 0.3s;
+        }
+
+        .quiz-card:hover {
+          background: #ff6b6b;
+          color: white;
+        }
+
+        .quiz-card:hover h4,
+        .quiz-card:hover p {
+          color: white;
+        }
+
+        .quiz-card h4 {
+          color: #ff6b6b;
+          font-size: 1.4em;
+          margin-bottom: 15px;
+        }
+
+        .quiz-card p {
+          color: #555;
+          font-size: 1.1em;
+        }
+
+        .answer {
+          background: #d4edda;
+          border-left: 4px solid #28a745;
+          padding: 15px;
+          margin-top: 15px;
+          border-radius: 5px;
+          display: none;
+        }
+
+        .quiz-card:hover .answer {
+          display: block;
+          background: rgba(255, 255, 255, 0.2);
+          border-color: white;
+          color: white;
+        }
+
+        .key-terms {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 15px;
+          margin-top: 20px;
+        }
+
+        .term-box {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 20px;
+          border-radius: 10px;
+        }
+
+        .term-box strong {
+          display: block;
+          font-size: 1.3em;
+          margin-bottom: 8px;
+        }
+
+        .checklist {
+          background: #fff3cd;
+          border-left: 5px solid #ffc107;
+          padding: 25px;
+          border-radius: 10px;
+          margin: 20px 0;
+        }
+
+        .checklist h3 {
+          color: #856404;
+          margin-bottom: 15px;
+        }
+
+        .checklist ul {
+          list-style: none;
+          margin-left: 0;
+        }
+
+        .checklist li {
+          padding: 10px;
+          border-bottom: 1px solid #ffeaa7;
+        }
+
+        .checklist li:before {
+          content: "☐ ";
+          font-size: 1.5em;
+          margin-right: 10px;
+        }
+
+        .navigation {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          display: flex;
+          gap: 15px;
+        }
+
+        .nav-btn {
+          background: white;
+          color: #ff6b6b;
+          border: none;
+          padding: 15px 30px;
+          font-size: 1.2em;
+          border-radius: 50px;
+          cursor: pointer;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s;
+          font-weight: 600;
+        }
+
+        .nav-btn:hover {
+          background: #ff6b6b;
+          color: white;
+          transform: translateY(-2px);
+        }
+
+        .slide-counter {
+          position: fixed;
+          bottom: 30px;
+          left: 30px;
+          background: white;
+          color: #ff6b6b;
+          padding: 10px 20px;
+          border-radius: 50px;
+          font-size: 1.2em;
+          font-weight: 600;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+          .slide {
+            padding: 30px;
+          }
+          .slide h1 {
+            font-size: 2em;
+          }
+          .slide h2 {
+            font-size: 1.8em;
+          }
+          .key-terms {
+            grid-template-columns: 1fr;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="presentation">
+        <!-- Slide 1: Naslovnica -->
+        <div class="slide active">
+          <h1>📝 1. OCJENA</h1>
+          <p class="subtitle">Priprema za ispit - Poglavlja 1-2</p>
+          <div class="exam-alert" style="margin-top: 80px">
+            <h3>⚠️ ISPIT - Tjedan 7</h3>
+            <p>
+              13-19. listopada 2025.<br />
+              Trajanje: 90 minuta<br />
+              Gradivo: Tjedni 1-6
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 2: Struktura ispita -->
+        <div class="slide">
+          <h2>📋 Struktura ispita</h2>
+
+          <div class="review-section">
+            <h3>
+              DIO 1: Pitanja koja smo već vježbali sa ZNZ (X bodova ovisno o
+              broju pitanja, općenito će biti jedno pitanje - jedan bod)
+            </h3>
+            <ul>
+              <li><strong>Format:</strong> Između 25-30 pitanja × X bodova</li>
+              <li>
+                <strong>Tip:</strong> Definicije, pojmovi, razlike, dopuni,
+                poveži itd...
+              </li>
+              <li>
+                <strong>Primjer:</strong> "Objasnite razliku između B2B i B2C
+                e-trgovine"
+              </li>
+              <li><strong>Nekoliko dogovora:</strong> Samo jedan točan</li>
+            </ul>
+          </div>
+
+          <div class="review-section" style="margin-top: 20px">
+            <h3>
+              DIO 2: Bude li potrebe za usmenim: Analiza primjera (X bodova)
+            </h3>
+            <ul>
+              <li><strong>Format:</strong> 3 case studya × X bodova</li>
+              <li>
+                <strong>Tip:</strong> Prepoznati model, analizirati strategiju
+              </li>
+              <li>
+                <strong>Primjer:</strong> "Netflix koristi koji poslovni model?
+                Objasnite."
+              </li>
+              <li>
+                <strong>Duljina odgovora:</strong> 5-7 rečenica s primjerima
+              </li>
+            </ul>
+          </div>
+
+          <div class="review-section" style="margin-top: 20px">
+            <h3>DIO 3: Usmeni dio (ako bude potrebe) (X bodova)</h3>
+            <ul>
+              <li>
+                <strong>Format:</strong> Individualni razgovor 5-10 minuta
+              </li>
+              <li><strong>Tip:</strong> Diskusija o jednom case studyu</li>
+              <li>
+                <strong>Primjer:</strong> "Analizirajte Twitter case study"
+              </li>
+              <li>
+                <strong>Ocjenjuje se:</strong> Razumijevanje, primjeri,
+                argumentacija
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Slide 3: Ključni pojmovi - Tjedan 1-2 -->
+        <div class="slide">
+          <h2>📚 TJEDAN 1-2: Ključni pojmovi</h2>
+
+          <div class="key-terms">
+            <div class="term-box">
+              <strong>E-trgovina</strong>
+              Kupnja i prodaja proizvoda/usluga preko interneta
+            </div>
+            <div class="term-box">
+              <strong>E-poslovanje</strong>
+              Svi poslovni procesi izvedeni digitalno (širi pojam)
+            </div>
+            <div class="term-box">
+              <strong>Internet</strong>
+              Globalna mreža povezanih računala
+            </div>
+            <div class="term-box">
+              <strong>Web (WWW)</strong>
+              Usluga NA internetu - web stranice i linkovi
+            </div>
+            <div class="term-box">
+              <strong>URL</strong>
+              Adresa web stranice (npr. https://amazon.com)
+            </div>
+            <div class="term-box">
+              <strong>HTTPS</strong>
+              Sigurna verzija HTTP protokola (šifrirana komunikacija)
+            </div>
+          </div>
+
+          <div class="review-section" style="margin-top: 30px">
+            <h3>8 Jedinstvenih značajki e-trgovine:</h3>
+            <ol style="margin-left: 20px">
+              <li>Sveprisutnost (Ubiquity)</li>
+              <li>Globalni doseg</li>
+              <li>Univerzalni standardi</li>
+              <li>Bogatstvo</li>
+              <li>Interaktivnost</li>
+              <li>Gustoća informacija</li>
+              <li>Personalizacija</li>
+              <li>Društvena tehnologija</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Slide 4: Ključni pojmovi - Tjedan 3 -->
+        <div class="slide">
+          <h2>📚 TJEDAN 3: Vrste e-trgovine</h2>
+
+          <div class="key-terms">
+            <div class="term-box">
+              <strong>B2C</strong>
+              Business to Consumer - Tvrtka → Potrošač<br />
+              Primjer: Amazon, Netflix
+            </div>
+            <div class="term-box">
+              <strong>B2B</strong>
+              Business to Business - Tvrtka → Tvrtka<br />
+              Primjer: Alibaba, AWS
+            </div>
+            <div class="term-box">
+              <strong>C2C</strong>
+              Consumer to Consumer - Potrošač → Potrošač<br />
+              Primjer: Olx, Njuškalo, eBay
+            </div>
+            <div class="term-box">
+              <strong>M-commerce</strong>
+              Mobile Commerce - E-trgovina preko mobitela<br />
+              Primjer: Uber, Glovo
+            </div>
+            <div class="term-box">
+              <strong>Social Commerce</strong>
+              Kupnja kroz društvene mreže<br />
+              Primjer: TikTok Shop, Instagram Shopping
+            </div>
+          </div>
+
+          <div class="quiz-grid" style="margin-top: 30px">
+            <div class="quiz-card">
+              <h4>❓ Vježba: Koja vrsta e-trgovine?</h4>
+              <p>
+                <strong>Scenario:</strong> Prodajete staru konzolu preko
+                Njuškala prijatelju.
+              </p>
+              <div class="answer">
+                <strong>✅ Odgovor:</strong> C2C (Consumer to Consumer) - dva
+                potrošača međusobno trguju
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 5: Ključni pojmovi - Tjedan 4-5 -->
+        <div class="slide">
+          <h2>📚 TJEDAN 4-5: Poslovni modeli</h2>
+
+          <div class="review-section">
+            <h3>8 Elemenata poslovnog modela:</h3>
+            <ol style="margin-left: 20px; line-height: 1.8">
+              <li><strong>Vrijednosna ponuda</strong> - Što rješavate?</li>
+              <li><strong>Prihodni model</strong> - Kako zarađujete?</li>
+              <li>
+                <strong>Tržišna prilika</strong> - Koliko je tržište veliko?
+              </li>
+              <li><strong>Konkurentsko okruženje</strong> - Tko su rivali?</li>
+              <li><strong>Konkurentska prednost</strong> - Zašto baš vi?</li>
+              <li>
+                <strong>Tržišna strategija</strong> - Kako privlačite kupce?
+              </li>
+              <li><strong>Organizacijski razvoj</strong> - Struktura tima</li>
+              <li><strong>Tim za upravljanje</strong> - Tko vodi?</li>
+            </ol>
+          </div>
+
+          <div class="key-terms" style="margin-top: 30px">
+            <div class="term-box">
+              <strong>Freemium model</strong>
+              Osnovno besplatno, napredne funkcije plaćaju<br />
+              Primjer: Spotify, Canva
+            </div>
+            <div class="term-box">
+              <strong>Subscription model</strong>
+              Mjesečna/godišnja pretplata<br />
+              Primjer: Netflix (€7.99-17.99/mj)
+            </div>
+            <div class="term-box">
+              <strong>Advertising model</strong>
+              Besplatno za korisnike, oglašivači plaćaju<br />
+              Primjer: Facebook, Google
+            </div>
+            <div class="term-box">
+              <strong>Commission model</strong>
+              Provizija od transakcije<br />
+              Primjer: Uber (20-30%), PayPal (2-3%)
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 6: Pet B2C modela -->
+        <div class="slide">
+          <h2>📚 5 B2C Poslovnih modela</h2>
+
+          <div class="key-terms">
+            <div class="term-box">
+              <strong>🛍️ E-tailer</strong>
+              Prodaja proizvoda online<br />
+              Primjer: Amazon, Zara.com
+            </div>
+            <div class="term-box">
+              <strong>👥 Community Provider</strong>
+              Povezivanje ljudi, zajednice<br />
+              Primjer: Facebook, LinkedIn
+            </div>
+            <div class="term-box">
+              <strong>📰 Content Provider</strong>
+              Kreiranje i distribucija sadržaja<br />
+              Primjer: Netflix, Spotify
+            </div>
+            <div class="term-box">
+              <strong>🌐 Portal</strong>
+              Ulazna točka na web, razni servisi<br />
+              Primjer: Google, Yahoo
+            </div>
+            <div class="term-box">
+              <strong>💳 Transaction Broker</strong>
+              Posredovanje u transakcijama<br />
+              Primjer: PayPal, Booking.com
+            </div>
+          </div>
+
+          <div class="quiz-grid" style="margin-top: 30px">
+            <div class="quiz-card">
+              <h4>❓ Vježba: Identificirajte model</h4>
+              <p>
+                <strong>Airbnb:</strong> Platforma koja povezuje vlasnike
+                nekretnina s putnicima. Uzima 3% od gostiju i 15% od domaćina.
+              </p>
+              <div class="answer">
+                <strong>✅ Odgovor:</strong> Transaction Broker - posreduju u
+                transakciji i uzimaju komisiju
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 7: Ključni pojmovi - Tjedan 6 -->
+        <div class="slide">
+          <h2>📚 TJEDAN 6: Strategija</h2>
+
+          <div class="key-terms">
+            <div class="term-box">
+              <strong>Lanac vrijednosti</strong>
+              Niz aktivnosti kroz koje tvrtka kreira vrijednost<br />
+              (Ulazna logistika → Proizvodnja → Izlazna logistika → Marketing →
+              Usluge)
+            </div>
+            <div class="term-box">
+              <strong>Mreže vrijednosti</strong>
+              Mrežna struktura partnera koji zajedno kreiraju vrijednost<br />
+              Primjer: Uber mreža (vozači + putnici + GPS + plaćanje)
+            </div>
+            <div class="term-box">
+              <strong>Disruptivna tehnologija</strong>
+              Tehnologija koja ZAMJENJUJE postojeću industriju<br />
+              Primjer: Netflix → Blockbuster, Uber → Taxi
+            </div>
+            <div class="term-box">
+              <strong>Blue Ocean strategija</strong>
+              Stvaranje NOVOG tržišta bez konkurencije<br />
+              vs Red Ocean = borba u postojećem tržištu
+            </div>
+          </div>
+
+          <div class="quiz-grid" style="margin-top: 30px">
+            <div class="quiz-card">
+              <h4>❓ Vježba: Blue ili Red Ocean?</h4>
+              <p>
+                <strong>Scenario:</strong> Otvarate 50. fast food restoran u
+                gradu koji već ima 49.
+              </p>
+              <div class="answer">
+                <strong>✅ Odgovor:</strong> Red Ocean - borite se u
+                prezasićenom tržištu. Blue Ocean bi bio primjerice: prvi
+                restoran s robotima umjesto konobara.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 8: Case Studies za ponavljanje -->
+        <div class="slide">
+          <h2>📖 Važni Case Studies</h2>
+
+          <div class="review-section">
+            <h3>🎨 Canva</h3>
+            <ul>
+              <li><strong>Model:</strong> Freemium (Free + Pro €12.99/mj)</li>
+              <li><strong>Vrijednost:</strong> Dizajn bez znanja Photoshopa</li>
+              <li><strong>Uspjeh:</strong> 150M korisnika, vrijednost $26B</li>
+              <li>
+                <strong>Strategija:</strong> 95% besplatno → privuče mase → 3%
+                prelazi na Pro
+              </li>
+            </ul>
+          </div>
+
+          <div class="review-section" style="margin-top: 20px">
+            <h3>🐦 Twitter/X</h3>
+            <ul>
+              <li>
+                <strong>Problem:</strong> 90% prihoda od oglašavanja (prevelika
+                ovisnost)
+              </li>
+              <li>
+                <strong>Izazovi:</strong> Stagnacija korisnika, bot problem,
+                toksično okruženje
+              </li>
+              <li>
+                <strong>Elon Musk:</strong> Kupio za $44B → rebrand u X →
+                gubitak 71% vrijednosti
+              </li>
+              <li>
+                <strong>Lekcija:</strong> Diversifikacija prihoda je ključna!
+              </li>
+            </ul>
+          </div>
+
+          <div class="review-section" style="margin-top: 20px">
+            <h3>📦 Amazon</h3>
+            <ul>
+              <li>
+                <strong>Model:</strong> E-tailer (+ Marketplace + Cloud AWS)
+              </li>
+              <li>
+                <strong>Lanac vrijednosti:</strong> Roboti u skladištima, Prime
+                dostava, AI preporuke
+              </li>
+              <li>
+                <strong>Konkurentska prednost:</strong> Brzina, izbor, cijene
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Slide 9: Primjeri pitanja -->
+        <div class="slide">
+          <h2>💡 Primjeri ispitnih pitanja</h2>
+
+          <div class="quiz-grid">
+            <div class="quiz-card">
+              <h4>❓ Pitanje 1</h4>
+              <p>
+                Objasnite razliku između e-trgovine i e-poslovanja. Navedite po
+                jedan primjer.
+              </p>
+              <div class="answer">
+                <strong>✅ Odgovor:</strong> E-trgovina je kupnja/prodaja online
+                (Amazon), dok je e-poslovanje širi pojam koji obuhvaća SVE
+                digitalne poslovne procese (CRM, ERP, interni alati...).
+                E-trgovina je DIO e-poslovanja.
+              </div>
+            </div>
+
+            <div class="quiz-card">
+              <h4>❓ Pitanje 2</h4>
+              <p>
+                Navedite i objasnite 3 jedinstvene značajke e-trgovine koje je
+                čine različitom od tradicionalne trgovine.
+              </p>
+              <div class="answer">
+                <strong>✅ Odgovor:</strong> 1) Sveprisutnost - dostupno 24/7
+                svugdje; 2) Globalni doseg - prodaja cijelom svijetu; 3)
+                Personalizacija - prilagođen sadržaj za svakog korisnika (npr.
+                Netflix preporuke).
+              </div>
+            </div>
+
+            <div class="quiz-card">
+              <h4>❓ Pitanje 3</h4>
+              <p>
+                Spotify koristi Freemium model. Objasnite kako ovaj model
+                funkcionira i navedite prednosti/nedostatke.
+              </p>
+              <div class="answer">
+                <strong>✅ Odgovor:</strong> Freemium = osnovno besplatno (s
+                reklamama) + premium verzija (€10.99/mj bez reklama). Prednost:
+                brzo raste baza korisnika. Nedostatak: mali postotak (5-10%)
+                prelazi na plaćeno.
+              </div>
+            </div>
+
+            <div class="quiz-card">
+              <h4>❓ Pitanje 4</h4>
+              <p>
+                Što je disruptivna tehnologija? Navedite primjer i objasnite
+                kako je promijenila industriju.
+              </p>
+              <div class="answer">
+                <strong>✅ Odgovor:</strong> Tehnologija koja ZAMJENJUJE
+                postojeću industriju. Primjer: Uber je disrupted taxi industriju
+                - jeftinije, brže, na klik, transparentno ocjenjivanje. Taxi
+                tvrtke izgubile veliku tržišnu vrijednost.
+              </div>
+            </div>
+
+            <div class="quiz-card">
+              <h4>❓ Pitanje 5</h4>
+              <p>
+                Usporedite B2B i B2C e-trgovinu. Koje su ključne razlike u
+                poslovnom modelu?
+              </p>
+              <div class="answer">
+                <strong>✅ Odgovor:</strong> B2B: velike narudžbe (tisuće€),
+                dugi prodajni ciklusi (mjeseci), racionalno odlučivanje. B2C:
+                male narudžbe (10-1000€), brze odluke (minuti), emocionalna
+                kupnja. Primjer: Alibaba (B2B) vs Amazon (B2C).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 10: Checklist za pripremu -->
+        <div class="slide">
+          <h2>✅ Checklist za pripremu</h2>
+
+          <div class="checklist">
+            <h3>📚 Što napraviti PRIJE ispita:</h3>
+            <ul>
+              <li>Pregledati SVE prezentacije (Tjedan 1-6)</li>
+              <li>Napraviti kartice s ključnim pojmovima</li>
+              <li>Ponoviti svih 5 B2C poslovnih modela</li>
+              <li>Naučiti razlike: B2B vs B2C, E-trgovina vs E-poslovanje</li>
+              <li>Ponoviti case studies (Canva, Twitter, Amazon)</li>
+              <li>Vježbati s primjerima iz ove prezentacije</li>
+              <li>Testirati se s kolegom - pitajte jedan drugoga</li>
+              <li>Doći na konzultacije ako nešto nije jasno</li>
+              <li>Pripremiti 2-3 stvarna primjera za svaki pojam</li>
+              <li>Naspavati se dan prije ispita! 😴</li>
+            </ul>
+          </div>
+          <div class="exam-alert" style="margin-top: 30px">
+            <h3>⏰ DAN PRIJE ISPITA:</h3>
+            <p>
+              ✅ Brzo ponavljanje (1-2 sata)<br />
+              ✅ NE učite novo gradivo<br />
+              ✅ Rano spavati<br />
+              ✅ Pripremiti svoje passworde, po potrebi olovku, papir
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 11: Savjeti za polaganje -->
+        <div class="slide">
+          <h2>💡 Savjeti za polaganje ispita</h2>
+
+          <div class="review-section">
+            <h3>📝 Tijekom pisanja:</h3>
+            <ul>
+              <li>
+                <strong>Pročitajte SVA pitanja prvo</strong> - počnite s onima
+                koje najbolje znate
+              </li>
+              <li>
+                <strong>Planirajte vrijeme</strong> - nemojte stati na jednom
+                pitanju predug
+              </li>
+              <li>
+                <strong>Koristite primjere</strong> - svaki odgovor potkrijepite
+                stvarnim primjerom
+              </li>
+              <li>
+                <strong>Budite konkretni</strong> - umjesto "to je dobro",
+                kažite "to povećava konverziju za 20%"
+              </li>
+              <li>
+                <strong>Struktura odgovora</strong> - definicija → objašnjenje →
+                primjer
+              </li>
+            </ul>
+          </div>
+
+          <div class="review-section" style="margin-top: 20px">
+            <h3>💬 Tijekom ispita:</h3>
+            <ul>
+              <li><strong>Smirenost</strong> - duboko dišite, imate vremena</li>
+              <li>
+                <strong
+                  >Najprije prijeđite sva pitanja, na ona pitanja koja 100%
+                  znate odgovor odmah poklikajte, za koja ste barem 70% sigurni
+                  da znate kliknite i njih a ostala polako još nekoliko puta
+                  pročitajte</strong
+                >
+              </li>
+              <li>
+                <strong>Priznajte i preskočite ako ne znate</strong> - bolje
+                nego izmišljati i klikati "bezze" i pokupiti minus bodove
+              </li>
+              <li>
+                <strong>Dajte više primjera</strong> - pokazuje dubinu
+                razumijevanja
+              </li>
+              <li>
+                <strong>Povežite s drugim temama</strong> - npr. "To je slično
+                kao kod Amazona..."
+              </li>
+            </ul>
+          </div>
+
+          <div class="checklist" style="margin-top: 30px">
+            <h3>🚫 Česte greške koje treba izbjeći:</h3>
+            <ul>
+              <li>Odgovaranje bez čitanja cijelog pitanja</li>
+              <li>Odgovori bez primjera</li>
+              <li>Miješanje pojmova (B2B i B2C)</li>
+              <li>Predugi odgovori bez strukture</li>
+              <li>Što je pjesnik htio reći???</li>
+              <li>
+                Kao kauboj uletjeti na ZNZ, poklikati pitanja i pokupiti minus
+                bodove - siguran put u propast
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Slide 12: Motivacija i završetak -->
+        <div class="slide">
+          <h2>🎯 Vi ste spremni!</h2>
+
+          <div class="exam-alert">
+            <h3>💪 MOTIVACIJA</h3>
+            <p style="font-size: 1.6em">
+              Prošli ste 6 tjedana intenzivne nastave.<br />
+              Naučili ste osnove jedne od najbrže rastućih industrija.<br />
+              Imali ste zadatke, diskusije, praktične vježbe.<br />
+              <br />
+              <strong>VI STE SPREMNI ZA ISPIT!</strong> 🚀
+            </p>
+          </div>
+
+          <div class="review-section" style="margin-top: 40px">
+            <h3>📅 Informacije o ispitu:</h3>
+            <ul style="font-size: 1.3em">
+              <li>
+                <strong>Datum:</strong> 13-19. listopada 2025. (dogovorit ćemo
+                točan dan)
+              </li>
+              <li><strong>Trajanje:</strong> 2 školska sata</li>
+              <li>
+                <strong>Što ponijeti:</strong> Olovka, papir ako mislite da vam
+                može zatrebati.
+              </li>
+              <li>
+                <strong>Što NE smijete:</strong> Mobiteli, bilješke za
+                prepisivanje (Bože sačuvaj)
+              </li>
+              <li>
+                <strong>Rezultati:</strong> Vidljivi odmah po završetku testa
+                pošto radimo u ZNZ Moodle okruženju
+              </li>
+            </ul>
+          </div>
+
+          <div style="margin-top: 60px; text-align: center">
+            <p style="font-size: 2.5em; color: #ff6b6b; font-weight: 700">
+              SRETNO! 🍀
+            </p>
+            <p style="font-size: 1.5em; color: #666; margin-top: 20px">
+              Vjerujem u vas! 💯
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 13: Što nakon ispita -->
+        <div class="slide">
+          <h2>🔜 Što nas čeka nakon ispita?</h2>
+
+          <div class="review-section">
+            <h3>📅 MODUL 2: Tehnološka infrastruktura</h3>
+            <p style="font-size: 1.3em; margin-top: 15px">
+              Nakon ispita prelazimo na novu temu - kako ZAPRAVO funkcionira
+              internet i tehnologija iza e-trgovine.
+            </p>
+
+            <h4 style="margin-top: 30px; color: #667eea">
+              Tjedan 8-12 (Listopad-Studeni):
+            </h4>
+            <ul style="margin-top: 15px">
+              <li>
+                🌐 <strong>Internet infrastruktura</strong> - TCP/IP, DNS, kako
+                zapravo radi
+              </li>
+              <li>
+                ☁️ <strong>Cloud computing</strong> - AWS, Azure, Google Cloud
+              </li>
+              <li>
+                🕸️ <strong>Web tehnologije</strong> - HTML, CSS, JavaScript
+                osnove
+              </li>
+              <li>
+                📱 <strong>Mobilne platforme</strong> - iOS vs Android,
+                Progressive Web Apps
+              </li>
+              <li>
+                🛒 <strong>E-commerce platforme</strong> - Webnode, Wix,
+                Shopify, WooCommerce PRAKTIČNO!
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="exam-alert"
+            style="
+              margin-top: 30px;
+              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            "
+          >
+            <h3 style="color: white">🎉 Nagrada nakon ispita za najbolje!</h3>
+            <p style="color: white">
+              Tjedan 12 - PRAKTIČNA RADIONICA!<br />
+              Svi zajedno pravimo web shop na Wix, Shopify-u ili na Webnode<br />
+              (Svaki učenik dobiva vlastiti trial račun)
+            </p>
+          </div>
+
+          <div class="review-section" style="margin-top: 30px">
+            <h3>📌 Za odmor između ispita i nove nastave:</h3>
+            <ul>
+              <li>🎬 Pogledajte dokumentarac "The Social Dilemma" (Netflix)</li>
+              <li>📺 YouTube: "How does the internet work?" (Code.org)</li>
+              <li>
+                🎮 Igrajte "Shopkeeper Simulator" - razumijte logistiku 😄
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Slide 14: Kontakt i podrška -->
+        <div class="slide">
+          <h2>📧 Pitanja? Podrška?</h2>
+
+          <div class="review-section">
+            <h3>🆘 Trebate pomoć pri učenju?</h3>
+            <ul style="font-size: 1.3em">
+              <li><strong>📧 Email:</strong> slaven.nice@ekonomska.edu.ba</li>
+              <li>
+                <strong>💬 ZNZ:</strong> Postavite pitanje na forumu na ZNZ
+              </li>
+              <li>
+                <strong>🏫 Konzultacije:</strong> Srijedom 13:00-14:00 (učionica
+                12)
+              </li>
+              <li>
+                <strong>👥 Učite zajedno:</strong> Formirajte study grupe!
+              </li>
+            </ul>
+          </div>
+
+          <div class="checklist" style="margin-top: 30px">
+            <h3>💡 Resursi za ponavljanje:</h3>
+            <ul>
+              <li>
+                <strong>ZNZ i GitHub Pages:</strong> Sve prezentacije dostupne
+                24/7
+              </li>
+              <li><strong>ZNZ:</strong> Zadaci i dodatni materijali</li>
+              <li><strong>Think with Google:</strong> Aktualni case studies</li>
+              <li><strong>Udžbenik:</strong> Poglavlja 1-2 (biblioteka)</li>
+            </ul>
+          </div>
+
+          <div class="exam-alert" style="margin-top: 40px">
+            <h3>🌟 Završna poruka</h3>
+            <p style="font-size: 1.4em">
+              E-trgovina nije samo školski predmet.<br />
+              To je BUDUĆNOST poslovanja.<br />
+              Znanje koje stječete ovdje može promijeniti vašu karijeru!<br />
+              <br />
+              <strong>Dajte sve od sebe na ispitu! 💪</strong>
+            </p>
+          </div>
+
+          <p
+            style="
+              text-align: center;
+              font-size: 2em;
+              margin-top: 50px;
+              color: #ff6b6b;
+              font-weight: 700;
+            "
+          >
+            VIDIMO SE NA ISPITU! 🎓
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">14</span>
+      </div>
+
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevSlide()">← Prethodni</button>
+        <button class="nav-btn" onclick="nextSlide()">Sljedeći →</button>
+      </div>
+
+      <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+        const total = slides.length;
+
+        document.getElementById("total").textContent = total;
+
+        function showSlide(n) {
+          slides[currentSlide].classList.remove("active");
+          currentSlide = (n + total) % total;
+          slides[currentSlide].classList.add("active");
+          document.getElementById("current").textContent = currentSlide + 1;
+        }
+
+        function nextSlide() {
+          showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+          showSlide(currentSlide - 1);
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight") nextSlide();
+          if (e.key === "ArrowLeft") prevSlide();
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener("touchend", (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 50) nextSlide();
+          if (touchEndX - touchStartX > 50) prevSlide();
+        });
+      </script>
+    </body>
+  </html>
+</artifact>

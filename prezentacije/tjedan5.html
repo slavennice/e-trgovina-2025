@@ -1,0 +1,825 @@
+<artifact
+  identifier="tjedan5-prezentacija"
+  type="text/html"
+  title="Tjedan 5: Poslovni modeli B2C"
+>
+  <!DOCTYPE html>
+  <html lang="hr">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Tjedan 5: Poslovni modeli B2C</title>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body {
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          overflow: hidden;
+          height: 100vh;
+        }
+
+        .presentation {
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .slide {
+          background: white;
+          width: 90%;
+          max-width: 1200px;
+          height: 85vh;
+          border-radius: 20px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          padding: 60px;
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          animation: slideIn 0.5s ease;
+          overflow-y: auto;
+        }
+
+        .slide.active {
+          display: flex;
+        }
+
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .slide h1 {
+          font-size: 3.5em;
+          color: #667eea;
+          margin-bottom: 20px;
+          font-weight: 700;
+        }
+
+        .slide h2 {
+          font-size: 2.5em;
+          color: #333;
+          margin-bottom: 30px;
+          font-weight: 600;
+        }
+
+        .slide h3 {
+          font-size: 1.8em;
+          color: #667eea;
+          margin: 30px 0 20px 0;
+        }
+
+        .slide p {
+          font-size: 1.4em;
+          color: #555;
+          line-height: 1.8;
+          margin-bottom: 20px;
+        }
+
+        .slide ul {
+          font-size: 1.3em;
+          color: #555;
+          line-height: 2;
+          margin-left: 40px;
+        }
+
+        .slide li {
+          margin-bottom: 15px;
+        }
+
+        .subtitle {
+          font-size: 1.8em;
+          color: #764ba2;
+          margin-top: 20px;
+        }
+
+        .model-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 25px;
+          margin-top: 30px;
+        }
+
+        .model-card {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          padding: 30px;
+          border-radius: 15px;
+          color: white;
+          transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .model-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .model-icon {
+          font-size: 3em;
+          margin-bottom: 15px;
+        }
+
+        .model-card h3 {
+          color: white;
+          font-size: 1.8em;
+          margin: 0 0 15px 0;
+        }
+
+        .model-card p {
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 1.1em;
+          margin-bottom: 15px;
+        }
+
+        .model-examples {
+          background: rgba(255, 255, 255, 0.2);
+          padding: 15px;
+          border-radius: 10px;
+          margin-top: 15px;
+        }
+
+        .model-examples strong {
+          display: block;
+          margin-bottom: 8px;
+          font-size: 1.1em;
+        }
+
+        .highlight {
+          background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+          padding: 30px;
+          border-radius: 15px;
+          margin: 20px 0;
+        }
+
+        .highlight h3 {
+          color: #2c3e50;
+          margin: 0 0 15px 0;
+        }
+
+        .highlight p {
+          color: #2c3e50;
+          font-size: 1.2em;
+        }
+
+        .case-study {
+          background: #f8f9fa;
+          border-left: 5px solid #667eea;
+          padding: 30px;
+          border-radius: 10px;
+          margin: 20px 0;
+        }
+
+        .comparison-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 20px 0;
+          font-size: 1.1em;
+        }
+
+        .comparison-table th {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 15px;
+          text-align: left;
+        }
+
+        .comparison-table td {
+          padding: 15px;
+          border-bottom: 2px solid #eee;
+        }
+
+        .comparison-table tr:hover {
+          background: #f5f5f5;
+        }
+
+        .pros-cons {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+          margin-top: 20px;
+        }
+
+        .pros {
+          background: #d4edda;
+          border-left: 5px solid #28a745;
+          padding: 20px;
+          border-radius: 10px;
+        }
+
+        .cons {
+          background: #f8d7da;
+          border-left: 5px solid #dc3545;
+          padding: 20px;
+          border-radius: 10px;
+        }
+
+        .pros h4,
+        .cons h4 {
+          margin-bottom: 15px;
+          font-size: 1.4em;
+        }
+
+        .navigation {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          display: flex;
+          gap: 15px;
+        }
+
+        .nav-btn {
+          background: white;
+          color: #667eea;
+          border: none;
+          padding: 15px 30px;
+          font-size: 1.2em;
+          border-radius: 50px;
+          cursor: pointer;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s;
+          font-weight: 600;
+        }
+
+        .nav-btn:hover {
+          background: #667eea;
+          color: white;
+          transform: translateY(-2px);
+        }
+
+        .slide-counter {
+          position: fixed;
+          bottom: 30px;
+          left: 30px;
+          background: white;
+          color: #667eea;
+          padding: 10px 20px;
+          border-radius: 50px;
+          font-size: 1.2em;
+          font-weight: 600;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+          .slide {
+            padding: 30px;
+          }
+          .slide h1 {
+            font-size: 2em;
+          }
+          .slide h2 {
+            font-size: 1.8em;
+          }
+          .model-grid {
+            grid-template-columns: 1fr;
+          }
+          .pros-cons {
+            grid-template-columns: 1fr;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="presentation">
+        <!-- Slide 1: Naslovnica -->
+        <div class="slide active">
+          <h1>🛒 POSLOVNI MODELI B2C</h1>
+          <p class="subtitle">Tjedan 5: Pet glavnih kategorija</p>
+          <div style="margin-top: 60px; text-align: center">
+            <p style="font-size: 1.5em; color: #667eea; font-weight: 600">
+              E-tailer | Community Provider | Content Provider | Portal |
+              Transaction Broker
+            </p>
+          </div>
+        </div>
+        <!-- Slide 2: Pregled pet modela -->
+        <div class="slide">
+          <h2>📊 Pet glavnih B2C poslovnih modela</h2>
+
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Što rade?</th>
+                <th>Prihod od?</th>
+                <th>Primjer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>🛍️ E-tailer</strong></td>
+                <td>Prodaja proizvoda online</td>
+                <td>Prodaja</td>
+                <td>Amazon, Zara</td>
+              </tr>
+              <tr>
+                <td><strong>👥 Community Provider</strong></td>
+                <td>Povezuju ljude</td>
+                <td>Oglasi, pretplate</td>
+                <td>Facebook, LinkedIn</td>
+              </tr>
+              <tr>
+                <td><strong>📰 Content Provider</strong></td>
+                <td>Nude sadržaj</td>
+                <td>Pretplata, oglasi</td>
+                <td>Netflix, Spotify</td>
+              </tr>
+              <tr>
+                <td><strong>🌐 Portal</strong></td>
+                <td>Ulazna točka na web</td>
+                <td>Oglasi, servisi</td>
+                <td>Google, Yahoo</td>
+              </tr>
+              <tr>
+                <td><strong>💳 Transaction Broker</strong></td>
+                <td>Olakšavaju transakcije</td>
+                <td>Komisija</td>
+                <td>PayPal, Booking</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Slide 3: E-tailer -->
+        <div class="slide">
+          <h2>🛍️ E-tailer (Online trgovac)</h2>
+
+          <p>
+            <strong>Definicija:</strong> Prodaja fizičkih proizvoda ili
+            digitalnih dobara direktno potrošačima preko interneta.
+          </p>
+
+          <h3>Vrste E-tailer-a:</h3>
+          <ul>
+            <li>
+              <strong>Virtual Merchant</strong> - samo online (Amazon rođen na
+              webu)
+            </li>
+            <li>
+              <strong>Bricks-and-clicks</strong> - i fizička i online trgovina
+              (Zara, H&M)
+            </li>
+            <li>
+              <strong>Catalog Merchant</strong> - iz kataloga u online (IKEA)
+            </li>
+            <li>
+              <strong>Manufacturer-Direct</strong> - proizvođač prodaje direktno
+              (Apple, Tesla)
+            </li>
+          </ul>
+
+          <div class="case-study">
+            <h3>📦 Amazon - Kralj E-tailera</h3>
+            <p>
+              <strong>Započeo:</strong> 1994. kao online knjižara<br />
+              <strong>Danas:</strong> Prodaju SVE - od knjiga do namještaja<br />
+              <strong>Prihod 2023:</strong> 575 milijardi dolara 💰<br />
+              <strong>Ključ uspjeha:</strong> Brzina dostave (Prime), širok
+              asortiman, niske cijene
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 4: E-tailer prednosti/nedostaci -->
+        <div class="slide">
+          <h2>⚖️ E-tailer: Prednosti vs Nedostaci</h2>
+
+          <div class="pros-cons">
+            <div class="pros">
+              <h4>✅ PREDNOSTI</h4>
+              <ul style="margin-left: 20px">
+                <li>Nema troškova fizičke trgovine</li>
+                <li>Globalno tržište 24/7</li>
+                <li>Lakše praćenje inventara</li>
+                <li>Personalizirane preporuke</li>
+                <li>Detaljni podaci o kupcima</li>
+              </ul>
+            </div>
+
+            <div class="cons">
+              <h4>❌ IZAZOVI</h4>
+              <ul style="margin-left: 20px">
+                <li>Visoki troškovi dostave</li>
+                <li>Ne možete "dotaknuti" proizvod</li>
+                <li>Povrati i reklamacije skupi</li>
+                <li>Velika konkurencija</li>
+                <li>Logistika kompleksna</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>💡 Trend: Omnichannel</h3>
+            <p>
+              Najbolji rezultati su kada kombinujete online + offline!<br />
+              <strong>Primjer:</strong> Naruči online, preuzmi u trgovini (Click
+              & Collect)
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 5: Community Provider -->
+        <div class="slide">
+          <h2>👥 Community Provider (Pružatelj zajednice)</h2>
+
+          <p>
+            <strong>Definicija:</strong> Kreiranje online prostora gdje ljudi
+            mogu komunicirati, dijeliti sadržaj i graditi odnose.
+          </p>
+
+          <h3>Tipovi zajednica:</h3>
+          <ul>
+            <li>
+              <strong>🔵 Opće društvene mreže</strong> - Facebook, Instagram,
+              TikTok
+            </li>
+            <li><strong>💼 Profesionalne mreže</strong> - LinkedIn</li>
+            <li>
+              <strong>🎮 Gaming communities</strong> - Discord, Steam Community
+            </li>
+            <li><strong>💬 Forumi</strong> - Reddit, Stack Overflow</li>
+          </ul>
+
+          <div class="case-study">
+            <h3>📘 Facebook - Najveća zajednica na svijetu</h3>
+            <p>
+              <strong>Korisnika:</strong> 3 milijarde mjesečno aktivnih<br />
+              <strong>Prihodni model:</strong> 98% od oglašavanja<br />
+              <strong>Kako zarađuju:</strong> Prikupljaju vaše podatke → prodaju
+              targetirane oglase<br />
+              <strong>Ako je besplatno, VI ste proizvod!</strong> 🤔
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 6: Content Provider -->
+        <div class="slide">
+          <h2>📰 Content Provider (Pružatelj sadržaja)</h2>
+
+          <p>
+            <strong>Definicija:</strong> Kreiranje i distribucija digitalnog
+            sadržaja (video, glazba, novine, e-knjige).
+          </p>
+
+          <div class="model-grid">
+            <div class="model-card">
+              <div class="model-icon">🎬</div>
+              <h3>Netflix</h3>
+              <p>Streaming TV serija i filmova</p>
+              <div class="model-examples">
+                <strong>Model:</strong> Mjesečna pretplata (€7.99-€17.99)<br />
+                <strong>Konkurenti:</strong> Disney+, HBO Max, Amazon Prime
+              </div>
+            </div>
+
+            <div
+              class="model-card"
+              style="
+                background: linear-gradient(135deg, #1db954 0%, #191414 100%);
+              "
+            >
+              <div class="model-icon">🎵</div>
+              <h3>Spotify</h3>
+              <p>Streaming glazbe</p>
+              <div class="model-examples">
+                <strong>Model:</strong> Freemium (besplatno s reklamama ili
+                €10.99/mj Premium)<br />
+                <strong>Konkurenti:</strong> Apple Music, YouTube Music
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 40px">Dva glavna prihovna modela:</h3>
+          <ul>
+            <li>
+              💰 <strong>Subscription</strong> - mjesečna/godišnja pretplata
+            </li>
+            <li>
+              📢 <strong>Ad-supported</strong> - besplatno, ali s reklamama
+            </li>
+          </ul>
+        </div>
+
+        <!-- Slide 7: Portal -->
+        <div class="slide">
+          <h2>🌐 Portal (Ulazna točka na web)</h2>
+
+          <p>
+            <strong>Definicija:</strong> Web stranica koja nudi širok spektar
+            sadržaja i usluga - email, vijesti, pretraživanje, vremenska
+            prognoza...
+          </p>
+
+          <h3>Vrste portala:</h3>
+          <ul>
+            <li>
+              <strong>🔍 Horizontalni (opće namjene)</strong> - Google, Yahoo,
+              MSN
+            </li>
+            <li>
+              <strong>🎯 Vertikalni (nišni)</strong> - WebMD (medicina),
+              Autoblog (auto)
+            </li>
+          </ul>
+
+          <div class="case-study">
+            <h3>🔍 Google - Najmoćniji portal</h3>
+            <p>
+              <strong>Usluge:</strong> Search, Gmail, Maps, Drive, YouTube,
+              Translate...<br />
+              <strong>Korisnika:</strong> 4+ milijarde<br />
+              <strong>Prihod:</strong> 90% od oglašavanja na pretraživanju<br />
+              <strong>Strategija:</strong> Pružiti SVE besplatno → zadržati
+              korisnike → prodati oglase
+            </p>
+          </div>
+
+          <div class="highlight">
+            <h3>📉 Zašto portali gube na značaju?</h3>
+            <p>
+              Ljudi više ne trebaju "ulaznu točku" - direktno idu na specifične
+              stranice (Amazon, Facebook, Netflix).<br />
+              <strong>Yahoo</strong> je bio kralj portala 2000. → danas gotovo
+              irelevantan.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 8: Transaction Broker -->
+        <div class="slide">
+          <h2>💳 Transaction Broker (Posrednik u transakcijama)</h2>
+
+          <p>
+            <strong>Definicija:</strong> Olakšavaju kupnju/prodaju između drugih
+            strana. Zarađuju na komisiji ili naknadi po transakciji.
+          </p>
+
+          <div class="model-grid">
+            <div class="model-card">
+              <div class="model-icon">💰</div>
+              <h3>PayPal</h3>
+              <p>Platforma za online plaćanje</p>
+              <div class="model-examples">
+                <strong>Prihod:</strong> 2-3% provizija po transakciji<br />
+                <strong>Obrada:</strong> 30+ milijardi dolara godišnje
+              </div>
+            </div>
+
+            <div
+              class="model-card"
+              style="
+                background: linear-gradient(135deg, #003580 0%, #0057b8 100%);
+              "
+            >
+              <div class="model-icon">🏨</div>
+              <h3>Booking.com</h3>
+              <p>Rezervacija smještaja</p>
+              <div class="model-examples">
+                <strong>Prihod:</strong> 15-20% komisija od hotela<br />
+                <strong>Model:</strong> Besplatno za korisnike, plaćaju hoteli
+              </div>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 40px">Drugi primjeri:</h3>
+          <ul>
+            <li>✈️ <strong>Skyscanner</strong> - usporedba letova</li>
+            <li>🚗 <strong>Uber</strong> - posredovanje u prevozu</li>
+            <li>🏠 <strong>Airbnb</strong> - posredovanje u najmu</li>
+          </ul>
+        </div>
+
+        <!-- Slide 9: Usporedba svih modela -->
+        <div class="slide">
+          <h2>📊 Usporedba: Koji model je najbolji?</h2>
+
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Potencijal prihoda</th>
+                <th>Početni troškovi</th>
+                <th>Složenost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>E-tailer</strong></td>
+                <td>⭐⭐⭐⭐</td>
+                <td>Srednji-Visoki</td>
+                <td>Visoka (logistika)</td>
+              </tr>
+              <tr>
+                <td><strong>Community Provider</strong></td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>Srednji</td>
+                <td>Srednja (moderacija)</td>
+              </tr>
+              <tr>
+                <td><strong>Content Provider</strong></td>
+                <td>⭐⭐⭐⭐</td>
+                <td>Visoki (proizvodnja)</td>
+                <td>Visoka (content)</td>
+              </tr>
+              <tr>
+                <td><strong>Portal</strong></td>
+                <td>⭐⭐⭐</td>
+                <td>Visoki</td>
+                <td>Vrlo visoka</td>
+              </tr>
+              <tr>
+                <td><strong>Transaction Broker</strong></td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>Srednji</td>
+                <td>Srednja (trust)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>💡 Zaključak:</h3>
+            <p>
+              Nema "najboljeg" modela - ovisi o vašim resursima, vještinama i
+              tržištu!<br />
+              <strong>Trend:</strong> Hybridni modeli - Amazon je E-tailer +
+              Transaction Broker + Content Provider!
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 10: Grupna aktivnost -->
+        <div class="slide">
+          <h2>👥 Grupna aktivnost (20 minuta)</h2>
+
+          <div class="highlight">
+            <h3>🎯 Zadatak: Identificirajte poslovni model!</h3>
+            <p>Podijelite se u 5 grupa. Svaka grupa dobiva jedan model:</p>
+          </div>
+
+          <div class="model-grid" style="margin-top: 30px">
+            <div class="model-card">
+              <h3>Grupa 1: E-tailer</h3>
+              <p>Pronađite 3 primjera i analizirajte njihov pristup</p>
+            </div>
+            <div
+              class="model-card"
+              style="
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+              "
+            >
+              <h3>Grupa 2: Community</h3>
+              <p>Kako zarađuju društvene mreže koje koristite?</p>
+            </div>
+            <div
+              class="model-card"
+              style="
+                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+              "
+            >
+              <h3>Grupa 3: Content</h3>
+              <p>Netflix vs YouTube - koji model je bolji?</p>
+            </div>
+            <div
+              class="model-card"
+              style="
+                background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+              "
+            >
+              <h3>Grupa 4: Portal</h3>
+              <p>Zašto su portali izgubili na važnosti?</p>
+            </div>
+          </div>
+
+          <p style="margin-top: 40px; font-size: 1.3em">
+            <strong>Prezentacija:</strong> 3 minute po grupi + diskusija
+          </p>
+        </div>
+
+        <!-- Slide 11: Domaća zadaća -->
+        <div class="slide">
+          <h2>📚 Domaća zadaća za Tjedan 6</h2>
+
+          <div class="highlight">
+            <h3>📝 Zadatak: Usporedba dva modela</h3>
+            <p>
+              Odaberite DVA različita B2C poslovna modela i napravite detaljnu
+              usporedbu.
+            </p>
+          </div>
+
+          <h3>Što mora sadržavati:</h3>
+          <ol style="margin-left: 40px; font-size: 1.3em; line-height: 2">
+            <li>
+              <strong>Odabir:</strong> Dva modela + po 2 stvarna primjera za
+              svaki
+            </li>
+            <li><strong>Prihodni modeli:</strong> Kako zarađuju?</li>
+            <li><strong>Prednosti/Nedostaci:</strong> Usporedba</li>
+            <li><strong>Tržišni trendovi:</strong> Koji raste brže?</li>
+            <li>
+              <strong>Osobna preporuka:</strong> Da pokrećete startup, koji
+              biste odabrali i zašto?
+            </li>
+          </ol>
+
+          <p style="margin-top: 40px; font-size: 1.3em">
+            <strong>Format:</strong> Word/PDF, 3-4 stranice + vizuali<br />
+            <strong>Rok:</strong> Do sljedećeg tjedna<br />
+            <strong>Bodovi:</strong> Max 15 bodova
+          </p>
+        </div>
+
+        <!-- Slide 12: Što slijedi? -->
+        <div class="slide">
+          <h2>🎯 Što nas čeka sljedeći tjedan?</h2>
+
+          <h3>📅 Tjedan 6: Strategija i struktura e-poslovanja</h3>
+          <ul>
+            <li>⛓️ <strong>Lanac vrijednosti</strong> (Value Chain)</li>
+            <li>🕸️ <strong>Mreže vrijednosti</strong> (Value Web)</li>
+            <li>
+              💥 <strong>Disruptivne tehnologije</strong> - kako uništiti
+              industriju
+            </li>
+            <li>🎯 <strong>Strategija:</strong> Blue Ocean vs Red Ocean</li>
+            <li>
+              🐦 <strong>Case study: Twitter/X</strong> - prebrođivanje oluje
+            </li>
+          </ul>
+
+          <div class="highlight" style="margin-top: 40px">
+            <h3>⚠️ VAŽNO: Priprema za ispit!</h3>
+            <p>
+              <strong>Tjedan 7 (13-19. listopada)</strong> = 1. OCJENA<br />
+              Gradivo: Poglavlja 1-2 (Tjedni 1-6)<br />
+              <strong>Počnite ponavljati!</strong> 📖
+            </p>
+          </div>
+
+          <p style="margin-top: 50px; font-size: 1.5em">
+            Vidimo se sljedeći tjedan! 👋
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">12</span>
+      </div>
+
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevSlide()">← Prethodni</button>
+        <button class="nav-btn" onclick="nextSlide()">Sljedeći →</button>
+      </div>
+
+      <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+        const total = slides.length;
+
+        document.getElementById("total").textContent = total;
+
+        function showSlide(n) {
+          slides[currentSlide].classList.remove("active");
+          currentSlide = (n + total) % total;
+          slides[currentSlide].classList.add("active");
+          document.getElementById("current").textContent = currentSlide + 1;
+        }
+
+        function nextSlide() {
+          showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+          showSlide(currentSlide - 1);
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight") nextSlide();
+          if (e.key === "ArrowLeft") prevSlide();
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener("touchend", (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 50) nextSlide();
+          if (touchEndX - touchStartX > 50) prevSlide();
+        });
+      </script>
+    </body>
+  </html>
+</artifact>

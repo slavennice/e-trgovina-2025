@@ -1,0 +1,1529 @@
+<artifact
+  identifier="tjedan12-prezentacija"
+  type="text/html"
+  title="Tjedan 12: E-commerce platforme - Praktična radionica"
+>
+  <!DOCTYPE html>
+  <html lang="hr">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Tjedan 12: E-commerce platforme - Praktična radionica</title>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        body {
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          overflow: hidden;
+          height: 100vh;
+        }
+
+        .presentation {
+          width: 100%;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .slide {
+          background: white;
+          width: 90%;
+          max-width: 1200px;
+          height: 85vh;
+          border-radius: 20px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          padding: 60px;
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          animation: slideIn 0.5s ease;
+          overflow-y: auto;
+        }
+
+        .slide.active {
+          display: flex;
+        }
+
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .slide h1 {
+          font-size: 3.5em;
+          color: #667eea;
+          margin-bottom: 20px;
+          font-weight: 700;
+        }
+
+        .slide h2 {
+          font-size: 2.5em;
+          color: #333;
+          margin-bottom: 30px;
+          font-weight: 600;
+        }
+
+        .slide h3 {
+          font-size: 1.8em;
+          color: #667eea;
+          margin: 30px 0 20px 0;
+        }
+
+        .slide p {
+          font-size: 1.4em;
+          color: #555;
+          line-height: 1.8;
+          margin-bottom: 20px;
+        }
+
+        .slide ul {
+          font-size: 1.3em;
+          color: #555;
+          line-height: 2;
+          margin-left: 40px;
+        }
+
+        .slide li {
+          margin-bottom: 15px;
+        }
+
+        .subtitle {
+          font-size: 1.8em;
+          color: #764ba2;
+          margin-top: 20px;
+        }
+
+        .highlight {
+          background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+          padding: 30px;
+          border-radius: 15px;
+          margin: 20px 0;
+        }
+
+        .highlight h3 {
+          color: #2c3e50;
+          margin: 0 0 15px 0;
+        }
+
+        .highlight p {
+          color: #2c3e50;
+          font-size: 1.2em;
+        }
+
+        .workshop-alert {
+          background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+          color: white;
+          padding: 30px;
+          border-radius: 15px;
+          margin: 20px 0;
+          text-align: center;
+        }
+
+        .workshop-alert h3 {
+          color: white;
+          font-size: 2em;
+          margin-bottom: 15px;
+        }
+
+        .workshop-alert p {
+          color: white;
+          font-size: 1.3em;
+        }
+
+        .case-study {
+          background: #f8f9fa;
+          border-left: 5px solid #667eea;
+          padding: 30px;
+          border-radius: 10px;
+          margin: 20px 0;
+        }
+
+        .platform-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+          margin-top: 30px;
+        }
+
+        .platform-card {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          padding: 30px;
+          border-radius: 15px;
+          color: white;
+          text-align: center;
+          transition: transform 0.3s;
+        }
+
+        .platform-card:hover {
+          transform: translateY(-10px);
+        }
+
+        .platform-icon {
+          font-size: 3em;
+          margin-bottom: 15px;
+        }
+
+        .platform-card h4 {
+          font-size: 1.5em;
+          margin-bottom: 15px;
+        }
+
+        .platform-card p {
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 1em;
+        }
+
+        .comparison-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 20px 0;
+          font-size: 1.1em;
+        }
+
+        .comparison-table th {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 15px;
+          text-align: left;
+        }
+
+        .comparison-table td {
+          padding: 15px;
+          border-bottom: 2px solid #eee;
+        }
+
+        .comparison-table tr:hover {
+          background: #f5f5f5;
+        }
+
+        .step-by-step {
+          background: white;
+          border: 3px solid #667eea;
+          border-radius: 15px;
+          padding: 30px;
+          margin: 20px 0;
+        }
+
+        .step-item {
+          background: #f8f9fa;
+          padding: 20px;
+          margin: 15px 0;
+          border-left: 5px solid #667eea;
+          border-radius: 8px;
+        }
+
+        .step-number {
+          background: #667eea;
+          color: white;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          font-size: 1.3em;
+          margin-right: 15px;
+        }
+
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+          margin-top: 30px;
+        }
+
+        .stat-box {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: white;
+          padding: 30px;
+          border-radius: 15px;
+          text-align: center;
+        }
+
+        .stat-number {
+          font-size: 3em;
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+
+        .stat-label {
+          font-size: 1.1em;
+          opacity: 0.9;
+        }
+
+        .checklist {
+          background: #fff3cd;
+          border-left: 5px solid #ffc107;
+          padding: 25px;
+          border-radius: 10px;
+          margin: 20px 0;
+        }
+
+        .checklist h3 {
+          color: #856404;
+          margin-bottom: 15px;
+        }
+
+        .checklist ul {
+          list-style: none;
+          margin-left: 0;
+        }
+
+        .checklist li {
+          padding: 10px;
+          border-bottom: 1px solid #ffeaa7;
+        }
+
+        .checklist li:before {
+          content: "☐ ";
+          font-size: 1.5em;
+          margin-right: 10px;
+          color: #667eea;
+        }
+
+        .navigation {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          display: flex;
+          gap: 15px;
+        }
+
+        .nav-btn {
+          background: white;
+          color: #667eea;
+          border: none;
+          padding: 15px 30px;
+          font-size: 1.2em;
+          border-radius: 50px;
+          cursor: pointer;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s;
+          font-weight: 600;
+        }
+
+        .nav-btn:hover {
+          background: #667eea;
+          color: white;
+          transform: translateY(-2px);
+        }
+
+        .slide-counter {
+          position: fixed;
+          bottom: 30px;
+          left: 30px;
+          background: white;
+          color: #667eea;
+          padding: 10px 20px;
+          border-radius: 50px;
+          font-size: 1.2em;
+          font-weight: 600;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+          .slide {
+            padding: 30px;
+          }
+          .slide h1 {
+            font-size: 2em;
+          }
+          .slide h2 {
+            font-size: 1.8em;
+          }
+          .platform-grid {
+            grid-template-columns: 1fr;
+          }
+          .stats-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="presentation">
+        <!-- Slide 1: Naslovnica -->
+        <div class="slide active">
+          <h1>🛒 E-COMMERCE PLATFORME</h1>
+          <p class="subtitle">
+            Tjedan 12: Praktična radionica - Kreirajte svoj web shop!
+          </p>
+          <div class="workshop-alert" style="margin-top: 80px">
+            <h3>🎉 HANDS-ON RADIONICA!</h3>
+            <p>
+              Danas ćete kreirati pravi web shop od nule!<br />
+              Priključiti ćemo se na server - pripremite se za praksu! 💻
+            </p>
+          </div>
+
+          <div class="stats-grid" style="margin-top: 40px">
+            <div class="stat-box">
+              <div class="stat-number">4.3M</div>
+              <div class="stat-label">Shopify trgovina</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">30%</div>
+              <div class="stat-label">Web shopova koristi WooCommerce</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-number">$444B</div>
+              <div class="stat-label">Shopify GMV 2023</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Pregled platformi -->
+        <div class="slide">
+          <h2>🏪 Top E-commerce platforme</h2>
+
+          <div class="platform-grid">
+            <div class="platform-card">
+              <div class="platform-icon">🛍️</div>
+              <h4>Shopify</h4>
+              <p style="margin-bottom: 15px">
+                <strong>Tržišni udio: 29%</strong>
+              </p>
+              <ul
+                style="
+                  text-align: left;
+                  margin-left: 20px;
+                  font-size: 0.95em;
+                  color: #ffffff;
+                "
+              >
+                <li>Hosted rješenje</li>
+                <li>$29-$299/mj</li>
+                <li>Najlakše za početnike</li>
+                <li>3 min do prvog shopa</li>
+              </ul>
+            </div>
+
+            <div
+              class="platform-card"
+              style="
+                background: linear-gradient(135deg, #7b68ee 0%, #9370db 100%);
+              "
+            >
+              <div class="platform-icon">🔌</div>
+              <h4>WooCommerce</h4>
+              <p style="margin-bottom: 15px">
+                <strong>Tržišni udio: 23%</strong>
+              </p>
+              <ul
+                style="
+                  text-align: left;
+                  margin-left: 20px;
+                  font-size: 0.95em;
+                  color: #ffffff;
+                "
+              >
+                <li>WordPress plugin</li>
+                <li>Besplatno (hosting nije)</li>
+                <li>Najviše customizacije</li>
+                <li>Treba više znanja</li>
+              </ul>
+            </div>
+
+            <div
+              class="platform-card"
+              style="
+                background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+              "
+            >
+              <div class="platform-icon">💎</div>
+              <h4>Magento</h4>
+              <p style="margin-bottom: 15px">
+                <strong>Tržišni udio: 9%</strong>
+              </p>
+              <ul
+                style="
+                  text-align: left;
+                  margin-left: 20px;
+                  font-size: 0.95em;
+                  color: #ffffff;
+                "
+              >
+                <li>Enterprise rješenje</li>
+                <li>Open source + Commerce</li>
+                <li>Za velike trgovine</li>
+                <li>Skupo i kompleksno</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="highlight" style="margin-top: 40px">
+            <h3>🎯 Koje odabrati?</h3>
+            <p>
+              <strong>Shopify:</strong> Ako želite brzo pokrenuti shop bez
+              tehničkog znanja<br />
+              <strong>WooCommerce:</strong> Ako već imate WordPress i želite
+              punu kontrolu<br />
+              <strong>Magento:</strong> Ako ste velika tvrtka s budžetom
+              $50k+<br />
+              <br />
+              <strong>Danas radimo:</strong> Shopify (najlakši za naučiti za 1
+              sat!)
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 3: Usporedba platformi -->
+        <div class="slide">
+          <h2>⚖️ Shopify vs WooCommerce vs Magento</h2>
+
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Aspekt</th>
+                <th>Shopify</th>
+                <th>WooCommerce</th>
+                <th>Magento</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Cijena (mjesečno)</strong></td>
+                <td>$29-$299</td>
+                <td>$20-$100 (hosting)</td>
+                <td>$2,000+</td>
+              </tr>
+              <tr>
+                <td><strong>Početna investicija</strong></td>
+                <td>Minimalna</td>
+                <td>Srednja</td>
+                <td>Visoka ($50k+)</td>
+              </tr>
+              <tr>
+                <td><strong>Tehničko znanje</strong></td>
+                <td>Ne treba</td>
+                <td>Osnovno HTML/CSS</td>
+                <td>Developer potreban</td>
+              </tr>
+              <tr>
+                <td><strong>Hosting</strong></td>
+                <td>Uključen</td>
+                <td>Morate sami</td>
+                <td>Morate sami</td>
+              </tr>
+              <tr>
+                <td><strong>Customizacija</strong></td>
+                <td>Ograničena</td>
+                <td>Potpuna</td>
+                <td>Potpuna</td>
+              </tr>
+              <tr>
+                <td><strong>Broj proizvoda</strong></td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+              </tr>
+              <tr>
+                <td><strong>Transaction fee</strong></td>
+                <td>0.5-2% (bez Shopify Payments)</td>
+                <td>Ovisi o payment gateway</td>
+                <td>Ovisi o payment gateway</td>
+              </tr>
+              <tr>
+                <td><strong>SEO mogućnosti</strong></td>
+                <td>Dobre</td>
+                <td>Izvrsne</td>
+                <td>Izvrsne</td>
+              </tr>
+              <tr>
+                <td><strong>Vrijeme postavljanja</strong></td>
+                <td>1-3 sata</td>
+                <td>1-3 dana</td>
+                <td>1-6 mjeseci</td>
+              </tr>
+              <tr>
+                <td><strong>Idealno za</strong></td>
+                <td>Startupe, SMB</td>
+                <td>Blogove, content sites</td>
+                <td>Enterprise, B2B</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Slide 4: Shopify - Zašto je najbolji za početnike -->
+        <div class="slide">
+          <h2>🛍️ Zašto Shopify za današnju radionicu?</h2>
+
+          <div class="highlight">
+            <h3>✅ 5 razloga zašto je Shopify najbolji za učenje:</h3>
+          </div>
+
+          <div class="case-study">
+            <h4>1️⃣ Brzina</h4>
+            <p>
+              Od nule do funkcionalnog web shopa za
+              <strong>manje od 1 sata</strong>!<br />
+              Nema instalacije, konfiguracije, ili komplikacija.
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>2️⃣ Jednostavnost</h4>
+            <p>
+              Drag-and-drop editor.<br />
+              Ne treba znati kod (ali možete ako želite!)
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>3️⃣ Sve uključeno</h4>
+            <p>
+              • Hosting + SSL certifikat (HTTPS)<br />
+              • Payment processing<br />
+              • Shopping cart<br />
+              • Inventory management<br />
+              • Shipping calculator<br />
+              Sve iz kutije!
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>4️⃣ Profesionalni themes</h4>
+            <p>
+              100+ besplatnih i premium thema.<br />
+              Vaš shop izgleda kao da ste platili dizajnera $10,000!
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>5️⃣ 14-day free trial</h4>
+            <p>
+              Možete sve isprobati <strong>besplatno</strong>!<br />
+              Ne treba kreditna kartica za trial.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 5: Priprema za radionicu -->
+        <div class="slide">
+          <h2>🎒 Priprema za radionicu</h2>
+
+          <div class="checklist">
+            <h3>✅ Što trebate donijeti/pripremiti:</h3>
+            <ul>
+              <li>💻 Radno računalo (svoje šifre!)</li>
+              <li>🌐 Internet konekcija (WiFi u školi)</li>
+              <li>📧 Email adresa</li>
+              <li>🧠 Ideja za shop (što želite "prodavati")</li>
+              <li>📱 Mobitel (za testiranje responsive dizajna)</li>
+            </ul>
+          </div>
+
+          <div class="workshop-alert" style="margin-top: 30px">
+            <h3>⚠️ VAŽNO!</h3>
+            <p>
+              NE registrirajte se na Shopify PRIJE radionice!<br />
+              Radit ćemo to zajedno, korak po korak! 👨‍🏫
+            </p>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>💡 Ideje za shop:</h3>
+            <p>
+              Ne možete se odlučiti što "prodavati"? Evo ideja:<br />
+              • Streetwear odjeća<br />
+              • Gejmerska oprema<br />
+              • Eko proizvodi<br />
+              • Handmade nakit<br />
+              • Tech gadgeti<br />
+              • Print-on-demand majice<br />
+              <br />
+              <strong>Napomena:</strong> Ne morate imati stvarne proizvode -
+              možemo koristiti stock fotografije!
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 6: STEP 1 - Registracija -->
+        <div class="slide">
+          <h2>🚀 KORAK 1: Registracija na Shopify</h2>
+
+          <div class="step-by-step">
+            <h3 style="color: #667eea; margin-bottom: 20px">
+              Pratite na svojim računalima:
+            </h3>
+
+            <div class="step-item">
+              <span class="step-number">1</span>
+              <strong>Idite na:</strong> https://www.shopify.com<br />
+              Kliknite "Start free trial"
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">2</span>
+              <strong>Unesite email adresu</strong><br />
+              Preporučujem Gmail ili Outlook (ne školski email)
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">3</span>
+              <strong>Odgovorite na pitanja:</strong><br />
+              • Što želite prodavati? (odaberite bilo što)<br />
+              • Da li već prodajete? (odaberite "No")<br />
+              Ne brini nite - ovo ne utječe na funkcionalnost!
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">4</span>
+              <strong>Odaberite ime shopa:</strong><br />
+              Npr: "moj-test-shop" ili "ime-prezime-shop"<br />
+              Ovo će biti vaš URL: <strong>moj-test-shop.myshopify.com</strong>
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">5</span>
+              <strong>Kreirajte lozinku</strong><br />
+              Zapišite ju negdje!
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">6</span>
+              <strong>Dobrodošli u Shopify Dashboard! 🎉</strong>
+            </div>
+          </div>
+
+          <p
+            style="
+              margin-top: 30px;
+              font-size: 1.4em;
+              text-align: center;
+              color: #667eea;
+              font-weight: 600;
+            "
+          >
+            ⏱️ Vrijeme: 5 minuta<br />
+            Dizite ruku kad završite!
+          </p>
+        </div>
+
+        <!-- Slide 7: STEP 2 - Dashboard pregled -->
+        <div class="slide">
+          <h2>🎛️ KORAK 2: Upoznajte Dashboard</h2>
+
+          <p>Shopify Dashboard je vaš "control center" za cijeli shop.</p>
+
+          <div class="case-study">
+            <h3>🗺️ Lijeva strana - Glavni meni:</h3>
+            <ul style="margin-left: 20px; line-height: 1.8">
+              <li><strong>Home:</strong> Pregled, tasks, analytics</li>
+              <li><strong>Orders:</strong> Upravljanje narudžbama</li>
+              <li>
+                <strong>Products:</strong> Dodavanje proizvoda (najvažnije!)
+              </li>
+              <li><strong>Customers:</strong> Baza kupaca</li>
+              <li><strong>Content:</strong> Blog posts, stranice</li>
+              <li><strong>Analytics:</strong> Izvještaji, statistike</li>
+              <li><strong>Marketing:</strong> Kampanje, SEO</li>
+              <li><strong>Discounts:</strong> Popusti, kuponi</li>
+              <li><strong>Apps:</strong> Dodatni plugini</li>
+              <li><strong>Online Store:</strong> Dizajn, themes, navigacija</li>
+              <li><strong>Settings:</strong> Sve postavke</li>
+            </ul>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>👀 Što trebate odmah vidjeti:</h3>
+            <p>
+              Gore desno - <strong>"Customize theme"</strong> gumb - ovdje ćemo
+              dizajnirati shop!<br />
+              <strong>"View your store"</strong> - pregled kako izgleda shop
+              kupcima
+            </p>
+          </div>
+
+          <p style="margin-top: 30px; font-size: 1.4em; text-align: center">
+            Upoznajte Dashboard 2-3 minute - klikajte oko!
+          </p>
+        </div>
+
+        <!-- Slide 8: STEP 3 - Dodavanje proizvoda -->
+        <div class="slide">
+          <h2>📦 KORAK 3: Dodajte prvi proizvod</h2>
+
+          <div class="step-by-step">
+            <div class="step-item">
+              <span class="step-number">1</span>
+              <strong>Kliknite "Products" u lijevom meniju</strong><br />
+              Zatim "Add product"
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">2</span>
+              <strong>Title:</strong> Naziv proizvoda<br />
+              Primjer: "Premium Cotton T-Shirt - Black"
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">3</span>
+              <strong>Description:</strong> Opis proizvoda<br />
+              Napišite 2-3 rečenice. SEO savjet: koristite ključne riječi!
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">4</span>
+              <strong>Media:</strong> Dodajte slike<br />
+              • Možete uploadati vlastite ili<br />
+              • Koristite Unsplash (besplatne stock fotografije - integrirano!)
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">5</span>
+              <strong>Pricing:</strong> Postavite cijenu<br />
+              • Price: €29.99<br />
+              • Compare at price: €39.99 (opciono - pokazuje popust!)
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">6</span>
+              <strong>Inventory:</strong> Količina<br />
+              SKU: Opciono (stock keeping unit)<br />
+              Quantity: 100 (ili koliko želite)
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">7</span>
+              <strong>Shipping:</strong> Zaokružite "This is a physical
+              product"<br />
+              Weight: 0.5 kg (važno za shipping cost calculator)
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">8</span>
+              <strong>Variants:</strong> Veličine, boje...<br />
+              Dodajte opcije: Size (S, M, L, XL), Color (Black, White, Grey)
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">9</span>
+              <strong>Kliknite "Save" gore desno! 💾</strong>
+            </div>
+          </div>
+
+          <p
+            style="
+              margin-top: 30px;
+              font-size: 1.4em;
+              text-align: center;
+              color: #667eea;
+              font-weight: 600;
+            "
+          >
+            Dodajte NAJMANJE 3 proizvoda!<br />
+            ⏱️ Vrijeme: 15 minuta
+          </p>
+        </div>
+
+        <!-- Slide 9: STEP 4 - Odabir i customizacija theme-a -->
+        <div class="slide">
+          <h2>🎨 KORAK 4: Odaberite Theme (dizajn)</h2>
+
+          <div class="step-by-step">
+            <div class="step-item">
+              <span class="step-number">1</span>
+              <strong>Idite na "Online Store" → "Themes"</strong>
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">2</span>
+              <strong>Trenutno imate "Dawn" theme</strong> (default)<br />
+              Možete ga zadržati ili promijeniti
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">3</span>
+              <strong
+                >Za novi theme: Scroll dolje do "Explore free themes"</strong
+              ><br />
+              Popularni besplatni themesi:<br />
+              • <strong>Dawn</strong> - minimalistički, brz<br />
+              • <strong>Sense</strong> - za fashion i lifestyle<br />
+              • <strong>Craft</strong> - za handmade i artistic<br />
+              • <strong>Studio</strong> - bold, modern
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">4</span>
+              <strong>Kliknite "Add" na odabranom theme-u</strong><br />
+              Zatim "Publish" da postane aktivan
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">5</span>
+              <strong>Sada kliknite "Customize" na aktivnom theme-u</strong
+              ><br />
+              Otvorit će se Theme Editor!
+            </div>
+          </div>
+          <div class="highlight" style="margin-top: 30px">
+            <h3>🎨 Theme Editor - Gdje mijenjati dizajn:</h3>
+            <ul style="margin-left: 20px; color: #2c3e50">
+              <li>
+                <strong>Sections:</strong> Dodajte/uklonite sekcije (hero
+                banner, featured products...)
+              </li>
+              <li><strong>Theme settings:</strong> Boje, fontovi, spacing</li>
+              <li>
+                <strong>Pages:</strong> Uredite Home, About, Contact stranice
+              </li>
+            </ul>
+          </div>
+
+          <p style="margin-top: 30px; font-size: 1.4em; text-align: center">
+            Eksperimentirajte s dizajnom!<br />
+            Ne bojte se - uvijek možete "Undo" 😊
+          </p>
+        </div>
+
+        <!-- Slide 10: STEP 5 - Customizacija homepage-a -->
+        <div class="slide">
+          <h2>🏠 KORAK 5: Dizajnirajte Homepage</h2>
+
+          <p>Homepage je prva stvar što kupci vide - mora biti privlačna!</p>
+
+          <div class="case-study">
+            <h3>Osnovna struktura dobrog homepagea:</h3>
+          </div>
+
+          <div class="step-item">
+            <span class="step-number">1</span>
+            <strong>Hero Banner (Header slika)</strong><br />
+            • Velika slika s tekstom<br />
+            • CTA button ("Shop Now", "Discover")<br />
+            • Dodaj: Sections → Image banner
+          </div>
+
+          <div class="step-item">
+            <span class="step-number">2</span>
+            <strong>Featured Collection</strong><br />
+            • Prikaz najboljih proizvoda<br />
+            • Dodaj: Sections → Featured collection<br />
+            • Odaberi "All products"
+          </div>
+
+          <div class="step-item">
+            <span class="step-number">3</span>
+            <strong>About sekcija</strong><br />
+            • Kratki opis vašeg brenda<br />
+            • Dodaj: Sections → Rich text<br />
+            • Napišite 2-3 rečenice o "vašoj" trgovini
+          </div>
+
+          <div class="step-item">
+            <span class="step-number">4</span>
+            <strong>Trust badges</strong><br />
+            • "Free shipping", "30-day returns", "Secure checkout"<br />
+            • Dodaj: Sections → Multicolumn (ili Image with text)
+          </div>
+
+          <div class="step-item">
+            <span class="step-number">5</span>
+            <strong>Footer</strong><br />
+            • Social media linkovi<br />
+            • Newsletter signup<br />
+            • Uredi: Sections → Footer
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>💡 Pro tip:</h3>
+            <p>
+              Pogledajte homepage-e uspješnih Shopify shopova za inspiraciju:<br />
+              • Gymshark.com<br />
+              • Allbirds.com<br />
+              • MVMT.com
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 11: STEP 6 - Navigation i stranice -->
+        <div class="slide">
+          <h2>🧭 KORAK 6: Navigation i dodatne stranice</h2>
+
+          <h3>Navigacija (Menu):</h3>
+          <div class="step-by-step">
+            <div class="step-item">
+              <span class="step-number">1</span>
+              <strong>Idite na "Online Store" → "Navigation"</strong>
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">2</span>
+              <strong>Kliknite na "Main menu"</strong><br />
+              Dodajte linkove:<br />
+              • Home<br />
+              • Shop (All products)<br />
+              • About<br />
+              • Contact
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">3</span>
+              <strong>Save menu</strong>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 40px">Dodatne stranice:</h3>
+          <div class="step-by-step">
+            <div class="step-item">
+              <span class="step-number">1</span>
+              <strong>"Online Store" → "Pages"</strong>
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">2</span>
+              <strong>Kreirajte "About Us" stranicu:</strong><br />
+              • Napišite o vašem "brendu"<br />
+              • Dodajte sliku<br />
+              • 3-5 paragrafa teksta
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">3</span>
+              <strong>Kreirajte "Contact" stranicu:</strong><br />
+              • Shopify automatski dodaje contact form<br />
+              • Dodajte email i social media linkove
+            </div>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>🔍 SEO Tip:</h3>
+            <p>
+              Za svaku stranicu ispunite:<br />
+              • Page title (za Google)<br />
+              • Meta description (150 karaktera)<br />
+              Ovo se nalazi na dnu stranice pod "Search engine listing preview"
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 12: STEP 7 - Payment i Shipping -->
+        <div class="slide">
+          <h2>💳 KORAK 7: Payment & Shipping postavke</h2>
+
+          <div class="workshop-alert">
+            <h3>⚠️ NAPOMENA</h3>
+            <p>
+              Za trial NE morate postavljati pravi payment!<br />
+              Ovo je samo demonstracija kako to funkcionira.
+            </p>
+          </div>
+
+          <h3>Payment Gateway:</h3>
+          <div class="step-item">
+            <span class="step-number">1</span>
+            <strong>"Settings" → "Payments"</strong><br />
+            • Shopify Payments (ugrađeno - ako je dostupno u HR)<br />
+            • PayPal<br />
+            • Stripe<br />
+            • Manual payment (za testing)
+          </div>
+
+          <h3 style="margin-top: 30px">Shipping postavke:</h3>
+          <div class="step-by-step">
+            <div class="step-item">
+              <span class="step-number">1</span>
+              <strong>"Settings" → "Shipping and delivery"</strong>
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">2</span>
+              <strong>Kreirajte shipping zone:</strong><br />
+              • Croatia: €3.99 (Standard shipping)<br />
+              • EU: €7.99<br />
+              • Free shipping over €50 (opciono)
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">3</span>
+              <strong>Delivery time:</strong><br />
+              Postavite "2-5 business days" za Hrvatsku
+            </div>
+          </div>
+
+          <div class="case-study" style="margin-top: 30px">
+            <h3>📦 Shipping strategije:</h3>
+            <ul style="margin-left: 20px">
+              <li>
+                <strong>Free shipping:</strong> Povećava konverziju, ali morate
+                ukalkulirati u cijenu proizvoda
+              </li>
+              <li><strong>Flat rate:</strong> Jednostavno (npr. sve €4.99)</li>
+              <li>
+                <strong>Calculated:</strong> Prema težini i lokaciji
+                (najrealnije)
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Slide 13: STEP 8 - Test narudžbe -->
+        <div class="slide">
+          <h2>🧪 KORAK 8: Testirajte shop - Napravite test narudžbu!</h2>
+
+          <div class="highlight">
+            <h3>🎯 Sada ćemo testirati cijeli proces kupnje!</h3>
+          </div>
+
+          <div class="step-by-step">
+            <div class="step-item">
+              <span class="step-number">1</span>
+              <strong>Kliknite "View your store" (gore desno)</strong><br />
+              Otvorit će se vaš shop u novom tabu
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">2</span>
+              <strong>Ponaašjte se kao kupac:</strong><br />
+              • Pregledajte proizvode<br />
+              • Dodajte u košaricu<br />
+              • Kliknite "Checkout"
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">3</span>
+              <strong>Na Checkout stranici:</strong><br />
+              Upišite test podatke:<br />
+              • Email: test@example.com<br />
+              • Shipping address: bilo koja adresa<br />
+              • Za payment: Shopify test mode prihvaća fake kreditne kartice
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">4</span>
+              <strong>Test kreditna kartica:</strong><br />
+              • Broj: 1 (Bogus Gateway - Shopify test)<br />
+              • Expiry: bilo koji budući datum<br />
+              • CVV: bilo koja 3 broja
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">5</span>
+              <strong>Dovršite narudžbu!</strong><br />
+              Vidjet ćete "Order confirmed" stranicu 🎉
+            </div>
+
+            <div class="step-item">
+              <span class="step-number">6</span>
+              <strong>Vratite se u Dashboard → Orders</strong><br />
+              Vidjet ćete vašu test narudžbu!
+            </div>
+          </div>
+
+          <p
+            style="
+              margin-top: 30px;
+              font-size: 1.4em;
+              text-align: center;
+              color: #667eea;
+              font-weight: 600;
+            "
+          >
+            Čestitamo! Upravo ste napravili prvu "prodaju"! 🎊
+          </p>
+        </div>
+
+        <!-- Slide 14: STEP 9 - Mobile optimization -->
+        <div class="slide">
+          <h2>📱 KORAK 9: Testirajte na mobitelu</h2>
+
+          <div class="highlight">
+            <h3>🎯 70% kupaca kupuje s mobitela - MORA dobro izgledati!</h3>
+          </div>
+
+          <h3>Kako testirati:</h3>
+
+          <div class="step-item">
+            <span class="step-number">1</span>
+            <strong>Desktop test:</strong><br />
+            U Theme Editoru, gore - prebacite s Desktop na Mobile view<br />
+            Vidjet ćete kako izgleda na telefonu
+          </div>
+
+          <div class="step-item">
+            <span class="step-number">2</span>
+            <strong>Pravi mobitel test:</strong><br />
+            Otvorite vaš shop na mobitelu:<br />
+            <strong>vase-ime-shop.myshopify.com</strong>
+          </div>
+
+          <div class="step-item">
+            <span class="step-number">3</span>
+            <strong>Što provjeriti:</strong><br />
+            • Jesu li slike previsoke/preniiske?<br />
+            • Je li tekst čitljiv?<br />
+            • Jesu li buttoni dovoljno veliki za tapnuti?<br />
+            • Radi li navigation menu?<br />
+            • Je li checkout proces lak?
+          </div>
+
+          <div class="case-study" style="margin-top: 30px">
+            <h3>📱 Mobile optimization savjeti:</h3>
+            <ul style="margin-left: 20px; line-height: 1.8">
+              <li>Držite tekst kraćim na mobilnom</li>
+              <li>Koristite vertikalne slike (9:16) za hero banner</li>
+              <li>Buttoni minimum 44×44px za touch</li>
+              <li>Brzina je kritična - testirajte na 4G</li>
+            </ul>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>⚡ Page Speed Test:</h3>
+            <p>
+              Idite na: <strong>pagespeed.web.dev</strong><br />
+              Unesite vaš shop URL i testirajte brzinu!<br />
+              Cilj: 60+ score na mobile
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 15: Bonus features -->
+        <div class="slide">
+          <h2>🎁 BONUS: Korisne dodatne funkcije</h2>
+
+          <h3>Apps koje možete dodati (besplatno):</h3>
+
+          <div class="platform-grid">
+            <div class="platform-card">
+              <div class="platform-icon">⭐</div>
+              <h4>Product Reviews</h4>
+              <p>
+                Omogućite kupcima da ostavljaju reviews.<br />
+                <strong>App:</strong> Judge.me ili Loox
+              </p>
+            </div>
+
+            <div
+              class="platform-card"
+              style="
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+              "
+            >
+              <div class="platform-icon">💬</div>
+              <h4>Live Chat</h4>
+              <p>
+                Chat s kupcima u real-time.<br />
+                <strong>App:</strong> Tidio ili Shopify Inbox
+              </p>
+            </div>
+
+            <div
+              class="platform-card"
+              style="
+                background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+              "
+            >
+              <div class="platform-icon">📧</div>
+              <h4>Email Marketing</h4>
+              <p>
+                Newsletter i abandoned cart emails.<br />
+                <strong>App:</strong> Klaviyo ili Omnisend
+              </p>
+            </div>
+
+            <div
+              class="platform-card"
+              style="
+                background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+              "
+            >
+              <div class="platform-icon">🔔</div>
+              <h4>Push Notifications</h4>
+              <p>
+                Notifikacije za popuste i nove proizvode.<br />
+                <strong>App:</strong> PushOwl
+              </p>
+            </div>
+
+            <div
+              class="platform-card"
+              style="
+                background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+              "
+            >
+              <div class="platform-icon">📊</div>
+              <h4>Analytics</h4>
+              <p>
+                Detaljnije statistike.<br />
+                <strong>App:</strong> Google Analytics ili Lucky Orange
+              </p>
+            </div>
+
+            <div
+              class="platform-card"
+              style="
+                background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+              "
+            >
+              <div class="platform-icon">🎁</div>
+              <h4>Popup & Discounts</h4>
+              <p>
+                Popup za email capture.<br />
+                <strong>App:</strong> Privy ili OptinMonster
+              </p>
+            </div>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>⚠️ Savjet:</h3>
+            <p>
+              Ne instalirajte previše app-ova!<br />
+              Svaki app usporava shop. Počnite s max 3-5 app-ova.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 16: Zaključak radionice -->
+        <div class="slide">
+          <h2>🎉 Čestitamo - Napravili ste web shop!</h2>
+
+          <div class="workshop-alert">
+            <h3>✅ Što ste danas naučili:</h3>
+            <p>
+              ✓ Registracija na Shopify platformi<br />
+              ✓ Dodavanje proizvoda s varijantama<br />
+              ✓ Odabir i customizacija theme-a<br />
+              ✓ Dizajniranje homepage-a<br />
+              ✓ Navigacija i stranice<br />
+              ✓ Payment i shipping postavke<br />
+              ✓ Test narudžba<br />
+              ✓ Mobile optimization<br />
+              <br />
+              <strong
+                >Za manje od 2 sata kreirali ste funkcionalan e-commerce
+                shop!</strong
+              >
+              🚀
+            </p>
+          </div>
+
+          <h3 style="margin-top: 40px">📸 Što dalje?</h3>
+
+          <div class="case-study">
+            <h4>1. Screenshot vašeg shopa!</h4>
+            <p>
+              Napravite screenshot homepage-a i product page-a<br />
+              Pošaljite na Google Classroom za bodove! (+10 bodova)
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>2. Nastavite eksperimentirati</h4>
+            <p>
+              Imate 14 dana free trial-a:<br />
+              • Dodajte više proizvoda<br />
+              • Instalirajte app-ove<br />
+              • Testirajte različite theme-e<br />
+              • Podijelite s prijateljima za feedback
+            </p>
+          </div>
+
+          <div class="case-study">
+            <h4>3. Za one koji žele ići dalje...</h4>
+            <p>
+              • Povežite vlastitu domenu (.com/.hr)<br />
+              • Pokrenite pravi biznis (print-on-demand, dropshipping)<br />
+              • Integrirajte s društvenim mrežama<br />
+              • Kreirajte marketing kampanju
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 17: Homework -->
+        <div class="slide">
+          <h2>📚 Domaća zadaća - Analiza web shopa</h2>
+
+          <div class="highlight">
+            <h3>📝 Zadatak: Napišite izvještaj o svom Shopify shopu</h3>
+          </div>
+
+          <h3>Struktura izvještaja:</h3>
+
+          <div class="case-study">
+            <h4>1. Screenshots (20%)</h4>
+            <ul style="margin-left: 20px">
+              <li>Homepage (desktop)</li>
+              <li>Product page</li>
+              <li>Checkout proces</li>
+              <li>Mobile view</li>
+            </ul>
+          </div>
+
+          <div class="case-study">
+            <h4>2. Tehnička dokumentacija (30%)</h4>
+            <ul style="margin-left: 20px">
+              <li>Koje proizvode ste dodali? (lista s cijenama)</li>
+              <li>Koji theme ste odabrali i zašto?</li>
+              <li>Koje sekcije imate na homepage-u?</li>
+              <li>Shipping i payment postavke</li>
+            </ul>
+          </div>
+
+          <div class="case-study">
+            <h4>3. UX/UI Analiza (30%)</h4>
+            <ul style="margin-left: 20px">
+              <li>Što vam se sviđa u vašem dizajnu?</li>
+              <li>Što biste htjeli poboljšati?</li>
+              <li>Je li shop user-friendly? Obrazložite</li>
+              <li>Page speed score (s pagespeed.web.dev)</li>
+            </ul>
+          </div>
+
+          <div class="case-study">
+            <h4>4. Poslovni plan (20%)</h4>
+            <ul style="margin-left: 20px">
+              <li>Da je ovo pravi biznis, kako biste ga promovovali?</li>
+              <li>Tko je ciljna publika?</li>
+              <li>Koliko bi košt alo pokrenuti? (hosting $29/mj + ?)</li>
+            </ul>
+          </div>
+
+          <p style="margin-top: 30px; font-size: 1.3em">
+            <strong>Format:</strong> Word/PDF s screenshot-ovima<br />
+            <strong>Duljina:</strong> 4-6 stranica<br />
+            <strong>Rok:</strong> Za 1 tjedan<br />
+            <strong>Bodovi:</strong> Max 25 bodova (ovo je veća zadaća!)
+          </p>
+        </div>
+
+        <!-- Slide 18: Što slijedi - Ispit 2 -->
+        <div class="slide">
+          <h2>🎯 Što nas čeka sljedeće?</h2>
+
+          <div
+            class="workshop-alert"
+            style="
+              background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            "
+          >
+            <h3>📝 PRIPREMA ZA 2. OCJENU!</h3>
+            <p>
+              Sljedeći tjedan = ISPIT 2 (Prosinac)<br />
+              Poglavlja 3-5 (Tjedni 8-12)
+            </p>
+          </div>
+
+          <h3>Što ponavljati za ispit:</h3>
+
+          <div class="checklist">
+            <h3>✅ MODUL 2: Tehnološka infrastruktura</h3>
+            <ul>
+              <li>
+                <strong>Tjedan 8:</strong> Internet infrastruktura (TCP/IP, DNS,
+                Routing)
+              </li>
+              <li>
+                <strong>Tjedan 9:</strong> Cloud computing (IaaS, PaaS, SaaS),
+                iOS vs Android
+              </li>
+              <li>
+                <strong>Tjedan 10:</strong> Web tehnologije (Web 1.0→2.0→3, SEO,
+                PWA)
+              </li>
+              <li>
+                <strong>Tjedan 11:</strong> Mobilne aplikacije (Native vs
+                Hybrid, React Native vs Flutter)
+              </li>
+              <li>
+                <strong>Tjedan 12:</strong> E-commerce platforme (Shopify vs
+                WooCommerce)
+              </li>
+            </ul>
+          </div>
+
+          <div class="case-study" style="margin-top: 30px">
+            <h3>📖 Za ponavljanje:</h3>
+            <p>
+              • Sve prezentacije (Tjedan 8-12) dostupne na GitHub Pages<br />
+              • Case studies: OVHcloud, Zoom, Klook, Airbnb<br />
+              • Praktični zadaci - riješite ponovno<br />
+              • Domaće zadaće - pregledajte svoje odgovore
+            </p>
+          </div>
+
+          <div class="highlight" style="margin-top: 30px">
+            <h3>💡 Savjet za učenje:</h3>
+            <p>
+              Fokusirajte se na <strong>razumijevanje koncepata</strong>, ne
+              memoriranje!<br />
+              Ispitna pitanja će biti praktična - primjeri iz stvarnog
+              svijeta.<br />
+              <br />
+              <strong>Npr:</strong> "Kada biste birali između React Native i
+              Native developmenta, što biste odabrali za gaming app i zašto?"
+            </p>
+          </div>
+
+          <p style="margin-top: 50px; font-size: 1.5em; text-align: center">
+            Sretno na ispitu! 💪📚
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-counter">
+        <span id="current">1</span> / <span id="total">18</span>
+      </div>
+
+      <div class="navigation">
+        <button class="nav-btn" onclick="prevSlide()">← Prethodni</button>
+        <button class="nav-btn" onclick="nextSlide()">Sljedeći →</button>
+      </div>
+
+      <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll(".slide");
+        const total = slides.length;
+
+        document.getElementById("total").textContent = total;
+
+        function showSlide(n) {
+          slides[currentSlide].classList.remove("active");
+          currentSlide = (n + total) % total;
+          slides[currentSlide].classList.add("active");
+          document.getElementById("current").textContent = currentSlide + 1;
+        }
+
+        function nextSlide() {
+          showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+          showSlide(currentSlide - 1);
+        }
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight") nextSlide();
+          if (e.key === "ArrowLeft") prevSlide();
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener("touchend", (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 50) nextSlide();
+          if (touchEndX - touchStartX > 50) prevSlide();
+        });
+      </script>
+    </body>
+  </html>
+</artifact>
